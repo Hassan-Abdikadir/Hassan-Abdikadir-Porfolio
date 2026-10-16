@@ -1,0 +1,662 @@
+/* ================================================================
+   HASSAN PORTFOLIO — COMPREHENSIVE MOBILE-FIRST RESPONSIVE OVERRIDES
+   Covers: mobile (320px-580px), tablet (581px-1024px), desktop (1025px+)
+   Android, iOS, iPad, Surface, all screen sizes
+================================================================ */
+
+/* ── Prevent horizontal overflow globally ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ── iOS safe-area insets ── */
+.navbar, .footer {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* ── Container fluid on all screens ── */
+.container {
+  width: 100%;
+  padding-left: clamp(16px, 4vw, 48px);
+  padding-right: clamp(16px, 4vw, 48px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Section paddings scale ── */
+.section-container,
+.hero, .about-section, .skills-section, .projects-section,
+.certifications-section, .testimonials-section, .terminal-section,
+.playground-section, .runner-section, .api-section,
+.blog-section, .github-section, .estimator-section,
+.contact-section, .telemetry-section {
+  padding-left: clamp(16px, 4vw, 48px);
+  padding-right: clamp(16px, 4vw, 48px);
+}
+
+/* ── Common Section Titles ── */
+.section-title {
+  font-size: clamp(1.6rem, 5vw, 2.8rem) !important;
+  line-height: 1.2 !important;
+}
+
+.section-subtitle {
+  font-size: clamp(0.88rem, 2.5vw, 1.05rem) !important;
+}
+
+/* ── Buttons — touch-friendly minimum size ── */
+button, .btn-cyber, .btn-primary, .btn-outline, .btn-get-started,
+.mobile-toggle, .filter-btn, .type-btn, .addon-btn {
+  min-height: 40px;
+  touch-action: manipulation;
+}
+
+/* ── Prevent text overflow ── */
+h1, h2, h3, h4, p {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ================================================================
+   TABLET  (≤ 1024px)
+================================================================ */
+@media (max-width: 1024px) {
+  .about-container,
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .about-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-profile {
+    max-width: 450px;
+  }
+
+  .experience-timeline::before {
+    left: 16px !important;
+  }
+
+  .exp-item {
+    padding-left: 44px !important;
+  }
+
+  .recmatch-grid,
+  .recruiter-match-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ================================================================
+   SMALL TABLET / LARGE PHONE  (≤ 768px)
+================================================================ */
+@media (max-width: 768px) {
+  /* About */
+  .about-stats-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* Navbar sub nav pills (NexusArcade) */
+  .nexus-sub-nav {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Contact grid */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Form row */
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Terminal */
+  .terminal-window {
+    max-width: 100% !important;
+    margin: 24px 0 0 !important;
+  }
+
+  /* System Telemetry */
+  .telemetry-footer-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Blog filter bar */
+  .blog-filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Testimonials spotlight */
+  .t-spotlight-card {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+  }
+
+  /* Footer */
+  .footer-inner {
+    padding-top: 40px;
+  }
+
+  /* Code playground */
+  .snippet-selector {
+    flex-wrap: wrap;
+  }
+
+  /* Auth modal */
+  .auth-card {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+
+  /* Estimator */
+  .estimator-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ================================================================
+   MOBILE PHONES  (≤ 580px)
+================================================================ */
+@media (max-width: 580px) {
+  /* Hero */
+  .hero-title {
+    font-size: clamp(1.7rem, 8vw, 2.4rem) !important;
+  }
+  .hero-subtitle {
+    font-size: clamp(0.82rem, 3.5vw, 1rem) !important;
+  }
+  .hero-badges {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-actions > * {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .hero-socials {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* About section */
+  .about-stats-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .pillar-card {
+    padding: 12px 14px;
+  }
+
+  /* Skills */
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .skills-filter {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Projects */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Certifications */
+  .certs-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Testimonials */
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Blog */
+  .blog-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact form */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-form-wrap {
+    padding: 18px 14px !important;
+  }
+
+  /* Footer */
+  .footer-row-top,
+  .footer-row-mid {
+    grid-template-columns: 1fr !important;
+  }
+  .footer-stats {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .footer-name {
+    font-size: 1.2rem !important;
+  }
+
+  /* Nexus Arcade section */
+  .nexus-sub-nav button,
+  .section-sub-nav button {
+    font-size: 0.72rem !important;
+    padding: 0.4rem 0.7rem !important;
+  }
+
+  /* Resume modal */
+  .resume-modal-card {
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+  }
+
+  /* Auth modal */
+  .auth-card {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Terminal overlay */
+  .terminal-overlay-window {
+    border-radius: 14px !important;
+    height: 90vh !important;
+  }
+
+  /* System Telemetry HUD */
+  .telemetry-hud {
+    border-radius: 18px !important;
+    padding: 16px !important;
+  }
+  .hud-value {
+    font-size: 1.6rem !important;
+  }
+
+  /* GitHub activity */
+  .github-card {
+    padding: 16px !important;
+  }
+  .github-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Project Estimator */
+  .estimator-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .est-metrics-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* RecruiterMatch */
+  .recmatch-sidebar,
+  .recmatch-main {
+    width: 100% !important;
+  }
+
+  /* API playground */
+  .playground-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .inspector-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Modals & backdrops better spacing */
+  .modal-backdrop,
+  .auth-backdrop,
+  .terminal-overlay-backdrop {
+    padding: 12px !important;
+  }
+}
+
+/* ================================================================
+   VERY SMALL PHONES  (≤ 380px)
+================================================================ */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: clamp(1.5rem, 9vw, 2rem) !important;
+  }
+  .section-title {
+    font-size: clamp(1.4rem, 7vw, 2rem) !important;
+  }
+  .orbit-container {
+    width: 210px !important;
+    height: 210px !important;
+  }
+  .orbit-center {
+    width: 130px !important;
+    height: 130px !important;
+  }
+  .footer-socials {
+    flex-wrap: wrap;
+  }
+}
+
+/* ================================================================
+  TOUCH DEVICE HOVER OVERRIDES  (fingertip usability)
+================================================================ */
+@media (hover: none) {
+  /* Show hover-gated actions by default on touch */
+  .project-actions-hover {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  .project-card:hover {
+    transform: none !important;
+  }
+  .pillar-card:hover {
+    transform: none !important;
+  }
+  .cert-card:hover {
+    transform: none !important;
+  }
+  .hud-card:hover {
+    transform: none !important;
+  }
+  .about-profile:hover {
+    transform: none !important;
+  }
+  .footer-tech-pill:hover {
+    transform: none !important;
+  }
+  .t-click-hint {
+    opacity: 1 !important;
+  }
+}
+
+/* ================================================================
+  LANDSCAPE PHONE OVERRIDES
+================================================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    padding-top: 80px !important;
+    padding-bottom: 30px !important;
+  }
+  .hero-container {
+    grid-template-columns: 1fr 1fr !important;
+    text-align: left !important;
+  }
+  .orbit-container {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+/* ================================================================
+  FIX 1 — ABOUT SECTION: Avatar responsive sizing
+================================================================ */
+@media (max-width: 580px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .about-profile {
+    padding: 20px 16px !important;
+    max-width: 100% !important;
+  }
+  .profile-avatar {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  .profile-name {
+    font-size: 1.15rem !important;
+  }
+  .profile-sphere-box {
+    padding: 12px !important;
+  }
+  .about-pillars {
+    gap: 12px !important;
+  }
+  .pillar-card {
+    padding: 14px 16px !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+  .pillar-icon {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* ================================================================
+  FIX 2 — EXPERIENCE: Timeline mobile (single column, left-aligned)
+================================================================ */
+@media (max-width: 768px) {
+  .exp-line {
+    left: 16px !important;
+  }
+  .exp-item.right,
+  .exp-item.left {
+    flex-direction: row !important;
+    transform: translateX(-20px) !important;
+  }
+  .exp-item.visible {
+    transform: translateX(0) !important;
+  }
+  .exp-node {
+    left: 16px !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.9rem !important;
+  }
+  .exp-card {
+    width: calc(100% - 56px) !important;
+    margin-left: 56px !important;
+    margin-right: 0 !important;
+  }
+  .exp-card-header {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  .exp-card-right {
+    align-items: flex-start !important;
+  }
+  .exp-period, .exp-location {
+    white-space: normal !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-card {
+    width: calc(100% - 48px) !important;
+    margin-left: 48px !important;
+  }
+  .exp-node {
+    width: 30px !important;
+    height: 30px !important;
+    left: 10px !important;
+  }
+  .exp-card-header {
+    padding: 14px 14px 10px !important;
+  }
+  .exp-body.open {
+    padding: 0 14px 14px !important;
+  }
+  .exp-title {
+    font-size: 0.92rem !important;
+  }
+}
+
+/* ================================================================
+  FIX 3 — RECRUITER MATCH: Full mobile stack
+================================================================ */
+@media (max-width: 640px) {
+  .match-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .match-card {
+    padding: 18px 14px !important;
+  }
+  .score-top {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .score-number {
+    font-size: 2rem !important;
+  }
+  .sample-jd-bar {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+}
+
+/* ================================================================
+  FIX 4 — NAVBAR: Dropdown ("Developer Suite") mobile safe
+================================================================ */
+@media (max-width: 768px) {
+  .nav-dropdown,
+  .suite-dropdown,
+  .dev-dropdown,
+  [class*="dropdown-menu"],
+  [class*="nav-dropdown"] {
+    position: fixed !important;
+    left: 12px !important;
+    right: 12px !important;
+    top: auto !important;
+    width: auto !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+    border-radius: 16px !important;
+    z-index: 9999 !important;
+  }
+  /* Developer Suite sub-links wrap */
+  .suite-links,
+  .dropdown-grid,
+  [class*="suite-grid"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .suite-links,
+  .dropdown-grid,
+  [class*="suite-grid"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ================================================================
+  FIX 5 — NEXUS ARCADE: Sub-nav pills wrap cleanly on mobile
+================================================================ */
+@media (max-width: 768px) {
+  #nexus-arcade [style*="display: flex"],
+  #nexus-arcade [style*="display:flex"] {
+    flex-wrap: wrap !important;
+  }
+  /* Target the nav pill container directly */
+  #nexus-arcade > div > div:first-child > div:last-child {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #nexus-arcade button {
+    font-size: 0.72rem !important;
+    padding: 0.35rem 0.65rem !important;
+  }
+}
+
+/* ================================================================
+  FIX 6 — FOOTER: Terminal + github card max-width override
+================================================================ */
+.github-card {
+  max-width: 100% !important;
+}
+
+@media (max-width: 768px) {
+  .github-card {
+    padding: 16px !important;
+  }
+  .footer-terminal {
+    min-height: auto !important;
+  }
+  .terminal-body {
+    min-height: 80px !important;
+  }
+  .footer-inner {
+    padding-left: clamp(14px, 4vw, 32px) !important;
+    padding-right: clamp(14px, 4vw, 32px) !important;
+  }
+}
+
+/* ================================================================
+  FIX 7 — SYSTEM TELEMETRY: HUD grid mobile single column
+================================================================ */
+@media (max-width: 640px) {
+  .hud-grid,
+  .hud-stats-grid,
+  .telemetry-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .hud-value,
+  .hud-val {
+    font-size: 1.5rem !important;
+  }
+  .telemetry-hud {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .hud-grid,
+  .hud-stats-grid,
+  .telemetry-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ================================================================
+  FIX 8 — PROJECT ESTIMATOR: Single column on 480px
+================================================================ */
+@media (max-width: 480px) {
+  .estimator-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .estimator-card {
+    padding: 16px !important;
+  }
+  .type-options-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .addons-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .est-metrics-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .est-val {
+    font-size: 1.3rem !important;
+  }
+}

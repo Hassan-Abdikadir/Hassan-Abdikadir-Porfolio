@@ -1,0 +1,71 @@
+/* Scroll Progress Top Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 9999;
+}
+
+.scroll-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3B82F6, #8B5CF6, #EC4899);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.7);
+}
+
+.scroll-pct-badge {
+  position: absolute;
+  right: 0;
+  top: 6px;
+  background: rgba(17, 24, 39, 0.9);
+  color: #60A5FA;
+  font-family: var(--font-code, monospace);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 0 0 0 6px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-top: none;
+  border-right: none;
+}
+
+/* Side Section Dot Navigator */
+.side-section-indicator {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.side-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.side-dot.active {
+  background: #3B82F6;
+  box-shadow: 0 0 8px #3B82F6;
+  transform: scale(1.5);
+}
+
+.side-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 1024px) {
+  .side-section-indicator {
+    display: none;
+  }
+}

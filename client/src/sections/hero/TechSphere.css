@@ -1,0 +1,26 @@
+.tech-sphere-wrapper {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-sphere-canvas {
+  width: 100%;
+  height: 320px;
+  cursor: grab;
+}
+
+.tech-sphere-canvas:active {
+  cursor: grabbing;
+}
+
+.sphere-hint {
+  font-family: var(--font-code, monospace);
+  font-size: 0.72rem;
+  color: #9CA3AF;
+  margin-top: 4px;
+}

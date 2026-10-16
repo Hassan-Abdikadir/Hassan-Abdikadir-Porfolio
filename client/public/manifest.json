@@ -1,0 +1,23 @@
+{
+  "short_name": "Hassan.dev",
+  "name": "Hassan Abdikadir — Software Engineer & Data Analyst Portfolio",
+  "icons": [
+    {
+      "src": "/LOGO.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/LOGO.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0B0F19",
+  "theme_color": "#0B0F19",
+  "display": "standalone",
+  "orientation": "portrait"
+}

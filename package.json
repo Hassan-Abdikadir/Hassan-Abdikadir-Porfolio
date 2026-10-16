@@ -1,0 +1,16 @@
+{
+  "name": "hassan-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hassan Abdikadir — Software Engineer, FullStack MERN Developer & Data Analyst Portfolio",
+  "scripts": {
+    "dev": "node --no-deprecation scripts/dev.js",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "seed": "node server/scripts/seed.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

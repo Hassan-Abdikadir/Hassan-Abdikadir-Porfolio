@@ -1,0 +1,130 @@
+/* ======================
+   PRINT-OPTIMIZED CV STYLES
+   ======================== */
+@media print {
+  /* Hide all UI elements */
+  .navbar,
+  .cursor,
+  .cursor-follower,
+  .scan-line,
+  .scroll-progress-bar,
+  .side-section-indicator,
+  .ai-chatbot-wrapper,
+  .hero-canvas,
+  .hero-orb,
+  .orbit-container,
+  footer,
+  .contact-form-wrapper,
+  .skills-search,
+  .skills-filter,
+  .project-actions-hover,
+  .modal-backdrop,
+  .terminal-section,
+  .scroll-indicator,
+  .hero-actions,
+  .tech-sphere-wrapper,
+  .runner-window,
+  .playground-grid,
+  .telemetry-section,
+  .blog-section,
+  .scroll-top-btn,
+  .admin-lock-btn,
+  .btn-primary,
+  .btn-outline {
+    display: none !important;
+  }
+
+  * {
+    background: #FFFFFF !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+    border-color: #E5E7EB !important;
+  }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hero / Header CV */
+  .hero {
+    padding: 24pt 0 12pt 0;
+    min-height: auto !important;
+  }
+
+  .hero-title, .hero-name {
+    font-size: 26pt !important;
+    font-weight: 900 !important;
+  }
+
+  .hero-desc {
+    font-size: 11pt !important;
+  }
+
+  .hero-socials a {
+    text-decoration: underline !important;
+    color: #2563EB !important;
+  }
+
+  /* Sections */
+  .section {
+    padding: 18pt 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .section-title {
+    font-size: 16pt !important;
+    margin-bottom: 8pt !important;
+    border-bottom: 1.5pt solid #E5E7EB !important;
+    padding-bottom: 4pt;
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8pt !important;
+  }
+
+  .skill-card {
+    border: 1pt solid #E5E7EB !important;
+    padding: 6pt !important;
+  }
+
+  /* Projects */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .project-card {
+    page-break-inside: avoid;
+  }
+
+  /* Experience Timeline */
+  .experience-item {
+    page-break-inside: avoid;
+  }
+
+  /* Tech Badges */
+  .tech-badge {
+    background: #F3F4F6 !important;
+    border: 0.5pt solid #D1D5DB !important;
+    color: #374151 !important;
+    border-radius: 4pt !important;
+    font-size: 8pt !important;
+    padding: 2pt 5pt !important;
+  }
+
+  /* Footer */
+  footer {
+    display: none !important;
+  }
+
+  @page {
+    margin: 1.2cm 1.5cm;
+    size: A4;
+  }
+}

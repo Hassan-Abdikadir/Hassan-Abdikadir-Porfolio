@@ -1,0 +1,80 @@
+.benchmark-matrix-section {
+  padding: 80px 0;
+}
+
+.matrix-table-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  border-radius: 20px;
+  background: rgba(10, 15, 30, 0.9);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  overflow: hidden;
+}
+
+.matrix-table-header {
+  display: grid;
+  grid-template-columns: 2fr 2.5fr 2.5fr 2fr;
+  padding: 16px 20px;
+  background: rgba(17, 24, 39, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.75rem;
+  color: #60A5FA;
+  font-weight: 700;
+  gap: 12px;
+}
+
+.matrix-table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.matrix-row {
+  display: grid;
+  grid-template-columns: 2fr 2.5fr 2.5fr 2fr;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  align-items: center;
+  font-size: 0.8rem;
+  gap: 12px;
+  transition: background 0.25s ease;
+}
+
+.matrix-row:last-child {
+  border-bottom: none;
+}
+
+.matrix-row:hover {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.matrix-row.highlight-row {
+  background: rgba(59, 130, 246, 0.04);
+}
+
+.row-cat {
+  color: #F8FAFC;
+  font-weight: 600;
+}
+
+.text-red { color: #EF4444; margin-right: 6px; }
+.text-emerald { color: #10B981; font-weight: 600; margin-right: 6px; }
+
+.gain-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10B981;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+@media (max-width: 850px) {
+  .matrix-table-header, .matrix-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,117 @@
+.terminal-section {
+  position: relative;
+  padding: 100px 0;
+}
+
+.terminal-window {
+  max-width: 800px;
+  margin: 40px auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(10, 15, 30, 0.9);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(59, 130, 246, 0.15);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.terminal-window.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot.red { background: #FF5F56; }
+.dot.yellow { background: #FFBD2E; }
+.dot.green { background: #27C93F; }
+
+.terminal-title {
+  margin: 0 auto;
+  font-family: var(--font-code, monospace);
+  font-size: 0.82rem;
+  color: #9CA3AF;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-body {
+  padding: 20px;
+  height: 300px;
+  overflow-y: auto;
+  font-family: var(--font-code, monospace);
+  font-size: 0.88rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.terminal-line pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+}
+
+.line-system { color: #60A5FA; }
+.line-user { color: #F3F4F6; font-weight: bold; }
+.line-output { color: #D1D5DB; }
+.line-success { color: #10B981; font-weight: bold; }
+.line-error { color: #EF4444; }
+
+.terminal-input-bar {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  background: rgba(15, 23, 42, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.prompt-symbol {
+  color: #3B82F6;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.terminal-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #FFFFFF;
+  font-family: var(--font-code, monospace);
+  font-size: 0.9rem;
+}
+
+.terminal-send-btn {
+  background: transparent;
+  border: none;
+  color: #3B82F6;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.terminal-send-btn:hover {
+  color: #60A5FA;
+}

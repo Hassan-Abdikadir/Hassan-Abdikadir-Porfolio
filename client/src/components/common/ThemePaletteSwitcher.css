@@ -1,0 +1,93 @@
+.palette-switcher-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.palette-toggle-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(17, 24, 39, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.palette-toggle-btn:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: scale(1.05);
+}
+
+.palette-dropdown-menu {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  width: 200px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  animation: fadeIn 0.25s ease;
+}
+
+.palette-title {
+  font-size: 0.68rem;
+  color: #94A3B8;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.palette-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.palette-opt-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #E2E8F0;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.palette-opt-btn:hover {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+.palette-opt-btn.active {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: #3B82F6;
+  font-weight: 600;
+}
+
+.palette-color-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.palette-opt-name {
+  flex-grow: 1;
+}
+
+.check-icon {
+  color: #10B981;
+  font-size: 0.85rem;
+}

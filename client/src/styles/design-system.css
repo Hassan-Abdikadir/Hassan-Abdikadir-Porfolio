@@ -1,0 +1,1097 @@
+/* ===========================================================================
+   NEXUS // ULTIMATE CYBER DESIGN SYSTEM 2026
+   Mind-blowing animations, spacing, glow effects for ALL portfolio sections
+=========================================================================== */
+
+/* ---- FONTS ---- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap');
+
+/* ---- GLOBAL SECTION UPGRADE ---- */
+section {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* ---- SECTION BREATHING DIVIDERS ---- */
+section + section {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ============================================================
+   NEXUS GLOBAL ANIMATIONS
+============================================================ */
+@keyframes nexus-float-a {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-18px) rotate(1deg); }
+  66% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes nexus-float-b {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-24px) rotate(2deg); }
+}
+
+@keyframes nexus-pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2), 0 0 40px rgba(112, 0, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.5), 0 0 80px rgba(112, 0, 255, 0.3);
+  }
+}
+
+@keyframes nexus-scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes nexus-text-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes nexus-border-dance {
+  0% { border-color: rgba(0, 240, 255, 0.3); }
+  25% { border-color: rgba(112, 0, 255, 0.4); }
+  50% { border-color: rgba(255, 0, 127, 0.3); }
+  75% { border-color: rgba(0, 255, 136, 0.4); }
+  100% { border-color: rgba(0, 240, 255, 0.3); }
+}
+
+@keyframes nexus-slide-up {
+  from { opacity: 0; transform: translateY(50px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes nexus-slide-in-left {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes nexus-slide-in-right {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes nexus-scale-in {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes nexusOrb {
+  0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.6; }
+  33% { transform: scale(1.12) translate(20px, -30px); opacity: 0.9; }
+  66% { transform: scale(0.92) translate(-20px, 15px); opacity: 0.5; }
+}
+
+@keyframes nexus-spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes nexus-ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes nexus-card-glow-sweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+@keyframes nexus-dot-blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+@keyframes nexus-progress-fill {
+  from { width: 0%; }
+}
+
+/* ============================================================
+   SECTION BACKGROUND AMBIENT ORBS (GLOBAL UPGRADE)
+============================================================ */
+.orb-blue {
+  animation: nexusOrb 10s ease-in-out infinite;
+}
+.orb-violet {
+  animation: nexusOrb 13s ease-in-out infinite reverse;
+}
+.orb-cyan {
+  animation: nexusOrb 8s ease-in-out infinite 3s;
+}
+
+/* ============================================================
+   HERO SECTION — ULTRA UPGRADE
+============================================================ */
+.hero {
+  min-height: 100vh;
+  padding-top: 140px;
+  padding-bottom: 80px;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(112, 0, 255, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 60% 20%, rgba(255, 0, 127, 0.06) 0%, transparent 50%);
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 5vw, 4rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: -2px !important;
+  line-height: 1.05 !important;
+  margin-bottom: 20px !important;
+}
+
+.hero-greeting {
+  font-size: 1.15rem !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase;
+  color: #00f0ff !important;
+  font-family: 'Fira Code', monospace !important;
+  font-weight: 500 !important;
+  margin-bottom: 8px !important;
+}
+
+.hero-name {
+  background: linear-gradient(135deg, #00f0ff 0%, #7000ff 40%, #ff007f 70%, #00ff88 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nexus-text-shimmer 5s ease infinite;
+  white-space: nowrap;
+}
+
+.hero-desc {
+  font-size: 1.1rem !important;
+  line-height: 1.75 !important;
+  color: rgba(241, 245, 249, 0.7) !important;
+  max-width: 560px !important;
+  margin-bottom: 36px !important;
+}
+
+.hero-content {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-visual {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+.hero-visual.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.orbit-center {
+  animation: nexus-pulse-glow 3s ease-in-out infinite;
+  background: rgba(5, 10, 25, 0.9) !important;
+  border: 1px solid rgba(0, 240, 255, 0.35) !important;
+}
+
+.orbit-ring {
+  border-color: rgba(0, 240, 255, 0.2) !important;
+}
+
+.social-link {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link:hover {
+  background: rgba(0, 240, 255, 0.15) !important;
+  border-color: #00f0ff !important;
+  color: #00f0ff !important;
+  transform: translateY(-4px) scale(1.1) !important;
+  box-shadow: 0 8px 20px rgba(0, 240, 255, 0.3) !important;
+}
+
+.stat-item {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.03), rgba(112, 0, 255, 0.03));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.stat-item:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(0, 240, 255, 0.3) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 240, 255, 0.15) !important;
+}
+
+.stat-item:hover::before {
+  opacity: 1;
+}
+
+.stat-value {
+  font-size: 2.6rem !important;
+  font-weight: 900 !important;
+  background: linear-gradient(135deg, #00f0ff, #7000ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 0.78rem !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: rgba(148, 163, 184, 0.8) !important;
+}
+
+/* CTA Buttons — Neon charged */
+.btn-primary {
+  background: linear-gradient(135deg, #0070ff, #7000ff) !important;
+  border: none !important;
+  padding: 14px 32px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 20px rgba(0, 112, 255, 0.4) !important;
+  letter-spacing: 0.5px !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: 0 12px 35px rgba(0, 112, 255, 0.6), 0 0 25px rgba(112, 0, 255, 0.4) !important;
+}
+
+.btn-outline {
+  border: 1px solid rgba(0, 240, 255, 0.4) !important;
+  color: #00f0ff !important;
+  padding: 14px 32px !important;
+  border-radius: 14px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  background: rgba(0, 240, 255, 0.12) !important;
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.35) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* ============================================================
+   AI & TWIN (NEXUS SECTION) — UPGRADE
+============================================================ */
+#nexus-arcade {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 240, 255, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(112, 0, 255, 0.07) 0%, transparent 60%);
+  padding: 120px 0;
+}
+
+/* ============================================================
+   SKILLS SECTION — ULTRA UPGRADE
+============================================================ */
+#skills,
+.skills-section {
+  background:
+    radial-gradient(ellipse 70% 50% at 0% 50%, rgba(59, 130, 246, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 60%, rgba(139, 92, 246, 0.07) 0%, transparent 60%);
+  padding: 120px 0;
+}
+
+.skill-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.skill-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover::after {
+  left: 150%;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 240, 255, 0.12) !important;
+}
+
+.sc-fill {
+  animation: nexus-progress-fill 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+}
+
+.skills-header .section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  letter-spacing: -1.5px !important;
+  font-weight: 900 !important;
+}
+
+.filter-btn {
+  border-radius: 12px !important;
+  padding: 10px 20px !important;
+  font-size: 0.85rem !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25) !important;
+}
+
+/* ============================================================
+   EXPERIENCE SECTION — ULTRA UPGRADE
+============================================================ */
+#experience,
+.experience-section {
+  background:
+    radial-gradient(ellipse 80% 50% at 30% 30%, rgba(0, 240, 255, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255, 0, 127, 0.05) 0%, transparent 60%);
+  padding: 120px 0;
+}
+
+.exp-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.exp-card:hover,
+.exp-card.open {
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 240, 255, 0.12) !important;
+  transform: translateY(-6px) !important;
+}
+
+.exp-header .section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  letter-spacing: -1.5px !important;
+  font-weight: 900 !important;
+}
+
+.exp-node {
+  animation: nexus-pulse-glow 2.5s ease-in-out infinite !important;
+}
+
+.exp-timeline {
+  gap: 56px !important;
+}
+
+.exp-node-ring {
+  border: 1px solid rgba(0, 240, 255, 0.4) !important;
+}
+
+/* ============================================================
+   PROJECTS SECTION — ULTRA UPGRADE
+============================================================ */
+#projects,
+.projects-section {
+  background:
+    radial-gradient(ellipse 70% 50% at 70% 20%, rgba(112, 0, 255, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 10% 80%, rgba(0, 255, 136, 0.05) 0%, transparent 60%);
+  padding: 120px 0;
+}
+
+.projects-section .section-title,
+#projects .section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  letter-spacing: -1.5px !important;
+  font-weight: 900 !important;
+}
+
+/* ============================================================
+   API SANDBOX SECTION
+============================================================ */
+#api-sandbox,
+.api-section,
+.apiplayground-section {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  padding: 120px 0;
+}
+
+/* ============================================================
+   TELEMETRY SECTION
+============================================================ */
+#telemetry,
+.telemetry-section {
+  background:
+    radial-gradient(ellipse 80% 50% at 0% 50%, rgba(16, 185, 129, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 50%, rgba(6, 182, 212, 0.07) 0%, transparent 60%);
+  padding: 120px 0;
+}
+
+/* ============================================================
+   BLOG / INSIGHTS SECTION
+============================================================ */
+#blog,
+.blog-section {
+  background:
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 20% 80%, rgba(139, 92, 246, 0.07) 0%, transparent 60%);
+  padding: 120px 0;
+}
+
+/* ============================================================
+   CONTACT SECTION — ULTRA UPGRADE
+============================================================ */
+#contact,
+.contact-section {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0, 240, 255, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(112, 0, 255, 0.07) 0%, transparent 60%);
+  padding: 120px 0 !important;
+}
+
+.contact-section .section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  letter-spacing: -1.5px !important;
+  font-weight: 900 !important;
+}
+
+.contact-form-wrap {
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  transition: all 0.4s ease !important;
+}
+
+.contact-form-wrap:hover {
+  border-color: rgba(0, 240, 255, 0.2) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.form-input {
+  background: rgba(5, 10, 20, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  font-size: 0.95rem !important;
+  padding: 14px 18px !important;
+  color: #f1f5f9 !important;
+  transition: all 0.3s ease !important;
+}
+
+.form-input:focus {
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.25) !important;
+  background: rgba(10, 20, 40, 0.9) !important;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #0070ff, #7000ff) !important;
+  border: none !important;
+  padding: 16px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  border-radius: 14px !important;
+  letter-spacing: 0.5px !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 15px 40px rgba(0, 112, 255, 0.5) !important;
+}
+
+.info-item {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.info-item:hover {
+  border-color: rgba(0, 240, 255, 0.25) !important;
+  transform: translateX(6px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ============================================================
+   GLASS CARD UNIVERSAL UPGRADE
+============================================================ */
+.glass-card {
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 240, 255, 0.25) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.1) !important;
+}
+
+/* ============================================================
+   SECTION HEADERS — GLOBAL UPGRADE
+============================================================ */
+.section-label::before {
+  content: '//';
+  color: #00f0ff !important;
+}
+
+.section-label {
+  color: #00f0ff !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 3px !important;
+  font-weight: 600 !important;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: -1.5px !important;
+  line-height: 1.1 !important;
+}
+
+/* ============================================================
+   TECH BADGES UPGRADE
+============================================================ */
+.tech-badge {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  font-weight: 600 !important;
+  padding: 5px 12px !important;
+  border-radius: 8px !important;
+}
+
+.tech-badge:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 6px 16px rgba(0, 240, 255, 0.25) !important;
+  border-color: #00f0ff !important;
+  color: #00f0ff !important;
+}
+
+/* ============================================================
+   SCROLLBAR - NEON UPGRADE
+============================================================ */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #050810;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00f0ff, #7000ff, #ff007f);
+  border-radius: 10px;
+}
+
+/* ============================================================
+   SECTION TRANSITION OVERLAYS (inter-section depth)
+============================================================ */
+#about { 
+  padding: 120px 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 90% 30%, rgba(112, 0, 255, 0.06) 0%, transparent 70%);
+}
+
+/* ============================================================
+   FLOATING DECORATIVE ELEMENTS ACROSS SECTIONS
+============================================================ */
+.skills-orb,
+.exp-orb,
+.orb-a,
+.orb-b {
+  animation: nexusOrb 12s ease-in-out infinite !important;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE SECTION PADDING
+============================================================ */
+@media (max-width: 768px) {
+  section {
+    padding: 80px 0 !important;
+  }
+
+  #nexus-arcade {
+    padding: 80px 0 !important;
+  }
+
+  .hero {
+    padding-top: 110px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .stat-item:hover,
+  .skill-card:hover,
+  .exp-card:hover,
+  .info-item:hover {
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   ANIMATED LINE GRADIENTS FOR TIMELINE & PROGRESS
+============================================================ */
+.exp-line-fill {
+  background: linear-gradient(180deg, #00f0ff, #7000ff, #ff007f, #00ff88) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.5) !important;
+}
+
+/* ============================================================
+   PROFILE ORBIT ITEMS GLOW
+============================================================ */
+.orbit-item {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 240, 255, 0.15) !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.orbit-item:hover {
+  transform: scale(1.2) !important;
+  border-color: rgba(0, 240, 255, 0.4) !important;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.35) !important;
+}
+
+/* ============================================================
+   HUB LINKS UPGRADE (Contact)
+============================================================ */
+.hub-link {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hub-link:hover {
+  background: rgba(0, 240, 255, 0.08) !important;
+  border-color: rgba(0, 240, 255, 0.25) !important;
+  transform: translateX(8px) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ============================================================
+   CARD ENTRY ANIMATIONS (once visible)
+============================================================ */
+.skill-card.visible {
+  animation: nexus-scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.exp-item.visible {
+  animation: nexus-slide-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ============================================================
+   PROJECTS — ULTRA PREMIUM CARDS
+============================================================ */
+.project-card {
+  border-radius: 22px !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, transparent, rgba(0, 240, 255, 0.15), transparent);
+  border-radius: 23px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.project-card:hover {
+  transform: translateY(-12px) scale(1.01) !important;
+  border-color: rgba(0, 240, 255, 0.4) !important;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 240, 255, 0.15) !important;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card.flagship {
+  border-color: rgba(255, 183, 3, 0.25) !important;
+}
+
+.project-card.flagship:hover {
+  border-color: rgba(255, 183, 3, 0.5) !important;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 183, 3, 0.2) !important;
+}
+
+.project-title {
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
+}
+
+.project-body {
+  padding: 28px !important;
+}
+
+.projects-grid {
+  gap: 32px !important;
+}
+
+.project-card.visible {
+  animation: nexus-scale-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.project-action-btn {
+  border-radius: 10px !important;
+  padding: 7px 14px !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  transition: all 0.25s ease !important;
+}
+
+.project-action-btn:hover {
+  transform: scale(1.08) !important;
+}
+
+.project-action-btn.primary {
+  background: linear-gradient(135deg, #0070ff, #7000ff) !important;
+  border-color: transparent !important;
+}
+
+/* ============================================================
+   BLOG / INSIGHTS — PREMIUM CARDS
+============================================================ */
+.article-card {
+  border-radius: 22px !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.article-card:hover {
+  transform: translateY(-10px) !important;
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 240, 255, 0.12) !important;
+}
+
+.article-card.visible {
+  animation: nexus-scale-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.article-title {
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.4px !important;
+  line-height: 1.3 !important;
+}
+
+.blog-grid {
+  gap: 28px !important;
+}
+
+.blog-tag-btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border-radius: 12px !important;
+  padding: 9px 20px !important;
+}
+
+.blog-tag-btn:hover, .blog-tag-btn.active {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.3) !important;
+}
+
+.read-more-btn {
+  color: #00f0ff !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+
+.article-card:hover .read-more-btn {
+  transform: translateX(6px) !important;
+  color: #00f0ff !important;
+}
+
+/* ============================================================
+   SYSTEM TELEMETRY — NEON HUD UPGRADE
+============================================================ */
+.telemetry-hud {
+  background: rgba(5, 10, 25, 0.95) !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 240, 255, 0.1) !important;
+  border-radius: 28px !important;
+  animation: nexus-border-dance 6s ease infinite !important;
+}
+
+.hud-card {
+  background: rgba(10, 15, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-radius: 18px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hud-card:hover {
+  border-color: rgba(0, 240, 255, 0.3) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.hud-value {
+  font-size: 2.2rem !important;
+  background: linear-gradient(135deg, #00f0ff, #7000ff) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.hud-bar-fill.blue { 
+  background: linear-gradient(90deg, #0070ff, #00f0ff) !important; 
+  box-shadow: 0 0 8px rgba(0, 112, 255, 0.5) !important;
+}
+.hud-bar-fill.emerald { 
+  background: linear-gradient(90deg, #00ff88, #00f0ff) !important; 
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.5) !important;
+}
+.hud-bar-fill.cyan { 
+  background: linear-gradient(90deg, #00f0ff, #7000ff) !important; 
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.5) !important;
+}
+.hud-bar-fill.violet { 
+  background: linear-gradient(90deg, #7000ff, #ff007f) !important; 
+  box-shadow: 0 0 8px rgba(112, 0, 255, 0.5) !important;
+}
+
+/* ============================================================
+   API SANDBOX — NEON TERMINAL UPGRADE
+============================================================ */
+.api-section,
+.apiplayground-section {
+  padding: 120px 0 !important;
+}
+
+/* ============================================================
+   ABOUT SECTION — MIND-BLOWING CYBER PROFILE
+============================================================ */
+#about,
+.about-section {
+  padding: 120px 0 !important;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 30%, rgba(0, 240, 255, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 70%, rgba(112, 0, 255, 0.08) 0%, transparent 60%);
+}
+
+.about-profile {
+  background: rgba(10, 16, 30, 0.85) !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
+  border-radius: 26px !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 240, 255, 0.12) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.about-profile:hover {
+  border-color: rgba(0, 240, 255, 0.5) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 240, 255, 0.25) !important;
+  transform: translateY(-6px) !important;
+}
+
+.avatar-ring {
+  background: linear-gradient(135deg, #00f0ff, #7000ff, #ff007f, #00ff88) !important;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4) !important;
+  animation: nexus-spin-slow 10s linear infinite !important;
+}
+
+.pillar-card {
+  background: rgba(10, 16, 30, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-radius: 20px !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+.pillar-card:hover {
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  transform: translateX(10px) scale(1.01) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 240, 255, 0.15) !important;
+  background: rgba(15, 24, 45, 0.85) !important;
+}
+
+.pillar-icon {
+  border-radius: 14px !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important;
+}
+
+/* ============================================================
+   CERTIFICATIONS SECTION — CRYPTO MASTERY BADGES UPGRADE
+============================================================ */
+#certifications,
+.certs-section {
+  padding: 120px 0 !important;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 20%, rgba(255, 183, 3, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(0, 240, 255, 0.06) 0%, transparent 60%);
+}
+
+.cert-card {
+  border-radius: 22px !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  background: rgba(10, 16, 30, 0.8) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.cert-card:hover {
+  transform: translateY(-10px) scale(1.01) !important;
+  border-color: rgba(0, 240, 255, 0.4) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 240, 255, 0.18) !important;
+}
+
+.cert-icon-wrapper {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.25) !important;
+  border-radius: 16px !important;
+}
+
+/* ============================================================
+   TESTIMONIALS SECTION — SPOTLIGHT GLASS GRID UPGRADE
+============================================================ */
+#testimonials,
+.testimonials-section {
+  padding: 120px 0 !important;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 30%, rgba(112, 0, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 70%, rgba(0, 240, 255, 0.06) 0%, transparent 60%);
+}
+
+.t-spotlight-card {
+  background: rgba(8, 14, 28, 0.9) !important;
+  border: 1px solid rgba(0, 240, 255, 0.3) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 45px rgba(0, 240, 255, 0.15) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.t-spotlight-card:hover {
+  border-color: #00f0ff !important;
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 240, 255, 0.25) !important;
+}
+
+.testimonial-card {
+  background: rgba(10, 16, 30, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-radius: 22px !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.testimonial-card:hover,
+.testimonial-card.active-card {
+  transform: translateY(-8px) !important;
+  border-color: rgba(0, 240, 255, 0.4) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 240, 255, 0.15) !important;
+}
+
+/* ============================================================
+   TERMINAL & CLI SECTION — CYBER HUD UPGRADE
+============================================================ */
+#terminal,
+.terminal-section {
+  padding: 120px 0 !important;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(0, 255, 136, 0.06) 0%, transparent 60%);
+}
+
+.terminal-window {
+  background: rgba(4, 8, 16, 0.95) !important;
+  border: 1px solid rgba(0, 255, 136, 0.3) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 45px rgba(0, 255, 136, 0.15) !important;
+  transition: all 0.4s ease !important;
+}
+
+.terminal-window:hover {
+  border-color: #00ff88 !important;
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.85), 0 0 60px rgba(0, 255, 136, 0.25) !important;
+}
+
+/* ============================================================
+   CODE PLAYGROUND / ALGORITHM RUNNER SECTION UPGRADE
+============================================================ */
+#playground,
+#code-playground,
+.runner-section {
+  padding: 120px 0 !important;
+  background:
+    radial-gradient(ellipse 80% 50% at 30% 50%, rgba(112, 0, 255, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 50%, rgba(0, 240, 255, 0.07) 0%, transparent 60%);
+}
+
+.runner-window {
+  background: rgba(5, 10, 22, 0.95) !important;
+  border: 1px solid rgba(112, 0, 255, 0.3) !important;
+  border-radius: 26px !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(112, 0, 255, 0.15) !important;
+  transition: all 0.4s ease !important;
+}
+
+.runner-window:hover {
+  border-color: #7000ff !important;
+  box-shadow: 0 35px 95px rgba(0, 0, 0, 0.85), 0 0 65px rgba(112, 0, 255, 0.3) !important;
+}
+
+.snippet-tab {
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.snippet-tab.active,
+.snippet-tab:hover {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(112, 0, 255, 0.3)) !important;
+  border-color: #00f0ff !important;
+  color: #fff !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
+}
+
+/* ============================================================
+   API PLAYGROUND SECTION UPGRADE
+============================================================ */
+#api-playground,
+.playground-section {
+  padding: 120px 0 !important;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 30%, rgba(0, 240, 255, 0.08) 0%, transparent 70%);
+}
+
+.playground-sidebar,
+.playground-inspector {
+  background: rgba(7, 12, 24, 0.9) !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
+  border-radius: 24px !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 240, 255, 0.12) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.playground-sidebar:hover,
+.playground-inspector:hover {
+  border-color: rgba(0, 240, 255, 0.45) !important;
+  box-shadow: 0 30px 75px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 240, 255, 0.2) !important;
+}
+
+.endpoint-card {
+  border-radius: 14px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.endpoint-card:hover,
+.endpoint-card.active {
+  background: rgba(0, 240, 255, 0.12) !important;
+  border-color: #00f0ff !important;
+  transform: translateX(8px) !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important;
+}
+
+
