@@ -12,5 +12,18 @@ export default defineConfig({
         secure: false,
       }
     }
+  },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          animations: ['framer-motion'],
+          three: ['three', '@react-three/fiber', '@react-three/drei'],
+          ui: ['react-toastify', 'react-icons', 'lucide-react'],
+        }
+      }
+    }
   }
 })
