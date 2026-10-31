@@ -83,10 +83,10 @@ const hppGuard = (req, res, next) => {
 }
 
 // 4. Strict Rate Limiters
-// Auth Limiter: Max 5 login/register attempts per 15 minutes
+// Auth Limiter: 100 attempts in dev, 10 in production (per 15 min)
 const authRateLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 10,
+  max: process.env.NODE_ENV === 'production' ? 10 : 100,
   standardHeaders: true,
   legacyHeaders: false,
   message: {

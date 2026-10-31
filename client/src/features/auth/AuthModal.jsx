@@ -334,7 +334,9 @@ export default function AuthModal({ isOpen, onClose, initialMode='login' }) {
       if(rememberMe) localStorage.setItem('auth_remember_email',form.email)
       else           localStorage.removeItem('auth_remember_email')
       fireConfetti()
-      setSuccessInfo({ name:res.user?.name||form.email.split('@')[0], role:form.role })
+      // Use the actual role returned from the server, not form.role
+      const userRole = res.user?.role || 'user'
+      setSuccessInfo({ name:res.user?.name||form.email.split('@')[0], role: userRole })
       setTimeout(()=>{ onClose(); setSuccessInfo(null) },2200)
     }
   }
@@ -369,7 +371,8 @@ export default function AuthModal({ isOpen, onClose, initialMode='login' }) {
             <h3 className="success-title">Welcome, {successInfo.name}!</h3>
             <p className="success-sub">Session active · {STAY_OPTS.find(o=>o.value===stayLoggedIn)?.label||'Session'}</p>
             <span className="success-role-badge">
-              {PURPOSES.find(p=>p.value===successInfo.role)?.icon} {PURPOSES.find(p=>p.value===successInfo.role)?.label}
+              {PURPOSES.find(p=>p.value===successInfo.role)?.icon||'🌐'}{' '}
+              {PURPOSES.find(p=>p.value===successInfo.role)?.label||successInfo.role||'Member'}
             </span>
           </div>
         )}
