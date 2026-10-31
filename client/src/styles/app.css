@@ -2,10 +2,7 @@
 @import './print.css';
 .App { position: relative; }
 
-/* Particle canvas */
-#tsparticles {
-  position: fixed; inset: 0;
-  z-index: 0; pointer-events: none;
-}
+main { position: relative; z-index: 1; }
+
 
 main { position: relative; z-index: 1; }
