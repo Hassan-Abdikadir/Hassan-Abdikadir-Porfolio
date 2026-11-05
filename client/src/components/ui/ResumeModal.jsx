@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FiX, FiDownload, FiCheckCircle, FiBriefcase, FiAward, FiCode, FiMail, FiMapPin, FiPhone, FiLayers } from 'react-icons/fi'
+import { FiX, FiDownload, FiCheckCircle, FiBriefcase, FiAward, FiCode, FiMail, FiMapPin, FiPhone, FiLayers, FiFileText } from 'react-icons/fi'
 import { toast } from 'react-toastify'
 import './ResumeModal.css'
 

@@ -282,32 +282,7 @@ export default function Hero({ developer, metrics = [], onOpenResume, t, lang })
             </div>
           </div>
 
-          <div className="hero-stats-mini glass-card">
-            <div style={{ fontFamily: 'var(--font-code)', color: 'var(--text-muted)', fontSize: '0.65rem', marginBottom: '8px' }}>
-              $ system.metrics
-            </div>
-            <div className="mini-metric">
-              <span style={{ color: 'var(--emerald)' }}>API</span>
-              <span className="mini-bar">
-                <span className="mini-fill" style={{ width: '95%', background: 'var(--emerald)' }} />
-              </span>
-              <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>99.9%</span>
-            </div>
-            <div className="mini-metric">
-              <span style={{ color: 'var(--cyan)' }}>DB</span>
-              <span className="mini-bar">
-                <span className="mini-fill" style={{ width: '88%', background: 'var(--cyan)' }} />
-              </span>
-              <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>88%</span>
-            </div>
-            <div className="mini-metric">
-              <span style={{ color: 'var(--violet)' }}>AI</span>
-              <span className="mini-bar">
-                <span className="mini-fill" style={{ width: '82%', background: 'var(--violet)' }} />
-              </span>
-              <span style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>82%</span>
-            </div>
-          </div>
+
         </div>
       </div>
 

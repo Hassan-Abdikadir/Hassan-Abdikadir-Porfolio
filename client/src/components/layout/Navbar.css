@@ -196,59 +196,81 @@
 
 .tools-dropdown-wrapper {
   position: relative;
+  /* Stay open while hovering anywhere in the wrapper */
+}
+
+/* Invisible bridge filling the gap between button and dropdown */
+.tools-dropdown-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 16px; /* covers the gap */
+  z-index: 99998;
 }
 
 .nav-tools-menu {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 8px);
   left: 50%;
-  transform: translateX(-50%);
-  min-width: 200px;
+  transform: translateX(-50%) translateY(0);
+  min-width: 210px;
   padding: 8px;
   border-radius: 16px;
-  background: rgba(10, 15, 30, 0.96) !important;
-  border: 1px solid rgba(59, 130, 246, 0.4) !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(59, 130, 246, 0.2) !important;
-  backdrop-filter: blur(20px) !important;
+  background: rgba(10, 15, 30, 0.97) !important;
+  border: 1px solid rgba(59, 130, 246, 0.45) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 24px rgba(59, 130, 246, 0.25) !important;
+  backdrop-filter: blur(24px) !important;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   z-index: 99999 !important;
-  animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+  animation: dropdownFadeIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes dropdownFadeIn {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(-8px);
+    transform: translateX(-50%) translateY(-10px) scale(0.96);
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0) scale(1);
   }
 }
 
 .tool-dropdown-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
+  gap: 12px;
+  padding: 11px 16px;
   border-radius: 10px;
   background: transparent;
   border: none;
-  color: #E2E8F0;
-  font-size: 0.85rem;
+  color: #CBD5E1;
+  font-size: 0.86rem;
   font-weight: 600;
   cursor: pointer;
   text-align: left;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  width: 100%;
+  letter-spacing: 0.2px;
 }
 
 .tool-dropdown-item:hover {
-  background: rgba(59, 130, 246, 0.2) !important;
+  background: rgba(59, 130, 246, 0.18) !important;
+  color: #60D8FF !important;
+  transform: translateX(5px);
+  box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+.tool-dropdown-item.active {
+  background: rgba(59, 130, 246, 0.22) !important;
   color: #38BDF8 !important;
-  transform: translateX(4px);
+  border-left: 2px solid #3B82F6;
 }
 
 .nav-link {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { FiVolume2, FiVolumeX, FiUser, FiLogOut, FiMenu, FiX, FiArrowRight, FiChevronDown, FiZap } from 'react-icons/fi'
 import ThemeToggle from '../common/ThemeToggle'
 import RoleSwitcher from '../common/RoleSwitcher'
@@ -10,6 +10,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false)
+  const toolsHoverTimer = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -125,8 +126,13 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
             {/* Tools Dropdown for Estimator & API Sandbox */}
             <div
               className="tools-dropdown-wrapper"
-              onMouseEnter={() => setToolsDropdownOpen(true)}
-              onMouseLeave={() => setToolsDropdownOpen(false)}
+              onMouseEnter={() => {
+                if (toolsHoverTimer.current) clearTimeout(toolsHoverTimer.current)
+                setToolsDropdownOpen(true)
+              }}
+              onMouseLeave={() => {
+                toolsHoverTimer.current = setTimeout(() => setToolsDropdownOpen(false), 120)
+              }}
             >
               <button
                 className={`nav-link tools-dropdown-btn ${dropdownTools.some(t => activeSection === t.href.substring(1)) ? 'active' : ''}`}
