@@ -10,6 +10,7 @@ const certCategories = [
   { label: 'All',       icon: <FiLayers /> },
   { label: 'Academic',  icon: <FiBookOpen /> },
   { label: 'Technical', icon: <FiCode /> },
+  { label: 'Training',  icon: <FiAward /> },
 ]
 
 export default function Certifications({ certifications = [] }) {
@@ -24,6 +25,7 @@ export default function Certifications({ certifications = [] }) {
 
   const academicCount  = certifications.filter(c => c.category === 'Academic').length
   const technicalCount = certifications.filter(c => c.category === 'Technical').length
+  const trainingCount  = certifications.filter(c => c.category === 'Training').length
 
   return (
     <section id="certifications" className="section certs-section">
@@ -68,6 +70,11 @@ export default function Certifications({ certifications = [] }) {
           <div className="cmb-item">
             <span className="cmb-val" style={{ color: '#8B5CF6' }}>{technicalCount}</span>
             <span className="cmb-label">Technical</span>
+          </div>
+          <div className="cmb-divider" />
+          <div className="cmb-item">
+            <span className="cmb-val" style={{ color: '#38BDF8' }}>{trainingCount}</span>
+            <span className="cmb-label">Training</span>
           </div>
           <div className="cmb-divider" />
           <div className="cmb-item">

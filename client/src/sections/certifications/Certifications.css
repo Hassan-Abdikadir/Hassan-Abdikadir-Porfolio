@@ -84,7 +84,7 @@
 .cmb-item {
   display: flex; flex-direction: column;
   align-items: center; gap: 4px;
-  padding: 0 32px;
+  padding: 0 20px;
 }
 .cmb-val {
   font-size: 1.8rem; font-weight: 900; line-height: 1;
