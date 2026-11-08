@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { FiMessageSquare, FiX, FiSend, FiCpu, FiUser, FiZap } from 'react-icons/fi'
+import { FiX, FiSend, FiCpu, FiUser, FiZap } from 'react-icons/fi'
 import { sendChatMessage } from '../../services/portfolioService'
 import './AIChatbot.css'
 

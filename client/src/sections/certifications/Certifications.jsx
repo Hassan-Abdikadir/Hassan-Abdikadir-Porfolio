@@ -130,6 +130,7 @@ export default function Certifications({ certifications = [] }) {
                       alt={cert.name}
                       className="cert-thumb"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="cert-thumb-overlay" style={{ background: `${certColor}22` }}>
                       <FiMaximize2 className="cert-expand-icon" />
@@ -225,6 +226,8 @@ export default function Certifications({ certifications = [] }) {
                   src={selectedCert.image}
                   alt={selectedCert.name}
                   className="cert-modal-img"
+                  loading="eager"
+                  decoding="async"
                 />
                 <div className="cert-modal-img-overlay">
                   <FiMaximize2 /> Click to fullscreen
@@ -268,7 +271,7 @@ export default function Certifications({ certifications = [] }) {
       {lightboxImg && (
         <div className="cert-lightbox" onClick={() => setLightboxImg(null)}>
           <button className="lightbox-close" onClick={() => setLightboxImg(null)} data-hover><FiX /></button>
-          <img src={lightboxImg} alt="Certificate" className="lightbox-img" onClick={e => e.stopPropagation()} />
+          <img src={lightboxImg} alt="Certificate" className="lightbox-img" decoding="async" onClick={e => e.stopPropagation()} />
           <p className="lightbox-hint">Click outside to close</p>
         </div>
       )}

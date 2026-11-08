@@ -84,6 +84,9 @@ function App() {
   }, [])
 
   useEffect(() => {
+    // Disable custom cursor overhead on touch / mobile devices for maximum performance
+    if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return
+
     const cursor = cursorRef.current
     const follower = followerRef.current
     if (!cursor || !follower) return

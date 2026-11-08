@@ -1,5 +1,5 @@
 import React from 'react'
-import { FiX, FiClock, FiCalendar, FiBookmark } from 'react-icons/fi'
+import { FiX, FiClock, FiCalendar } from 'react-icons/fi'
 import './ArticleModal.css'
 
 export default function ArticleModal({ article, onClose }) {

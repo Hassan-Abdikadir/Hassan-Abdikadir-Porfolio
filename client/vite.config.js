@@ -13,8 +13,17 @@ export default defineConfig({
       }
     }
   },
+  esbuild: {
+    // Drop all debugging logs in production for maximum performance & cleanliness
+    drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
+    legalComments: 'none',
+  },
   build: {
-    chunkSizeWarningLimit: 1000,
+    target: 'es2020',
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 800,
+    reportCompressedSize: false,
+    assetsInlineLimit: 4096, // Inline small assets (<4KB) to avoid HTTP request overhead
     rollupOptions: {
       output: {
         manualChunks: {
@@ -22,6 +31,7 @@ export default defineConfig({
           animations: ['framer-motion'],
           three: ['three', '@react-three/fiber', '@react-three/drei'],
           ui: ['react-toastify', 'react-icons', 'lucide-react'],
+          telemetry: ['react-countup'],
         }
       }
     }

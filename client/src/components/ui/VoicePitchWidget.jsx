@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { FiPlay, FiPause, FiVolume2, FiRadio } from 'react-icons/fi'
+import { FiPlay, FiPause, FiRadio } from 'react-icons/fi'
 import './VoicePitchWidget.css'
 
 export default function VoicePitchWidget() {

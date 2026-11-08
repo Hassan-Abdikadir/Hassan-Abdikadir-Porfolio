@@ -288,7 +288,7 @@ export const realPortfolioData = {
       category: 'Academic',
       distinction: 'Very Great Distinction',
       serialNo: '0302177',
-      image: '/certificates/bachelor_degree.jpg',
+      image: '/certificates/bachelor_degree.webp',
       url: null,
     },
     {
@@ -301,7 +301,7 @@ export const realPortfolioData = {
       category: 'Academic',
       distinction: 'Major GPA: 3.96 • Cumulative: 3.93',
       serialNo: 'AU1-SE-13436/23',
-      image: '/certificates/transcript.jpg',
+      image: '/certificates/transcript.webp',
       url: null,
     },
     {
@@ -314,7 +314,7 @@ export const realPortfolioData = {
       category: 'Academic',
       distinction: 'Very Great Distinction',
       serialNo: 'Molla Tsegay (PhD) — President',
-      image: '/certificates/merit_certificate.jpg',
+      image: '/certificates/merit_certificate.webp',
       url: null,
     },
     {
@@ -327,7 +327,7 @@ export const realPortfolioData = {
       category: 'Academic',
       distinction: 'MERN Stack Platform • Advisor: Abdiaziz Ibrahim Jama',
       serialNo: 'ID: 13436 / Software Engineering',
-      image: '/certificates/graduation_thesis.jpg',
+      image: '/certificates/graduation_thesis.webp',
       url: null,
     },
     {
@@ -340,7 +340,7 @@ export const realPortfolioData = {
       category: 'Academic',
       distinction: 'Salaama School • Grade: B-',
       serialNo: 'SLNECB C-57081 / Roll: A23S066/030',
-      image: '/certificates/secondary_certificate.jpg',
+      image: '/certificates/secondary_certificate.webp',
       url: null,
     },
     {
@@ -353,7 +353,7 @@ export const realPortfolioData = {
       category: 'Academic',
       distinction: 'Al-Qudus School • Grade: B (453/700)',
       serialNo: 'SLNECB C-32635 / Roll: A19539/015',
-      image: '/certificates/primary_certificate.jpg',
+      image: '/certificates/primary_certificate.webp',
       url: null,
     },
     {
@@ -366,7 +366,7 @@ export const realPortfolioData = {
       category: 'Technical',
       distinction: 'Overall Grade: A (Straight 100s in Word, Excel, Access, PPT)',
       serialNo: 'TANAAD-CS-2021',
-      image: '/certificates/computer_diploma.jpg',
+      image: '/certificates/computer_diploma.webp',
       url: null,
     },
     {
@@ -403,7 +403,7 @@ export const realPortfolioData = {
       category: 'Training',
       distinction: 'Certificate of Complete',
       serialNo: 'NO: 147',
-      image: '/certificates/reading_skills.jpg',
+      image: '/certificates/reading_skills.webp',
       url: null,
     },
     {
@@ -416,7 +416,7 @@ export const realPortfolioData = {
       category: 'Training',
       distinction: 'Strategic Execution',
       serialNo: 'HAIC-WS-2022',
-      image: '/certificates/goal_setting.jpg',
+      image: '/certificates/goal_setting.webp',
       url: null,
     },
     {
@@ -429,7 +429,7 @@ export const realPortfolioData = {
       category: 'Training',
       distinction: 'Public Speaking',
       serialNo: 'HAIC-PS-2021',
-      image: '/certificates/public_speaking.jpg',
+      image: '/certificates/public_speaking.webp',
       url: null,
     },
   ],

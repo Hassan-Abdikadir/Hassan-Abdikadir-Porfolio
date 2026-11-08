@@ -74,7 +74,7 @@ export default function APIPlayground() {
       setLatency(Math.round(endTime - startTime))
       setStatusCode(res.status)
       setResponse(data)
-    } catch (err) {
+    } catch (_err) {
       const endTime = performance.now()
       setLatency(Math.round(endTime - startTime))
       setStatusCode(200)
