@@ -1,45 +1,59 @@
 import React, { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { FiAward, FiCheckCircle, FiExternalLink, FiX, FiShield, FiCalendar, FiZap, FiLayers, FiCpu, FiDatabase, FiActivity } from 'react-icons/fi'
+import {
+  FiAward, FiCheckCircle, FiX, FiShield, FiCalendar,
+  FiZap, FiLayers, FiBookOpen, FiCode, FiMaximize2, FiStar
+} from 'react-icons/fi'
 import './Certifications.css'
 
 const certCategories = [
-  { label: 'All',        icon: <FiLayers /> },
-  { label: 'FullStack',  icon: <FiZap /> },
-  { label: 'Backend',    icon: <FiCpu /> },
-  { label: 'Data & AI',  icon: <FiDatabase /> },
-  { label: 'DevOps',     icon: <FiActivity /> },
+  { label: 'All',       icon: <FiLayers /> },
+  { label: 'Academic',  icon: <FiBookOpen /> },
+  { label: 'Technical', icon: <FiCode /> },
 ]
 
-export default function Certifications({ certifications = [], t }) {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
-  const [selectedCert, setSelectedCert]   = useState(null)
+export default function Certifications({ certifications = [] }) {
+  const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true })
+  const [selectedCert, setSelectedCert] = useState(null)
   const [activeCategory, setActiveCategory] = useState('All')
+  const [lightboxImg, setLightboxImg] = useState(null)
 
   const filtered = certifications.filter(c =>
-    activeCategory === 'All' || (c.category || 'FullStack') === activeCategory
+    activeCategory === 'All' || c.category === activeCategory
   )
+
+  const academicCount  = certifications.filter(c => c.category === 'Academic').length
+  const technicalCount = certifications.filter(c => c.category === 'Technical').length
 
   return (
     <section id="certifications" className="section certs-section">
       <div className="grid-bg" />
       <div className="certs-orb certs-orb-a" />
+      <div className="certs-orb certs-orb-b" />
+
+      {/* Floating particle dots */}
+      <div className="cert-particles">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className={`cert-particle cert-particle-${i + 1}`} />
+        ))}
+      </div>
 
       <div className="container" ref={ref}>
 
-        {/* ── Header ──────────────────────────────────────────── */}
+        {/* ── Header ── */}
         <div className={`certs-header ${inView ? 'visible' : ''}`}>
           <div className="section-label">verified.credentials</div>
           <h2 className="section-title">
             Certifications &amp; <span className="gradient-text">Mastery Badges</span>
           </h2>
           <p className="section-subtitle">
-            Formal credentials acknowledging proficiency across Software Architecture,
-            FullStack Development, and Data Science.
+            Formal credentials from Admas University — Software Engineering graduate with
+            <strong style={{ color: '#F59E0B' }}> Very Great Distinction</strong>, plus
+            industry-recognised technical certifications.
           </p>
         </div>
 
-        {/* ── Meta Bar (like Skills) ───────────────────────────── */}
+        {/* ── Meta Bar ── */}
         <div className={`certs-meta-bar ${inView ? 'visible' : ''}`}>
           <div className="cmb-item">
             <span className="cmb-val gradient-text">{certifications.length}</span>
@@ -47,22 +61,24 @@ export default function Certifications({ certifications = [], t }) {
           </div>
           <div className="cmb-divider" />
           <div className="cmb-item">
-            <span className="cmb-val" style={{ color: '#10B981' }}>{filtered.length}</span>
-            <span className="cmb-label">Showing</span>
+            <span className="cmb-val" style={{ color: '#F59E0B' }}>{academicCount}</span>
+            <span className="cmb-label">Academic</span>
           </div>
           <div className="cmb-divider" />
           <div className="cmb-item">
-            <span className="cmb-val" style={{ color: '#8B5CF6' }}>{certCategories.length - 1}</span>
-            <span className="cmb-label">Categories</span>
+            <span className="cmb-val" style={{ color: '#8B5CF6' }}>{technicalCount}</span>
+            <span className="cmb-label">Technical</span>
           </div>
           <div className="cmb-divider" />
           <div className="cmb-item">
-            <span className="cmb-val" style={{ color: '#10B981' }}>✓</span>
-            <span className="cmb-label">All Verified</span>
+            <span className="cmb-val" style={{ color: '#10B981' }}>
+              <FiStar style={{ display: 'inline', fontSize: '1.4rem' }} />
+            </span>
+            <span className="cmb-label">Distinction</span>
           </div>
         </div>
 
-        {/* ── Category Filter (like Skills) ────────────────────── */}
+        {/* ── Category Filter ── */}
         <div className={`certs-controls ${inView ? 'visible' : ''}`}>
           <div className="certs-filter">
             {certCategories.map(cat => (
@@ -79,52 +95,82 @@ export default function Certifications({ certifications = [], t }) {
           </div>
         </div>
 
-        {/* ── Cards Grid ─────────────────────────────────────── */}
+        {/* ── Cards Grid ── */}
         <div className="certs-grid">
           {filtered.map((cert, index) => {
             const certColor = cert.color || '#3B82F6'
+            const hasImage = !!cert.image
+
             return (
               <div
                 key={cert.id || index}
-                className={`cert-card glass-card ${inView ? 'visible' : ''}`}
-                style={{ transitionDelay: `${(index % 8) * 0.07}s` }}
+                className={`cert-card glass-card ${inView ? 'visible' : ''} ${hasImage ? 'cert-card-visual' : ''}`}
+                style={{ transitionDelay: `${(index % 6) * 0.08}s` }}
                 onClick={() => setSelectedCert(cert)}
                 data-hover
               >
-                <div className="cert-top-shimmer" style={{ background: certColor }} />
+                {/* Top color shimmer line */}
+                <div className="cert-top-shimmer" style={{ background: `linear-gradient(90deg, ${certColor}, ${certColor}66)` }} />
 
-                {/* Subtle glow like skill card */}
+                {/* Corner glow */}
                 <div className="cert-bg-glow" style={{ background: certColor }} />
 
-                <div className="cert-icon-wrapper" style={{ color: certColor, borderColor: `${certColor}55`, background: `${certColor}15` }}>
-                  <FiAward className="cert-icon-svg" />
-                  <div className="cert-icon-glow" style={{ background: certColor }} />
-                </div>
+                {/* If has real image — show thumbnail */}
+                {hasImage ? (
+                  <div className="cert-thumb-wrap" style={{ borderColor: `${certColor}44` }}>
+                    <img
+                      src={cert.image}
+                      alt={cert.name}
+                      className="cert-thumb"
+                      loading="lazy"
+                    />
+                    <div className="cert-thumb-overlay" style={{ background: `${certColor}22` }}>
+                      <FiMaximize2 className="cert-expand-icon" />
+                    </div>
+                    {/* Verified badge over image */}
+                    <div className="cert-thumb-badge" style={{ background: certColor }}>
+                      <FiCheckCircle /> Verified
+                    </div>
+                  </div>
+                ) : (
+                  /* No image — show icon */
+                  <div className="cert-icon-wrapper" style={{ color: certColor, borderColor: `${certColor}55`, background: `${certColor}15` }}>
+                    <FiAward className="cert-icon-svg" />
+                    <div className="cert-icon-glow" style={{ background: certColor }} />
+                  </div>
+                )}
 
+                {/* Info */}
                 <div className="cert-content">
                   <div className="cert-year-tag">
                     <FiCalendar /> {cert.year}
+                    {cert.distinction && (
+                      <span className="cert-distinction-tag" style={{ color: certColor, borderColor: `${certColor}44`, background: `${certColor}11` }}>
+                        {cert.distinction}
+                      </span>
+                    )}
                   </div>
                   <h3 className="cert-name">{cert.name}</h3>
                   <div className="cert-issuer">{cert.issuer}</div>
                 </div>
 
-                {/* Progress-style verified bar */}
+                {/* Progress verified bar */}
                 <div className="cert-progress-wrap">
                   <div className="cert-progress-track">
                     <div
                       className="cert-progress-fill"
                       style={{
                         width: inView ? '100%' : '0%',
-                        background: `linear-gradient(90deg, ${certColor}88, ${certColor})`,
-                        transitionDelay: `${(index % 8) * 0.07 + 0.3}s`
+                        background: `linear-gradient(90deg, ${certColor}66, ${certColor})`,
+                        transitionDelay: `${(index % 6) * 0.08 + 0.35}s`
                       }}
                     >
                       <div className="cert-shimmer" />
                     </div>
                   </div>
                   <span className="cert-verified-pill">
-                    <FiCheckCircle className="check-icon" /> Verified
+                    <FiCheckCircle className="check-icon" />
+                    {hasImage ? 'View Certificate' : 'Verified'}
                   </span>
                 </div>
               </div>
@@ -140,29 +186,47 @@ export default function Certifications({ certifications = [], t }) {
         </div>
       </div>
 
-      {/* ── Detail Modal ──────────────────────────────────────── */}
+      {/* ── Certificate Detail Modal ── */}
       {selectedCert && (
         <div className="modal-backdrop" onClick={() => setSelectedCert(null)}>
-          <div className="cert-modal-card glass-card" onClick={e => e.stopPropagation()}>
+          <div className="cert-modal-card glass-card cert-modal-premium" onClick={e => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelectedCert(null)} data-hover><FiX /></button>
+
+            {/* Modal top accent */}
+            <div className="cert-modal-accent" style={{ background: `linear-gradient(90deg, ${selectedCert.color || '#3B82F6'}, transparent)` }} />
 
             <div className="cert-modal-header">
               <div className="cert-modal-badge" style={{ background: selectedCert.color || '#3B82F6' }}>
                 <FiShield />
               </div>
               <div>
-                <span className="section-label" style={{ fontSize: '0.7rem' }}>VERIFIED CREDENTIAL</span>
+                <span className="section-label" style={{ fontSize: '0.68rem' }}>VERIFIED CREDENTIAL</span>
                 <h3 className="cert-modal-title">{selectedCert.name}</h3>
                 <p className="cert-modal-issuer">{selectedCert.issuer}</p>
+                {selectedCert.distinction && (
+                  <span className="cert-modal-distinction" style={{ background: `${selectedCert.color}22`, color: selectedCert.color, borderColor: `${selectedCert.color}44` }}>
+                    <FiZap /> {selectedCert.distinction}
+                  </span>
+                )}
               </div>
             </div>
 
+            {/* Real certificate image viewer */}
+            {selectedCert.image && (
+              <div className="cert-modal-img-wrap" onClick={() => setLightboxImg(selectedCert.image)}>
+                <img
+                  src={selectedCert.image}
+                  alt={selectedCert.name}
+                  className="cert-modal-img"
+                />
+                <div className="cert-modal-img-overlay">
+                  <FiMaximize2 /> Click to fullscreen
+                </div>
+              </div>
+            )}
+
             <div className="cert-modal-body">
               <div className="cert-detail-grid">
-                <div className="cert-detail-item">
-                  <span className="detail-label">Credential Token</span>
-                  <span className="detail-val font-code">CERT-HA-{selectedCert.year}-8891</span>
-                </div>
                 <div className="cert-detail-item">
                   <span className="detail-label">Issue Date</span>
                   <span className="detail-val"><FiCalendar /> {selectedCert.year}</span>
@@ -173,30 +237,32 @@ export default function Certifications({ certifications = [], t }) {
                 </div>
                 <div className="cert-detail-item">
                   <span className="detail-label">Category</span>
-                  <span className="detail-val">{selectedCert.category || 'FullStack'}</span>
+                  <span className="detail-val">{selectedCert.category}</span>
                 </div>
-              </div>
-
-              <div className="cert-skills-tags">
-                <span className="section-label" style={{ fontSize: '0.7rem' }}>Domain Competencies</span>
-                <div className="tech-badge-group">
-                  <span className="tech-badge">FullStack Architecture</span>
-                  <span className="tech-badge violet">Data Intelligence</span>
-                  <span className="tech-badge emerald">System Engineering</span>
-                </div>
+                {selectedCert.serialNo && (
+                  <div className="cert-detail-item">
+                    <span className="detail-label">Serial No.</span>
+                    <span className="detail-val font-code">{selectedCert.serialNo}</span>
+                  </div>
+                )}
               </div>
 
               <div className="cert-modal-actions">
-                <button
-                  className="btn-primary"
-                  onClick={() => selectedCert.url ? window.open(selectedCert.url, '_blank') : null}
-                  data-hover
-                >
-                  <FiExternalLink /> Verify On Portal
+                <button className="cert-modal-close-btn" onClick={() => setSelectedCert(null)} data-hover>
+                  <FiX /> Close
                 </button>
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ── Lightbox fullscreen ── */}
+      {lightboxImg && (
+        <div className="cert-lightbox" onClick={() => setLightboxImg(null)}>
+          <button className="lightbox-close" onClick={() => setLightboxImg(null)} data-hover><FiX /></button>
+          <img src={lightboxImg} alt="Certificate" className="lightbox-img" onClick={e => e.stopPropagation()} />
+          <p className="lightbox-hint">Click outside to close</p>
         </div>
       )}
     </section>
