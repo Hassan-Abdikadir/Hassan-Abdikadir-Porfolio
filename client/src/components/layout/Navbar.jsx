@@ -30,6 +30,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
     { href: '#benchmark-matrix', label: 'ROI Matrix' },
     { href: '#github-activity', label: 'GitHub Activity' },
     { href: '#experience', label: t?.nav?.experience || 'Experience' },
+    { href: '#certifications', label: t?.nav?.certifications || 'Certificates' },
     { href: '#telemetry', label: t?.nav?.telemetry || 'Telemetry' },
     { href: '#blog', label: t?.nav?.insights || 'Insights' },
     { href: '#contact', label: t?.nav?.contact || 'Contact' },

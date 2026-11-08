@@ -660,3 +660,86 @@ h1, h2, h3, h4, p {
     font-size: 1.3rem !important;
   }
 }
+
+/* ================================================================
+  FIX 9 — UNIVERSAL MOBILE POLISH (iOS Safari & Android Chrome)
+================================================================ */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+/* Eliminate tap delay and unwanted flash on touch */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth momentum scrolling across all scroll containers */
+.mobile-drawer,
+.modal-backdrop,
+.cert-modal-card,
+.cert-modal-body,
+.cert-lightbox,
+.terminal-body,
+.code-output,
+.api-response-viewer {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hero 100dvh for mobile browsers (accounts for dynamic address bar) */
+@supports (min-height: 100dvh) {
+  .hero {
+    min-height: 100dvh !important;
+  }
+}
+
+/* Mobile-first touch padding and layout hardening */
+@media (max-width: 640px) {
+  /* Prevent horizontal scroll from any stray element */
+  main, section, header, footer {
+    overflow-x: clip !important;
+    max-width: 100vw !important;
+  }
+
+  /* All interactive buttons touch-safe */
+  a, button, [role="button"], input, select, textarea {
+    touch-action: manipulation;
+  }
+
+  /* Container edge padding safe for edge-to-edge curved screens */
+  .container {
+    padding-left: max(16px, env(safe-area-inset-left)) !important;
+    padding-right: max(16px, env(safe-area-inset-right)) !important;
+  }
+
+  /* Sticky navbar accounts for iPhone notch / Dynamic Island */
+  .navbar {
+    padding-top: max(4px, env(safe-area-inset-top)) !important;
+  }
+
+  /* Bottom fixed elements account for iPhone home indicator bar */
+  .footer {
+    padding-bottom: max(24px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .ai-chatbot-wrapper {
+    bottom: max(16px, env(safe-area-inset-bottom)) !important;
+    right: max(16px, env(safe-area-inset-right)) !important;
+  }
+
+  /* Mobile typography clarity */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Pre & code blocks wrap or scroll cleanly without breaking screen width */
+  pre, code {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+  }
+}
