@@ -33,11 +33,11 @@ export const realPortfolioData = {
     {
       id: 'fullstack-academy',
       title: 'FullStack Academy',
-      subtitle: 'Digital Education Platform',
+      subtitle: 'Official B.Sc. Capstone Thesis • Digital Education Platform',
       image: '/projects/fullstack-academy.png',
       gif: '/projects/fullstack-academy-preview.gif',
       category: 'FullStack App',
-      description: 'An enterprise-grade Digital Education Platform built with MERN stack, featuring multi-role authentication (Student, Instructor, Admin), AI Mock Interviewer, real-time Socket.io chat, course telemetry, and security suites.',
+      description: 'Official Bachelor of Science Graduation Capstone Thesis at Admas University. An enterprise-grade Digital Education Platform built with MERN stack, featuring multi-role authentication (Student, Instructor, Admin), AI Mock Interviewer, real-time Socket.io chat, course telemetry, and security suites.',
       longDesc: 'Built from the ground up with a microservices-inspired MERN architecture. Features real-time multi-room communication via Socket.io, AI-driven technical interview evaluation using GPT-4 APIs, full payment processing integration, mobile-responsive PWA, and a luxury dark glassmorphism design system.',
       tech: ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'Socket.io', 'JWT Auth', 'Redux Toolkit', 'TailwindCSS', 'AI/GPT-4'],
       github: 'https://github.com/HassanAbdikadir/FullStack-Academy',
@@ -319,6 +319,19 @@ export const realPortfolioData = {
     },
     {
       id: 4,
+      name: 'B.Sc. Graduation Thesis: FullStack Academy',
+      issuer: 'Admas University — Faculty of Computing & Informatics',
+      year: '2026',
+      badge: 'Thesis Capstone',
+      color: '#0284C7',
+      category: 'Academic',
+      distinction: 'MERN Stack Platform • Advisor: Abdiaziz Ibrahim Jama',
+      serialNo: 'ID: 13436 / Software Engineering',
+      image: '/certificates/graduation_thesis.jpg',
+      url: null,
+    },
+    {
+      id: 5,
       name: 'Secondary Education Certificate (Form 4)',
       issuer: 'Ministry of Education & Science — SLNECB Board',
       year: '2023',
@@ -331,7 +344,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 5,
+      id: 6,
       name: 'Primary Education Certificate (Standard 8)',
       issuer: 'Ministry of Education & Science — SLNECB Board',
       year: '2019',
@@ -344,7 +357,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 6,
+      id: 7,
       name: 'Diploma in Computer Application (DCA)',
       issuer: 'Tanaad Computer Science College',
       year: '2021',
@@ -357,7 +370,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 7,
+      id: 8,
       name: 'FullStack MERN Architect Master',
       issuer: 'FullStack Academy',
       year: '2024',
@@ -369,7 +382,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 8,
+      id: 9,
       name: 'Professional Data Analytics & Visualization',
       issuer: 'Analytics Engineering Institute',
       year: '2023',
@@ -381,7 +394,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 9,
+      id: 10,
       name: 'Reading Skills & Analytical Comprehension',
       issuer: 'Halgan Development Center (H.D.C)',
       year: '2023',
@@ -394,7 +407,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 10,
+      id: 11,
       name: 'Goal Setting & Personal Planning Skills',
       issuer: 'Halgan Academy & Inspiration Center (H.A.I.C)',
       year: '2022',
@@ -407,7 +420,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 11,
+      id: 12,
       name: 'Professional Public Speaking & Oratory',
       issuer: 'Halgan Academy & Inspiration Center (H.A.I.C)',
       year: '2021',
