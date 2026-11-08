@@ -345,6 +345,19 @@ export const realPortfolioData = {
     },
     {
       id: 6,
+      name: 'Diploma in Computer Application (DCA)',
+      issuer: 'Tanaad Computer Science College',
+      year: '2021',
+      badge: 'Diploma',
+      color: '#10B981',
+      category: 'Technical',
+      distinction: 'Overall Grade: A (Straight 100s in Word, Excel, Access, PPT)',
+      serialNo: 'TANAAD-CS-2021',
+      image: '/certificates/computer_diploma.jpg',
+      url: null,
+    },
+    {
+      id: 7,
       name: 'FullStack MERN Architect Master',
       issuer: 'FullStack Academy',
       year: '2024',
@@ -356,7 +369,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 7,
+      id: 8,
       name: 'Professional Data Analytics & Visualization',
       issuer: 'Analytics Engineering Institute',
       year: '2023',
@@ -368,7 +381,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 8,
+      id: 9,
       name: 'Reading Skills & Analytical Comprehension',
       issuer: 'Halgan Development Center (H.D.C)',
       year: '2023',
@@ -381,7 +394,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 9,
+      id: 10,
       name: 'Goal Setting & Personal Planning Skills',
       issuer: 'Halgan Academy & Inspiration Center (H.A.I.C)',
       year: '2022',
@@ -394,7 +407,7 @@ export const realPortfolioData = {
       url: null,
     },
     {
-      id: 10,
+      id: 11,
       name: 'Professional Public Speaking & Oratory',
       issuer: 'Halgan Academy & Inspiration Center (H.A.I.C)',
       year: '2021',
