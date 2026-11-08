@@ -1,5 +1,5 @@
 /* ================================================================
-   CERTIFICATIONS — CRYPTO MASTERY BADGES
+   CERTIFICATIONS — SKILLS-STYLE MASTERY BADGES
 ================================================================ */
 
 .certs-section {
@@ -260,9 +260,155 @@
   justify-content: flex-end;
 }
 
+/* ── Meta Bar (mirrors Skills meta bar) ──────────────────────── */
+.certs-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 18px 32px;
+  margin-bottom: 32px;
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.6s ease 0.1s;
+  position: relative;
+  z-index: 1;
+}
+
+.certs-meta-bar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cmb-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 32px;
+}
+
+.cmb-val {
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.cmb-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: var(--font-code);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cmb-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── Category Filter ─────────────────────────────────────────── */
+.certs-controls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 36px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.6s ease 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.certs-controls.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.certs-filter {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ── Cert Card — progress-bar upgrade ───────────────────────── */
+.cert-bg-glow {
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  opacity: 0.06;
+  filter: blur(18px);
+  transition: opacity 0.3s;
+}
+
+.cert-card:hover .cert-bg-glow { opacity: 0.18; }
+
+/* Progress wrapper replaces old cert-status-bar */
+.cert-progress-wrap {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cert-progress-track {
+  position: relative;
+  height: 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cert-progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  animation: shimmerSlide 2.5s infinite;
+}
+
+/* ── Empty state ─────────────────────────────────────────────── */
+.certs-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px;
+  color: var(--text-muted);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .certs-meta-bar {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+  }
+  .cmb-item { padding: 0 12px; }
+}
+
 @media (max-width: 480px) {
   .certs-grid {
     grid-template-columns: 1fr;
+  }
+  .certs-filter {
+    justify-content: center;
   }
   .cert-modal-card {
     padding: 20px;

@@ -278,10 +278,10 @@ export const realPortfolioData = {
   ],
 
   certifications: [
-    { id: 1, name: 'FullStack MERN Architect Master', issuer: 'FullStack Academy', year: '2024', badge: 'Certified', color: '#F59E0B' },
-    { id: 2, name: 'Professional Data Analytics & Visualization', issuer: 'Analytics Engineering Institute', year: '2023', badge: 'Certified', color: '#10B981' },
-    { id: 3, name: 'Node.js & Microservices Engineering', issuer: 'Backend Tech Guild', year: '2023', badge: 'Certified', color: '#06B6D4' },
-    { id: 4, name: 'Advanced React.js & Architecture', issuer: 'Frontend Masters Academy', year: '2022', badge: 'Certified', color: '#8B5CF6' },
+    { id: 1, name: 'FullStack MERN Architect Master',           issuer: 'FullStack Academy',                  year: '2024', badge: 'Certified', color: '#F59E0B', category: 'FullStack' },
+    { id: 2, name: 'Professional Data Analytics & Visualization', issuer: 'Analytics Engineering Institute', year: '2023', badge: 'Certified', color: '#10B981', category: 'Data & AI' },
+    { id: 3, name: 'Node.js & Microservices Engineering',       issuer: 'Backend Tech Guild',                 year: '2023', badge: 'Certified', color: '#06B6D4', category: 'Backend'   },
+    { id: 4, name: 'Advanced React.js & Architecture',          issuer: 'Frontend Masters Academy',           year: '2022', badge: 'Certified', color: '#8B5CF6', category: 'FullStack' },
   ],
 
   testimonials: [
