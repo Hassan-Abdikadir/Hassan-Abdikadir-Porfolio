@@ -49,9 +49,9 @@ export default function Certifications({ certifications = [] }) {
             Certifications &amp; <span className="gradient-text">Mastery Badges</span>
           </h2>
           <p className="section-subtitle">
-            Formal credentials from Admas University — Software Engineering graduate with
-            <strong style={{ color: '#F59E0B' }}> Very Great Distinction</strong>, plus
-            industry-recognised technical certifications.
+            Formal academic credentials from Somaliland National Board to Admas University —
+            Software Engineering graduate with <strong style={{ color: '#F59E0B' }}>Very Great Distinction</strong>,
+            along with verified technical and leadership competencies.
           </p>
         </div>
 
