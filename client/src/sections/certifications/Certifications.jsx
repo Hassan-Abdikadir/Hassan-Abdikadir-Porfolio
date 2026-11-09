@@ -42,12 +42,14 @@ export default function Certifications({ certifications = [] }) {
     setViewerCert(cert)
     setViewerIndex(idx)
     document.body.style.overflow = 'hidden'
+    document.body.classList.add('cv-viewer-open')
   }, [])
 
   /* ── Close viewer ── */
   const closeViewer = useCallback(() => {
     setViewerCert(null)
     document.body.style.overflow = ''
+    document.body.classList.remove('cv-viewer-open')
   }, [])
 
   /* ── Navigate prev/next ── */
