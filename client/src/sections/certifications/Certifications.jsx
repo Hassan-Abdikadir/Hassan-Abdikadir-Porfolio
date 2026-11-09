@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { useInView } from 'react-intersection-observer'
 import {
   FiAward, FiCheckCircle, FiX, FiShield, FiCalendar,
@@ -75,6 +76,14 @@ export default function Certifications({ certifications = [] }) {
 
   /* ── Close viewer when category changes ── */
   useEffect(() => { closeViewer() }, [activeCategory, closeViewer])
+
+  /* ── Cleanup on unmount ── */
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = ''
+      document.body.classList.remove('cv-viewer-open')
+    }
+  }, [])
 
   return (
     <section id="certifications" className="section certs-section">
@@ -256,7 +265,7 @@ export default function Certifications({ certifications = [] }) {
       {/* ════════════════════════════════════════════════════
           PREMIUM FULLSCREEN CERTIFICATE VIEWER
       ════════════════════════════════════════════════════ */}
-      {viewerCert && (
+      {viewerCert && createPortal(
         <div className="cv-backdrop" onClick={closeViewer}>
           <div className="cv-panel" onClick={e => e.stopPropagation()}>
 
@@ -462,7 +471,8 @@ export default function Certifications({ certifications = [] }) {
             </div>{/* end cv-info-side */}
 
           </div>{/* end cv-panel */}
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   )
