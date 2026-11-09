@@ -5,7 +5,7 @@ import {
   FiAward, FiCheckCircle, FiX, FiShield, FiCalendar,
   FiZap, FiLayers, FiBookOpen, FiCode, FiStar,
   FiChevronLeft, FiChevronRight, FiHash, FiMapPin,
-  FiUser, FiTrendingUp, FiEye
+  FiUser, FiTrendingUp, FiEye, FiMaximize2, FiArrowUpRight, FiCheck
 } from 'react-icons/fi'
 import './Certifications.css'
 
@@ -15,6 +15,16 @@ const certCategories = [
   { label: 'Technical', icon: <FiCode /> },
   { label: 'Training',  icon: <FiAward /> },
 ]
+
+/* ── Hex to RGB helper for CSS dynamic glows ── */
+const hexToRgb = (hex) => {
+  if (!hex) return '59, 130, 246'
+  const c = hex.replace('#', '')
+  if (c.length === 6) {
+    return `${parseInt(c.slice(0, 2), 16)}, ${parseInt(c.slice(2, 4), 16)}, ${parseInt(c.slice(4, 6), 16)}`
+  }
+  return '59, 130, 246'
+}
 
 /* ── Category color theme helper ── */
 const categoryTheme = (cat) => {
@@ -164,6 +174,7 @@ export default function Certifications({ certifications = [] }) {
         <div className="certs-grid">
           {filtered.map((cert, index) => {
             const certColor = cert.color || '#3B82F6'
+            const certRgb   = hexToRgb(certColor)
             const hasImage  = !!cert.image
             const theme     = categoryTheme(cert.category)
 
@@ -171,19 +182,20 @@ export default function Certifications({ certifications = [] }) {
               <div
                 key={cert.id || index}
                 className={`cert-card ${inView ? 'visible' : ''} ${hasImage ? 'cert-card-visual' : ''}`}
-                style={{ transitionDelay: `${(index % 6) * 0.08}s` }}
+                style={{
+                  '--card-accent': certColor,
+                  '--card-accent-rgb': certRgb,
+                  transitionDelay: `${(index % 6) * 0.08}s`
+                }}
                 onClick={() => openViewer(cert, index)}
                 data-hover
               >
-                {/* Top color shimmer line */}
-                <div className="cert-top-shimmer" style={{ background: `linear-gradient(90deg, ${certColor}, ${certColor}66)` }} />
-
-                {/* Corner glow */}
+                {/* Corner ambient glow */}
                 <div className="cert-bg-glow" style={{ background: certColor }} />
 
-                {/* Certificate Thumbnail or Icon */}
+                {/* Certificate Showcase Media */}
                 {hasImage ? (
-                  <div className="cert-thumb-wrap" style={{ borderColor: `${certColor}44` }}>
+                  <div className="cert-thumb-wrap">
                     <img
                       src={cert.image}
                       alt={cert.name}
@@ -191,64 +203,94 @@ export default function Certifications({ certifications = [] }) {
                       loading="lazy"
                       decoding="async"
                     />
+
+                    {/* Holographic scanner sheen on hover */}
                     <div className="cert-thumb-overlay">
-                      <div className="cert-thumb-overlay-inner">
-                        <FiEye className="cert-expand-icon" />
-                        <span>View Certificate</span>
+                      <div className="cert-inspect-pill">
+                        <FiMaximize2 className="cert-expand-icon" />
+                        <span>Inspect Credential</span>
                       </div>
                     </div>
-                    <div className="cert-thumb-badge" style={{ background: certColor }}>
-                      <FiCheckCircle /> {cert.badge || cert.category}
+
+                    {/* Floating Luxury Badges */}
+                    <div className="cert-floating-badges">
+                      <span className="cert-badge-type" style={{ background: `rgba(${certRgb}, 0.85)`, borderColor: certColor }}>
+                        <FiShield className="cb-icon" /> {cert.badge || cert.category}
+                      </span>
+                      <span className="cert-badge-year">
+                        <span className="cert-live-dot" />
+                        {cert.year}
+                      </span>
                     </div>
+
+                    {/* Bottom Vignette */}
+                    <div className="cert-thumb-vignette" />
                   </div>
                 ) : (
                   <div className="cert-icon-wrapper" style={{ color: certColor, borderColor: `${certColor}55`, background: `${certColor}15` }}>
                     <FiAward className="cert-icon-svg" />
                     <div className="cert-icon-glow" style={{ background: certColor }} />
+                    <div className="cert-floating-badges">
+                      <span className="cert-badge-type" style={{ background: `rgba(${certRgb}, 0.85)`, borderColor: certColor }}>
+                        <FiShield className="cb-icon" /> {cert.badge || cert.category}
+                      </span>
+                    </div>
                   </div>
                 )}
 
-                {/* Info */}
+                {/* Card Main Info */}
                 <div className="cert-content">
-                  <div className="cert-year-row">
-                    <span className="cert-year-tag">
-                      <FiCalendar /> {cert.year}
-                    </span>
-                    <span className="cert-cat-pill" style={{ background: theme.badge, color: theme.text }}>
+                  {/* Category Chip & Serial Chip */}
+                  <div className="cert-meta-chips">
+                    <span className="cert-cat-pill" style={{ background: theme.badge, color: theme.text, borderColor: `${theme.text}44` }}>
                       {cert.category}
                     </span>
+                    {cert.serialNo && (
+                      <span className="cert-serial-chip" title={cert.serialNo}>
+                        <FiHash /> {cert.serialNo.length > 22 ? cert.serialNo.substring(0, 20) + '...' : cert.serialNo}
+                      </span>
+                    )}
                   </div>
+
+                  {/* Distinction Cyber Banner */}
                   {cert.distinction && (
-                    <div className="cert-distinction-tag" style={{ color: certColor, borderColor: `${certColor}44`, background: `${certColor}11` }}>
-                      <FiZap style={{ fontSize: '0.7rem' }} /> {cert.distinction}
+                    <div
+                      className="cert-distinction-banner"
+                      style={{
+                        background: `linear-gradient(90deg, rgba(${certRgb}, 0.16) 0%, rgba(${certRgb}, 0.04) 100%)`,
+                        borderColor: `rgba(${certRgb}, 0.45)`,
+                        color: certColor
+                      }}
+                    >
+                      <FiZap className="distinction-bolt" />
+                      <span className="distinction-text">{cert.distinction}</span>
                     </div>
                   )}
+
+                  {/* Certificate Title */}
                   <h3 className="cert-name">{cert.name}</h3>
+
+                  {/* Issuer */}
                   <div className="cert-issuer">
-                    <FiMapPin style={{ fontSize: '0.75rem', flexShrink: 0 }} />
-                    {cert.issuer}
+                    <FiMapPin className="issuer-pin" />
+                    <span>{cert.issuer}</span>
                   </div>
                 </div>
 
-                {/* Progress verified bar */}
-                <div className="cert-progress-wrap">
-                  <div className="cert-progress-track">
-                    <div
-                      className="cert-progress-fill"
-                      style={{
-                        width: inView ? '100%' : '0%',
-                        background: `linear-gradient(90deg, ${certColor}66, ${certColor})`,
-                        transitionDelay: `${(index % 6) * 0.08 + 0.35}s`
-                      }}
-                    >
-                      <div className="cert-shimmer" />
-                    </div>
+                {/* Interactive Action Footer */}
+                <div className="cert-card-footer">
+                  <div className="cert-status-indicator">
+                    <span className="cs-pulse-dot" />
+                    <span className="cs-text">Official Credential</span>
                   </div>
-                  <span className="cert-verified-pill">
-                    <FiCheckCircle className="check-icon" />
-                    {hasImage ? 'View Certificate' : 'Verified'}
-                  </span>
+                  <div className="cert-cta-btn" style={{ borderColor: `rgba(${certRgb}, 0.45)`, color: certColor }}>
+                    <span>Inspect</span>
+                    <FiArrowUpRight className="cta-arrow" />
+                  </div>
                 </div>
+
+                {/* Bottom Laser Scanner Accent */}
+                <div className="cert-bottom-scanner" style={{ background: `linear-gradient(90deg, transparent, ${certColor}, transparent)` }} />
               </div>
             )
           })}
