@@ -1029,31 +1029,7 @@ section + section {
     radial-gradient(ellipse 60% 40% at 80% 50%, rgba(0, 240, 255, 0.07) 0%, transparent 60%);
 }
 
-.runner-window {
-  background: rgba(5, 10, 22, 0.95) !important;
-  border: 1px solid rgba(112, 0, 255, 0.3) !important;
-  border-radius: 26px !important;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(112, 0, 255, 0.15) !important;
-  transition: all 0.4s ease !important;
-}
-
-.runner-window:hover {
-  border-color: #7000ff !important;
-  box-shadow: 0 35px 95px rgba(0, 0, 0, 0.85), 0 0 65px rgba(112, 0, 255, 0.3) !important;
-}
-
-.snippet-tab {
-  border-radius: 12px !important;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.snippet-tab.active,
-.snippet-tab:hover {
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(112, 0, 255, 0.3)) !important;
-  border-color: #00f0ff !important;
-  color: #fff !important;
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
-}
+/* Legacy runner overrides removed in favor of modular CodePlayground.css */
 
 /* ============================================================
    API PLAYGROUND SECTION UPGRADE
