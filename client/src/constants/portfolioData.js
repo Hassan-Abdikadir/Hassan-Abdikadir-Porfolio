@@ -316,6 +316,8 @@ export const realPortfolioData = {
       serialNo: 'Molla Tsegay (PhD) — President',
       image: '/certificates/merit_certificate.webp',
       url: null,
+      videoUrl: '/graduation_moment.mp4',
+      videoCaption: 'Hassan Abdikadir Adam receiving the Merit Certificate on stage — Admas University Graduation Ceremony 2026',
     },
     {
       id: 4,

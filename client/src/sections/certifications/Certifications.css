@@ -970,3 +970,139 @@ body.cv-viewer-open .scroll-progress-container {
   .cv-detail-grid { grid-template-columns: 1fr !important; }
   .cv-detail-full { grid-column: span 1 !important; }
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   GRADUATION VIDEO ADDITIONS
+══════════════════════════════════════════════════════════════ */
+
+/* ── Floating video badge on card thumbnail ── */
+.cert-badge-video {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  background: rgba(239, 68, 68, 0.85);
+  border: 1px solid rgba(239, 68, 68, 0.9);
+  border-radius: 20px;
+  font-size: 0.6rem;
+  font-family: var(--font-code, monospace);
+  letter-spacing: 0.08em;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.5);
+  animation: cert-badge-video-pulse 2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+@keyframes cert-badge-video-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(239, 68, 68, 0.4) }
+  50%       { box-shadow: 0 0 24px rgba(239, 68, 68, 0.75) }
+}
+
+.cert-badge-video .cb-icon {
+  font-size: 0.65rem;
+}
+
+/* ── Watch Graduation CTA button in viewer ── */
+.cv-watch-graduation-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(16, 185, 129, 0.08) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 14px;
+  cursor: pointer;
+  color: inherit;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 0.4rem;
+}
+
+.cv-watch-graduation-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.07) 0%, rgba(16, 185, 129, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cv-watch-graduation-btn:hover {
+  border-color: rgba(245, 158, 11, 0.7);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+  transform: translateY(-1px);
+}
+
+.cv-watch-graduation-btn:hover::before {
+  opacity: 1;
+}
+
+.cv-watch-pulse-dot {
+  position: absolute;
+  top: 10px;
+  right: 44px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: cv-watch-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes cv-watch-pulse {
+  0%, 100% { opacity: 1; transform: scale(1) }
+  50%       { opacity: 0.4; transform: scale(0.6) }
+}
+
+.cv-watch-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  padding: 9px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 50%;
+  color: #F59E0B;
+  box-sizing: content-box;
+  transition: all 0.25s;
+}
+
+.cv-watch-graduation-btn:hover .cv-watch-icon {
+  background: rgba(245, 158, 11, 0.25);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.4);
+}
+
+.cv-watch-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cv-watch-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #F59E0B;
+  font-family: var(--font-main, sans-serif);
+}
+
+.cv-watch-sub {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-code, monospace);
+  letter-spacing: 0.03em;
+}
+
+.cv-watch-cam {
+  font-size: 1.1rem;
+  color: rgba(245, 158, 11, 0.5);
+  flex-shrink: 0;
+}
+
+.cv-watch-graduation-btn:hover .cv-watch-cam {
+  color: #F59E0B;
+}

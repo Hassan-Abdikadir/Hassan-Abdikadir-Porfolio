@@ -5,9 +5,11 @@ import {
   FiAward, FiCheckCircle, FiX, FiShield, FiCalendar,
   FiZap, FiLayers, FiBookOpen, FiCode, FiStar,
   FiChevronLeft, FiChevronRight, FiHash, FiMapPin,
-  FiUser, FiTrendingUp, FiEye, FiMaximize2, FiArrowUpRight, FiCheck
+  FiUser, FiTrendingUp, FiEye, FiMaximize2, FiArrowUpRight, FiCheck,
+  FiPlay, FiVideo
 } from 'react-icons/fi'
 import './Certifications.css'
+import GraduationVideoModal from '../../components/ui/GraduationVideoModal'
 
 const certCategories = [
   { label: 'All',       icon: <FiLayers /> },
@@ -39,6 +41,7 @@ export default function Certifications({ certifications = [] }) {
   const [activeCategory, setActiveCategory] = useState('All')
   const [viewerCert, setViewerCert]         = useState(null)
   const [viewerIndex, setViewerIndex]       = useState(0)
+  const [videoModal, setVideoModal]         = useState(null) // { videoUrl, caption }
 
   const filtered = certifications.filter(c =>
     activeCategory === 'All' || c.category === activeCategory
@@ -96,6 +99,7 @@ export default function Certifications({ certifications = [] }) {
   }, [])
 
   return (
+    <>
     <section id="certifications" className="section certs-section">
       <div className="grid-bg" />
       <div className="certs-orb certs-orb-a" />
@@ -221,6 +225,12 @@ export default function Certifications({ certifications = [] }) {
                         <span className="cert-live-dot" />
                         {cert.year}
                       </span>
+                      {/* Graduation video badge */}
+                      {cert.videoUrl && (
+                        <span className="cert-badge-video">
+                          <FiPlay className="cb-icon" /> Ceremony
+                        </span>
+                      )}
                     </div>
 
                     {/* Bottom Vignette */}
@@ -474,6 +484,25 @@ export default function Certifications({ certifications = [] }) {
                   </div>
                 </div>
 
+                {/* Graduation video CTA — only for Merit Certificate */}
+                {viewerCert.videoUrl && (
+                  <button
+                    className="cv-watch-graduation-btn"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setVideoModal({ videoUrl: viewerCert.videoUrl, caption: viewerCert.videoCaption })
+                    }}
+                  >
+                    <span className="cv-watch-pulse-dot" />
+                    <FiPlay className="cv-watch-icon" />
+                    <span className="cv-watch-text">
+                      <span className="cv-watch-label">Watch Graduation Ceremony</span>
+                      <span className="cv-watch-sub">Stage Moment — Merit Award Presentation</span>
+                    </span>
+                    <FiVideo className="cv-watch-cam" />
+                  </button>
+                )}
+
                 {/* Dot navigator */}
                 {filtered.length > 1 && (
                   <div className="cv-dot-nav">
@@ -516,6 +545,16 @@ export default function Certifications({ certifications = [] }) {
         </div>,
         document.body
       )}
+
+      {/* ── Graduation Video Modal ── */}
+      {videoModal && (
+        <GraduationVideoModal
+          videoUrl={videoModal.videoUrl}
+          caption={videoModal.caption}
+          onClose={() => setVideoModal(null)}
+        />
+      )}
     </section>
+    </>
   )
 }
