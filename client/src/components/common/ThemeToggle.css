@@ -12,9 +12,9 @@
 .theme-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  font-size: 0.75rem;
+  gap: 5px;
+  padding: 4px 9px;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-muted, #9CA3AF);
   background: transparent;
