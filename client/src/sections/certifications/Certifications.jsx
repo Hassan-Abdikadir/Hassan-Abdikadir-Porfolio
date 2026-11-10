@@ -50,6 +50,7 @@ export default function Certifications({ certifications = [] }) {
   const academicCount  = certifications.filter(c => c.category === 'Academic').length
   const technicalCount = certifications.filter(c => c.category === 'Technical').length
   const trainingCount  = certifications.filter(c => c.category === 'Training').length
+  const meritCert      = certifications.find(c => c.videoUrl || c.id === 3)
 
   /* ── Open fullscreen viewer ── */
   const openViewer = useCallback((cert, idx) => {
@@ -157,6 +158,105 @@ export default function Certifications({ certifications = [] }) {
           </div>
         </div>
 
+        {/* ── GRADUATION CEREMONY VIDEO SPOTLIGHT (PREMIUM) ── */}
+        <div className={`cert-graduation-spotlight ${inView ? 'visible' : ''}`}>
+          <div className="cgs-ambient-glow" />
+          
+          {/* Left: Video Showcase Player */}
+          <div className="cgs-video-col">
+            <div className="cgs-player-frame">
+              <video
+                src="/graduation_moment.mp4"
+                className="cgs-video-element"
+                controls
+                playsInline
+                preload="metadata"
+              />
+              <button
+                type="button"
+                className="cgs-expand-btn"
+                onClick={() => setVideoModal({
+                  videoUrl: '/graduation_moment.mp4',
+                  caption: 'Hassan Abdikadir Adam receiving the Merit Certificate on stage — Admas University Graduation Ceremony 2026'
+                })}
+                title="Expand to Fullscreen Cinema Mode"
+              >
+                <FiMaximize2 />
+                <span>Cinema Mode</span>
+              </button>
+            </div>
+            <div className="cgs-video-tagline">
+              <span className="cgs-red-pulse" />
+              <span>OFFICIAL CEREMONY ARCHIVE • ADMAS UNIVERSITY 2026</span>
+            </div>
+          </div>
+
+          {/* Right: Milestone Honors & Story */}
+          <div className="cgs-info-col">
+            <div className="cgs-honor-pills">
+              <span className="cgs-pill-gold">
+                <FiAward /> Merit Award
+              </span>
+              <span className="cgs-pill-emerald">
+                <FiStar /> Very Great Distinction
+              </span>
+              <span className="cgs-pill-year">
+                Class of 2026
+              </span>
+            </div>
+
+            <h3 className="cgs-heading">
+              Graduation Ceremony &amp; <span className="gradient-text">Stage Moment</span>
+            </h3>
+
+            <p className="cgs-description">
+              Live footage of <strong>Hassan Abdikadir Adam</strong> receiving the prestigious 
+              <strong> Presidential Merit Award</strong> from University President Dr. Molla Tsegay on stage at Admas University — 
+              honoring academic brilliance with a <strong>Major GPA of 3.96 / 4.0</strong> in <strong>B.Sc. Software Engineering</strong>.
+            </p>
+
+            <div className="cgs-stat-grid">
+              <div className="cgs-stat-box">
+                <span className="cgs-stat-num" style={{ color: '#10B981' }}>3.96</span>
+                <span className="cgs-stat-lbl">Major GPA</span>
+              </div>
+              <div className="cgs-stat-box">
+                <span className="cgs-stat-num" style={{ color: '#06B6D4' }}>3.93</span>
+                <span className="cgs-stat-lbl">Cumulative GPA</span>
+              </div>
+              <div className="cgs-stat-box">
+                <span className="cgs-stat-num" style={{ color: '#F59E0B' }}>Top 1%</span>
+                <span className="cgs-stat-lbl">Presidential Honor</span>
+              </div>
+            </div>
+
+            <div className="cgs-cta-group">
+              <button
+                type="button"
+                className="cgs-cinema-cta"
+                onClick={() => setVideoModal({
+                  videoUrl: '/graduation_moment.mp4',
+                  caption: 'Hassan Abdikadir Adam receiving the Merit Certificate on stage — Admas University Graduation Ceremony 2026'
+                })}
+              >
+                <FiPlay className="cgs-play-icon" />
+                <span>Watch Full Cinematic Theater</span>
+              </button>
+
+              {meritCert && (
+                <button
+                  type="button"
+                  className="cgs-cert-cta"
+                  onClick={() => openViewer(meritCert, filtered.indexOf(meritCert) >= 0 ? filtered.indexOf(meritCert) : 0)}
+                >
+                  <FiAward />
+                  <span>Inspect Merit Certificate</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
         {/* ── Category Filter ── */}
         <div className={`certs-controls ${inView ? 'visible' : ''}`}>
           <div className="certs-filter">
@@ -210,10 +310,30 @@ export default function Certifications({ certifications = [] }) {
 
                     {/* Holographic scanner sheen on hover */}
                     <div className="cert-thumb-overlay">
-                      <div className="cert-inspect-pill">
-                        <FiMaximize2 className="cert-expand-icon" />
-                        <span>Inspect Credential</span>
-                      </div>
+                      {cert.videoUrl ? (
+                        <div className="cert-thumb-actions">
+                          <button
+                            type="button"
+                            className="cert-inspect-pill cert-video-pill"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setVideoModal({ videoUrl: cert.videoUrl, caption: cert.videoCaption })
+                            }}
+                          >
+                            <FiPlay className="cert-expand-icon" />
+                            <span>Play Video</span>
+                          </button>
+                          <div className="cert-inspect-pill">
+                            <FiMaximize2 className="cert-expand-icon" />
+                            <span>Inspect</span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="cert-inspect-pill">
+                          <FiMaximize2 className="cert-expand-icon" />
+                          <span>Inspect Credential</span>
+                        </div>
+                      )}
                     </div>
 
                     {/* Floating Luxury Badges */}
@@ -293,9 +413,25 @@ export default function Certifications({ certifications = [] }) {
                     <span className="cs-pulse-dot" />
                     <span className="cs-text">Official Credential</span>
                   </div>
-                  <div className="cert-cta-btn" style={{ borderColor: `rgba(${certRgb}, 0.45)`, color: certColor }}>
-                    <span>Inspect</span>
-                    <FiArrowUpRight className="cta-arrow" />
+                  <div className="cert-footer-actions">
+                    {cert.videoUrl && (
+                      <button
+                        type="button"
+                        className="cert-card-video-cta"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setVideoModal({ videoUrl: cert.videoUrl, caption: cert.videoCaption })
+                        }}
+                        title="Watch Graduation Ceremony Video"
+                      >
+                        <FiPlay />
+                        <span>Video</span>
+                      </button>
+                    )}
+                    <div className="cert-cta-btn" style={{ borderColor: `rgba(${certRgb}, 0.45)`, color: certColor }}>
+                      <span>Inspect</span>
+                      <FiArrowUpRight className="cta-arrow" />
+                    </div>
                   </div>
                 </div>
 

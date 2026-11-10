@@ -1106,3 +1106,377 @@ body.cv-viewer-open .scroll-progress-container {
 .cv-watch-graduation-btn:hover .cv-watch-cam {
   color: #F59E0B;
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   GRADUATION VIDEO SPOTLIGHT BANNER (INLINE SHOWCASE)
+══════════════════════════════════════════════════════════════ */
+.cert-graduation-spotlight {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 2rem;
+  padding: 1.75rem;
+  margin: 0 0 2.5rem 0;
+  background: linear-gradient(135deg, rgba(14, 20, 36, 0.96) 0%, rgba(8, 12, 22, 0.98) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 20px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(245, 158, 11, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-graduation-spotlight.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cgs-ambient-glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Left Col: Video Player Box ── */
+.cgs-video-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 1;
+}
+
+.cgs-player-frame {
+  position: relative;
+  width: 100%;
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cgs-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cgs-expand-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  border-radius: 20px;
+  color: #F59E0B;
+  font-size: 0.68rem;
+  font-family: var(--font-code, monospace);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.25s ease;
+}
+
+.cgs-expand-btn:hover {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #F59E0B;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+  transform: scale(1.04);
+}
+
+.cgs-video-tagline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.62rem;
+  font-family: var(--font-code, monospace);
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 600;
+}
+
+.cgs-red-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: cgs-pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes cgs-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ── Right Col: Honors & Story ── */
+.cgs-info-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.cgs-honor-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cgs-pill-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 20px;
+  color: #F59E0B;
+  font-size: 0.68rem;
+  font-family: var(--font-code, monospace);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.cgs-pill-emerald {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 20px;
+  color: #10B981;
+  font-size: 0.68rem;
+  font-family: var(--font-code, monospace);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.cgs-pill-year {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 9px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.68rem;
+  font-family: var(--font-code, monospace);
+  font-weight: 600;
+}
+
+.cgs-heading {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0;
+  font-family: var(--font-main, sans-serif);
+}
+
+.cgs-description {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+  font-family: var(--font-main, sans-serif);
+}
+
+.cgs-description strong {
+  color: #fff;
+}
+
+/* Metric Cards */
+.cgs-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.cgs-stat-box {
+  display: flex;
+  flex-direction: column;
+  padding: 0.65rem 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+}
+
+.cgs-stat-num {
+  font-size: 1.35rem;
+  font-weight: 800;
+  font-family: var(--font-code, monospace);
+  line-height: 1.1;
+}
+
+.cgs-stat-lbl {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-code, monospace);
+  letter-spacing: 0.05em;
+  margin-top: 3px;
+}
+
+/* CTA Buttons */
+.cgs-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.cgs-cinema-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  border: none;
+  border-radius: 12px;
+  color: #0b0f19;
+  font-size: 0.82rem;
+  font-weight: 800;
+  font-family: var(--font-main, sans-serif);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+  transition: all 0.25s ease;
+}
+
+.cgs-cinema-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(245, 158, 11, 0.55);
+  filter: brightness(1.1);
+}
+
+.cgs-play-icon {
+  font-size: 1rem;
+}
+
+.cgs-cert-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-main, sans-serif);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cgs-cert-cta:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ── Card Video Actions (Overlay & Footer) ── */
+.cert-thumb-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cert-video-pill {
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  color: #fff !important;
+  border-color: rgba(239, 68, 68, 0.8) !important;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4) !important;
+}
+
+.cert-video-pill:hover {
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6) !important;
+}
+
+.cert-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cert-card-video-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  border-radius: 8px;
+  color: #f87171;
+  font-size: 0.72rem;
+  font-family: var(--font-code, monospace);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-card-video-cta:hover {
+  background: rgba(239, 68, 68, 0.28);
+  border-color: #ef4444;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+}
+
+/* Responsive adjustment for Spotlight */
+@media (max-width: 992px) {
+  .cert-graduation-spotlight {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+  .cgs-heading {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .cgs-stat-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .cgs-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cgs-cinema-cta,
+  .cgs-cert-cta {
+    justify-content: center;
+  }
+}
