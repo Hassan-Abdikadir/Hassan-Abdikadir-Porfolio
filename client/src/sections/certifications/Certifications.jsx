@@ -117,15 +117,41 @@ export default function Certifications({ certifications = [] }) {
 
         {/* ── Header ── */}
         <div className={`certs-header ${inView ? 'visible' : ''}`}>
-          <div className="section-label">verified.credentials</div>
+          <div className="certs-label-wrap">
+            <span className="certs-badge-pill">
+              <span className="certs-pulse-dot" />
+              <span>// VERIFIED.ACADEMIC.CREDENTIALS</span>
+            </span>
+          </div>
+
           <h2 className="section-title">
             Certifications &amp; <span className="gradient-text">Mastery Badges</span>
           </h2>
-          <p className="section-subtitle">
-            Formal academic credentials from Somaliland National Board to Admas University —
-            Software Engineering graduate with <strong style={{ color: '#F59E0B' }}>Very Great Distinction</strong>,
-            along with verified technical and leadership competencies.
+
+          <p className="certs-subtitle">
+            Authenticated academic milestones from Somaliland National Examination Board to{' '}
+            <strong className="c-hl-blue">Admas University (Class of 2026)</strong> —{' '}
+            <strong className="c-hl-cyan">B.Sc. Software Engineering</strong> graduate honored with{' '}
+            <strong className="c-hl-gold">Very Great Distinction</strong>, a top-tier{' '}
+            <strong className="c-hl-emerald">Major GPA of 3.96 / 4.0</strong>, 
+            and official Presidential Merit Recognition.
           </p>
+
+          {/* Quick Honors Micro-Badges */}
+          <div className="certs-header-pills">
+            <span className="ch-pill ch-pill-gold">
+              <FiAward className="ch-icon" /> Merit Award Winner
+            </span>
+            <span className="ch-pill ch-pill-emerald">
+              <FiStar className="ch-icon" /> Very Great Distinction (3.96 GPA)
+            </span>
+            <span className="ch-pill ch-pill-cyan">
+              <FiShield className="ch-icon" /> B.Sc. Software Engineering
+            </span>
+            <span className="ch-pill ch-pill-violet">
+              <FiCheckCircle className="ch-icon" /> 100% Verified Scans
+            </span>
+          </div>
         </div>
 
         {/* ── Meta Bar ── */}
