@@ -349,6 +349,52 @@
   box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
 }
 
+/* ── Nav Auto Tour Button ── */
+.nav-tour-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: 20px;
+  color: #38BDF8;
+  font-family: var(--font-code, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.15);
+}
+
+.nav-tour-btn:hover {
+  background: rgba(6, 182, 212, 0.22);
+  border-color: #06B6D4;
+  color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+  transform: translateY(-1px);
+}
+
+.ntb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #06B6D4;
+  box-shadow: 0 0 8px #06B6D4;
+  animation: ntbPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes ntbPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+.ntb-icon {
+  font-size: 0.75rem;
+}
+
 /* ══════════════════════════════════════
    GET STARTED — Ultra Premium Single CTA
 ══════════════════════════════════════ */

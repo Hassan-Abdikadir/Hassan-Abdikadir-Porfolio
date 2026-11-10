@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
-import { FiVolume2, FiVolumeX, FiUser, FiLogOut, FiMenu, FiX, FiArrowRight, FiChevronDown, FiZap } from 'react-icons/fi'
+import { FiVolume2, FiVolumeX, FiUser, FiLogOut, FiMenu, FiX, FiArrowRight, FiChevronDown, FiZap, FiPlay } from 'react-icons/fi'
 import ThemeToggle from '../common/ThemeToggle'
 import RoleSwitcher from '../common/RoleSwitcher'
 import LanguageSwitcher from '../common/LanguageSwitcher'
 import ThemePaletteSwitcher from '../common/ThemePaletteSwitcher'
 import './Navbar.css'
 
-export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume, soundEnabled, toggleSound, activeRole, setRole, lang, switchLang, t, onOpenAuth, user, isLoggedIn, logout }) {
+export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume, soundEnabled, toggleSound, activeRole, setRole, lang, switchLang, t, onOpenAuth, onStartTour, user, isLoggedIn, logout }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false)
@@ -75,6 +75,17 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
               data-hover
             >
               {soundEnabled ? <FiVolume2 style={{ color: '#10B981' }} /> : <FiVolumeX style={{ color: '#9CA3AF' }} />}
+            </button>
+
+            <button
+              className="nav-tour-btn"
+              onClick={onStartTour}
+              title="Launch 1-Minute Automated Interactive Showcase Tour"
+              data-hover
+            >
+              <span className="ntb-dot" />
+              <FiPlay className="ntb-icon" />
+              <span>Auto Tour</span>
             </button>
 
             {isLoggedIn ? (
@@ -214,6 +225,14 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
             </div>
             {!isLoggedIn ? (
               <div className="mobile-auth-row">
+                <button
+                  className="btn-outline mobile-tour-btn"
+                  onClick={() => { setMobileOpen(false); onStartTour(); }}
+                  style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '10px 16px', borderRadius: '14px', width: '100%', marginBottom: '8px', color: '#06B6D4', borderColor: 'rgba(6,182,212,0.4)', background: 'rgba(6,182,212,0.1)' }}
+                >
+                  <FiPlay />
+                  <span>▶ Launch 1-Min Auto Tour</span>
+                </button>
                 <button
                   className="btn-get-started mobile-gs-btn"
                   onClick={() => { setMobileOpen(false); onOpenAuth('login'); }}

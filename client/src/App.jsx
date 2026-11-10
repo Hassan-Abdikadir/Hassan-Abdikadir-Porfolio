@@ -26,6 +26,7 @@ import AuthModal from './features/auth/AuthModal'
 import AdminModal from './features/auth/AdminModal'
 import TerminalOverlay from './sections/terminal/TerminalOverlay'
 import ScrollProgress from './components/layout/ScrollProgress'
+import AutoDemoTour from './components/common/AutoDemoTour'
 import { useAuth } from './features/auth/useAuth'
 
 import { usePortfolioData } from './hooks/usePortfolioData'
@@ -43,6 +44,7 @@ function App() {
   const followerRef = useRef(null)
   const [activeSection, setActiveSection] = useState('home')
   const [resumeOpen, setResumeOpen] = useState(false)
+  const [tourOpen, setTourOpen] = useState(false)
   const [adminOpen, setAdminOpen] = useState(false)
   const [authOpen, setAuthOpen] = useState(false)
   const [terminalOverlayOpen, setTerminalOverlayOpen] = useState(false)
@@ -179,6 +181,7 @@ function App() {
         t={t}
         onOpenAuth={(mode) => { setAuthMode(mode || 'login'); setAuthOpen(true); }}
         onOpenTerminal={() => setTerminalOverlayOpen(true)}
+        onStartTour={() => setTourOpen(true)}
         user={user}
         isLoggedIn={isLoggedIn}
         logout={logout}
@@ -189,6 +192,7 @@ function App() {
           developer={developer}
           metrics={metrics}
           onOpenResume={() => setResumeOpen(true)}
+          onStartTour={() => setTourOpen(true)}
           t={t}
           lang={lang}
         />
@@ -233,6 +237,10 @@ function App() {
         onClose={() => setAuthOpen(false)}
         initialMode={authMode}
       />
+
+      {tourOpen && (
+        <AutoDemoTour onClose={() => setTourOpen(false)} />
+      )}
 
       <ToastContainer
         position="bottom-right"

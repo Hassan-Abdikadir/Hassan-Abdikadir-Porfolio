@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { TypeAnimation } from 'react-type-animation'
-import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiExternalLink, FiFileText } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiExternalLink, FiFileText, FiPlay } from 'react-icons/fi'
 import { SiMongodb, SiReact, SiNodedotjs, SiPython, SiKaggle, SiDevdotto, SiLeetcode, SiStackoverflow, SiMedium, SiDiscord, SiFacebook, SiWhatsapp, SiInstagram, SiTiktok, SiTelegram, SiX, SiYoutube, SiReddit } from 'react-icons/si'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
@@ -14,7 +14,7 @@ const techOrbitItems = [
   { icon: <SiPython />, color: '#3776AB', label: 'Python' },
 ]
 
-export default function Hero({ developer, metrics = [], onOpenResume, t, lang }) {
+export default function Hero({ developer, metrics = [], onOpenResume, onStartTour, t, lang }) {
   const { ref, inView } = useInView({ threshold: 0.01, triggerOnce: true })
   const canvasRef = useRef(null)
 
@@ -150,6 +150,16 @@ export default function Hero({ developer, metrics = [], onOpenResume, t, lang })
           </div>
 
           <div className="hero-actions">
+            <button
+              className="btn-auto-tour"
+              onClick={onStartTour}
+              data-hover
+              title="Take an automated 1-minute guided interactive showcase tour of Hassan's portfolio"
+            >
+              <span className="bat-dot" />
+              <FiPlay className="bat-icon" />
+              <span>{lang === 'so' ? '1-Min Auto Demo' : '1-Min Auto Demo Tour'}</span>
+            </button>
             <button
               className="btn-primary"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}

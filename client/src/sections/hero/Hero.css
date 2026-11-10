@@ -527,3 +527,49 @@
     font-size: 1.8rem;
   }
 }
+
+
+/* ── Auto Tour Hero Button ── */
+.btn-auto-tour {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.18) 0%, rgba(59, 130, 246, 0.22) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.55);
+  border-radius: 30px;
+  color: #38BDF8;
+  font-family: var(--font-main, sans-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-auto-tour:hover {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.35) 0%, rgba(59, 130, 246, 0.35) 100%);
+  border-color: #06B6D4;
+  color: #FFFFFF;
+  box-shadow: 0 6px 30px rgba(6, 182, 212, 0.5);
+  transform: translateY(-2px);
+}
+
+.bat-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #06B6D4;
+  box-shadow: 0 0 10px #06B6D4;
+  animation: batPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes batPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(0.65); }
+}
+
+.bat-play-icon {
+  font-size: 0.95rem;
+}
