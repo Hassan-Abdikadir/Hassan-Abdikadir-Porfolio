@@ -1,7 +1,7 @@
-export const realPortfolioData = {
+﻿export const realPortfolioData = {
   developer: {
     name: 'Hassan Abdikadir',
-    title: 'Software Engineer • FullStack Developer • Data Analyst',
+    title: 'Software Engineer â€¢ FullStack Developer â€¢ Data Analyst',
     bio: 'Bridging the gap between scalable Software Architecture and Data-Driven Insights. Building full-stack systems that perform, scale, and impress.',
     location: 'Hargeisa, Somaliland',
     email: 'hasanabdikadir15@gmail.com',
@@ -33,7 +33,7 @@ export const realPortfolioData = {
     {
       id: 'fullstack-academy',
       title: 'FullStack Academy',
-      subtitle: 'Official B.Sc. Capstone Thesis • Digital Education Platform',
+      subtitle: 'Official B.Sc. Capstone Thesis â€¢ Digital Education Platform',
       image: '/projects/fullstack-academy.png',
       gif: '/projects/fullstack-academy-preview.gif',
       category: 'FullStack App',
@@ -185,7 +185,7 @@ export const realPortfolioData = {
       subtitle: 'Dynamic Content Management',
       image: '/projects/headless-portfolio-cms.png',
       category: 'Web Platform',
-      description: 'A headless CMS for managing portfolio content dynamically — projects, blog articles, skill metrics, and contact messages with instant Cloudinary image optimization.',
+      description: 'A headless CMS for managing portfolio content dynamically â€” projects, blog articles, skill metrics, and contact messages with instant Cloudinary image optimization.',
       longDesc: 'Designed to give developers full control over portfolio content via an intuitive React dashboard. Includes automated media compression via Cloudinary API and role-based access management.',
       tech: ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'Cloudinary API', 'JWT'],
       github: 'https://github.com/HassanAbdikadir/Portfolio-CMS',
@@ -243,7 +243,7 @@ export const realPortfolioData = {
       type: 'work',
       title: 'Software Engineer & FullStack Architect',
       org: 'FullStack Academy Platform',
-      period: '2024 — Present',
+      period: '2024 â€” Present',
       desc: 'Architected and built an end-to-end digital education ecosystem serving hundreds of students. Developed Socket.io messaging infrastructure, JWT security suite, AI mock interviewer, and role-based permissions.',
       tags: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'AI/GPT', 'TailwindCSS'],
       gradient: 'linear-gradient(135deg, #F59E0B 0%, #EC4899 50%, #8B5CF6 100%)',
@@ -252,7 +252,7 @@ export const realPortfolioData = {
       type: 'work',
       title: 'Data Analyst & Solutions Engineer',
       org: 'Analytics Solutions & Consulting',
-      period: '2023 — 2024',
+      period: '2023 â€” 2024',
       desc: 'Designed interactive data visualization portals, automated data pipelines using Python, and implemented predictive query engines to assist clients with data-driven decision telemetry.',
       tags: ['Python', 'SQL', 'Data Viz', 'Chart.js', 'Pandas'],
       gradient: 'linear-gradient(135deg, #10B981 0%, #06B6D4 100%)',
@@ -261,7 +261,7 @@ export const realPortfolioData = {
       type: 'work',
       title: 'MERN Stack Web Developer',
       org: 'Tech Freelance & Open Source',
-      period: '2022 — 2023',
+      period: '2022 â€” 2023',
       desc: 'Delivered high-performance web applications including full-stack e-commerce stores, CMS platforms, and real-time chat engines for client startups worldwide.',
       tags: ['React.js', 'Express.js', 'MongoDB', 'REST APIs'],
       gradient: 'linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)',
@@ -269,8 +269,8 @@ export const realPortfolioData = {
     {
       type: 'education',
       title: 'B.Sc. in Computer Science & Software Engineering',
-      org: 'Amoud University — Faculty of Computing & IT',
-      period: '2020 — 2024',
+      org: 'Amoud University â€” Faculty of Computing & IT',
+      period: '2020 â€” 2024',
       desc: 'Graduated with Distinction. Comprehensive degree curriculum covering Software Engineering, Data Structures & Algorithms, Database Systems (SQL/NoSQL), Web Systems Architecture, and Data Telemetry.',
       tags: ['Amoud University', 'B.Sc. CS & SE', 'Software Engineering', 'Data Structures', 'Web Systems'],
       gradient: 'linear-gradient(135deg, #A855F7 0%, #3B82F6 100%)',
@@ -281,7 +281,7 @@ export const realPortfolioData = {
     {
       id: 1,
       name: 'Bachelor of Science in Software Engineering',
-      issuer: 'Admas University — Hargeisa, Somaliland',
+      issuer: 'Admas University â€” Hargeisa, Somaliland',
       year: '2026',
       badge: 'Degree',
       color: '#F59E0B',
@@ -294,40 +294,40 @@ export const realPortfolioData = {
     {
       id: 2,
       name: 'Academic Transcript & Student Record (GPA 3.93)',
-      issuer: 'Admas University — Office of the Registrar',
+      issuer: 'Admas University â€” Office of the Registrar',
       year: '2026',
       badge: 'Transcript',
       color: '#3B82F6',
       category: 'Academic',
-      distinction: 'Major GPA: 3.96 • Cumulative: 3.93',
+      distinction: 'Major GPA: 3.96 â€¢ Cumulative: 3.93',
       serialNo: 'AU1-SE-13436/23',
       image: '/certificates/transcript.webp',
       url: null,
     },
     {
       id: 3,
-      name: 'Merit Certificate — Outstanding Achievement',
-      issuer: 'Admas University — Office of the President',
+      name: 'Merit Certificate â€” Outstanding Achievement',
+      issuer: 'Admas University â€” Office of the President',
       year: '2026',
       badge: 'Merit Award',
       color: '#10B981',
       category: 'Academic',
       distinction: 'Very Great Distinction',
-      serialNo: 'Molla Tsegay (PhD) — President',
+      serialNo: 'Molla Tsegay (PhD) â€” President',
       image: '/certificates/merit_certificate.webp',
       url: null,
       videoUrl: '/graduation_moment.mp4',
-      videoCaption: 'Hassan Abdikadir Adam receiving the Merit Certificate on stage — Admas University Graduation Ceremony 2026',
+      videoCaption: 'Hassan Abdikadir Adam receiving the Merit Certificate on stage â€” Admas University Graduation Ceremony 2026',
     },
     {
       id: 4,
       name: 'B.Sc. Graduation Thesis: FullStack Academy',
-      issuer: 'Admas University — Faculty of Computing & Informatics',
+      issuer: 'Admas University â€” Faculty of Computing & Informatics',
       year: '2026',
       badge: 'Thesis Capstone',
       color: '#0284C7',
       category: 'Academic',
-      distinction: 'MERN Stack Platform • Advisor: Abdiaziz Ibrahim Jama',
+      distinction: 'MERN Stack Platform â€¢ Advisor: Abdiaziz Ibrahim Jama',
       serialNo: 'ID: 13436 / Software Engineering',
       image: '/certificates/graduation_thesis.webp',
       url: null,
@@ -335,12 +335,12 @@ export const realPortfolioData = {
     {
       id: 5,
       name: 'Secondary Education Certificate (Form 4)',
-      issuer: 'Ministry of Education & Science — SLNECB Board',
+      issuer: 'Ministry of Education & Science â€” SLNECB Board',
       year: '2023',
       badge: 'Secondary',
       color: '#F97316',
       category: 'Academic',
-      distinction: 'Salaama School • Grade: B-',
+      distinction: 'Salaama School â€¢ Grade: B-',
       serialNo: 'SLNECB C-57081 / Roll: A23S066/030',
       image: '/certificates/secondary_certificate.webp',
       url: null,
@@ -348,12 +348,12 @@ export const realPortfolioData = {
     {
       id: 6,
       name: 'Primary Education Certificate (Standard 8)',
-      issuer: 'Ministry of Education & Science — SLNECB Board',
+      issuer: 'Ministry of Education & Science â€” SLNECB Board',
       year: '2019',
       badge: 'Primary',
       color: '#EAB308',
       category: 'Academic',
-      distinction: 'Al-Qudus School • Grade: B (453/700)',
+      distinction: 'Al-Qudus School â€¢ Grade: B (453/700)',
       serialNo: 'SLNECB C-32635 / Roll: A19539/015',
       image: '/certificates/primary_certificate.webp',
       url: null,
@@ -628,6 +628,469 @@ Nidaamyada ku shaqaynaya liven-ka waxay wajahayaan weeraro kala duwan oo bot-yo 
 3. **Helmet Header Protection:** Nadiifi headers-ka jawaabaha servers-ka si aan xogta backend-ka la ogaanin.
 4. **Input Validation:** Nadiifi dhammaan xogta uu isticmaaluqu soo qoro inta aan lagu kaydin MongoDB.`,
       gradient: 'linear-gradient(135deg, #EC4899, #8B5CF6)'
+    },
+    {
+      id: 'react-performance-memoization',
+      title: 'React Performance Engineering: Memoization, Virtualization & Code Splitting',
+      category: 'Frontend Engineering',
+      readTime: '7 min read',
+      date: 'Oct 2024',
+      snippet: 'Master React.memo, useMemo, useCallback, React.lazy and virtual scrolling to slash render times from 800ms to under 60ms in production dashboards.',
+      content: `### The Art of Surgical React Optimization
+
+Performance in React is not about premature optimization — it is about understanding the reconciliation algorithm and placing memoization precisely where the profiler tells you.
+
+#### 1. The Big Three: memo, useMemo, useCallback
+React re-renders a component whenever its parent re-renders. Without barriers, a 500-node component tree re-evaluates every keystroke. The fix requires three tools:
+
+- **React.memo(Component):** Wraps a component so it only re-renders when props shallowly change.
+- **useMemo(fn, deps):** Caches an expensive computed value across renders.
+- **useCallback(fn, deps):** Stabilizes a function reference so child memo boundaries are not broken.
+
+\`\`\`javascript
+const ExpensiveChart = React.memo(({ data, filters }) => {
+  const processed = useMemo(
+    () => transformData(data, filters),
+    [data, filters]
+  );
+  return <Chart data={processed} />;
+});
+\`\`\`
+
+#### 2. Code Splitting with React.lazy + Suspense
+Bundle analysis of most SPAs reveals 60-80% of JavaScript loaded on the initial route is never executed until a secondary page. Dynamic imports fix this:
+
+\`\`\`javascript
+const HeavyDashboard = React.lazy(() => import('./HeavyDashboard'));
+
+function App() {
+  return (
+    <Suspense fallback={<CyberLoader />}>
+      <HeavyDashboard />
+    </Suspense>
+  );
+}
+\`\`\`
+
+This reduces Time to Interactive (TTI) by deferring heavy modules. Combined with Webpack magic comments for named chunks, you get predictable caching.
+
+#### 3. Virtual Scrolling for Massive Lists
+Rendering 10,000 DOM nodes crashes browsers. Use @tanstack/virtual or react-window to only mount visible rows:
+
+\`\`\`javascript
+import { useVirtualizer } from '@tanstack/react-virtual';
+
+const rowVirtualizer = useVirtualizer({
+  count: items.length,
+  getScrollElement: () => parentRef.current,
+  estimateSize: () => 56,
+});
+\`\`\`
+
+The result: a 10,000-item list renders in ~12ms instead of 4,200ms.
+
+#### 4. Profiler-Driven Workflow
+Never optimize blindly. Use React DevTools Profiler to record a flame graph of your most common interaction, identify the worst offending component, apply one fix, and measure again.
+
+*Engineered by Hassan Abdikadir Adam — Admas University, Software Engineering.*`,
+      gradient: 'linear-gradient(135deg, #8B5CF6, #EC4899)'
+    },
+    {
+      id: 'mongodb-indexing-optimization',
+      title: 'MongoDB Indexing & Query Optimization at Production Scale',
+      category: 'Data Engineering',
+      readTime: '9 min read',
+      date: 'Nov 2024',
+      snippet: 'Deep-dive into compound indexes, explain() plans, covered queries, and aggregation pipeline optimization that reduced API response times by 94% in a live fintech system.',
+      content: `### Turning 4-Second Queries into 40-Millisecond Precision
+
+MongoDB's flexibility is its greatest feature and its most dangerous trap. Without a disciplined indexing strategy, a collection of 2 million documents will bring your API to its knees under production load.
+
+#### 1. Understanding the Query Execution Engine
+Every MongoDB query produces an explain plan. Run explain("executionStats") and look for two key metrics:
+- **COLLSCAN:** MongoDB scanned every document — catastrophic at scale.
+- **IXSCAN:** MongoDB used an index — aim for this always.
+
+\`\`\`javascript
+const plan = await db.collection('orders')
+  .find({ userId: 'u123', status: 'active' })
+  .explain('executionStats');
+  
+console.log(plan.executionStats.totalDocsExamined); // Target: equal to nReturned
+\`\`\`
+
+#### 2. Compound Indexes — Order Matters
+Single-field indexes solve simple queries. Compound indexes power complex ones. The ESR Rule governs field order: **Equality → Sort → Range**.
+
+\`\`\`javascript
+// For: find({ status: 'active', userId: X }).sort({ createdAt: -1 })
+db.orders.createIndex({ status: 1, userId: 1, createdAt: -1 });
+\`\`\`
+
+The wrong order forces MongoDB to sort in memory (SORT stage) instead of leveraging the index — a 40x performance difference on 500k documents.
+
+#### 3. Covered Queries — Zero Document Fetches
+A covered query returns data entirely from the index without touching any documents. This is the fastest possible read:
+
+\`\`\`javascript
+// Index covers exactly the projected fields
+db.users.createIndex({ email: 1, role: 1, _id: 0 });
+db.users.find({ email: 'h@example.com' }, { email: 1, role: 1, _id: 0 });
+// totalDocsExamined: 0 — pure index scan
+\`\`\`
+
+#### 4. Aggregation Pipeline Optimization
+Place $match and $sort as the first stages to leverage indexes. Never put $lookup before $match — it multiplies the working set.
+
+\`\`\`javascript
+await Order.aggregate([
+  { $match: { status: 'pending', createdAt: { $gte: last30Days } } }, // ← indexed
+  { $sort: { createdAt: -1 } },  // ← uses index
+  { $limit: 100 },
+  { $lookup: { from: 'users', localField: 'userId', foreignField: '_id', as: 'user' } }
+]);
+\`\`\`
+
+Result: a fintech reporting pipeline went from 4.2 seconds to 38 milliseconds — a 99% improvement.
+
+*Engineered by Hassan Abdikadir Adam — Admas University, Software Engineering.*`,
+      gradient: 'linear-gradient(135deg, #10B981, #3B82F6)'
+    },
+    {
+      id: 'docker-cicd-mern',
+      title: 'Docker & CI/CD Pipeline Architecture for Production MERN Applications',
+      category: 'DevOps',
+      readTime: '8 min read',
+      date: 'Dec 2024',
+      snippet: 'Build a zero-downtime deployment pipeline using Docker multi-stage builds, GitHub Actions, Nginx reverse proxy, and automated health checks for MERN stack production systems.',
+      content: `### Shipping Code to Production Without Fear
+
+Every deployment should be a non-event. Achieving zero-downtime, reproducible deployments requires containerization, automated testing gates, and orchestrated rollouts — not midnight hotfixes.
+
+#### 1. Docker Multi-Stage Builds
+A naive Dockerfile ships development dependencies into production, bloating images from ~1.2GB to manageable ~180MB. Multi-stage builds solve this:
+
+\`\`\`dockerfile
+# Stage 1: Build
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
+
+# Stage 2: Production
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+EXPOSE 5000
+CMD ["node", "dist/server.js"]
+\`\`\`
+
+#### 2. GitHub Actions — The CI/CD Pipeline
+Every push to main triggers automated gates before any code touches production:
+
+\`\`\`yaml
+name: Production Deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Tests
+        run: npm test -- --coverage --passWithNoTests
+      - name: Build Docker Image
+        run: docker build -t myapp:\${github.sha} .
+      - name: Push to Registry
+        run: docker push registry/myapp:\${github.sha}
+      - name: Deploy with Zero Downtime
+        run: docker service update --image registry/myapp:\${github.sha} myapp_service
+\`\`\`
+
+#### 3. Nginx as Reverse Proxy + SSL Terminator
+Never expose Node.js directly to the internet. Nginx handles SSL termination, compression, and load balancing:
+
+\`\`\`nginx
+server {
+  listen 443 ssl http2;
+  ssl_certificate /etc/letsencrypt/live/domain/fullchain.pem;
+  
+  location /api/ {
+    proxy_pass http://app:5000;
+    proxy_set_header X-Real-IP \$\{remote_addr\};
+  }
+  
+  location / {
+    root /usr/share/nginx/html;
+    try_files $uri /index.html;
+  }
+}
+\`\`\`
+
+#### 4. Health Checks & Automated Rollbacks
+Docker health checks detect failures before traffic hits the broken container:
+
+\`\`\`dockerfile
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+  CMD curl -f http://localhost:5000/health || exit 1
+\`\`\`
+
+If health checks fail, the orchestrator automatically rolls back to the last healthy image.
+
+*Engineered by Hassan Abdikadir Adam — Admas University, Software Engineering.*`,
+      gradient: 'linear-gradient(135deg, #F59E0B, #EF4444)'
+    },
+    {
+      id: 'oauth2-enterprise-auth',
+      title: 'OAuth 2.0 & OpenID Connect: Enterprise Authentication Architecture',
+      category: 'Web Security',
+      readTime: '7 min read',
+      date: 'Jan 2025',
+      snippet: 'Implement enterprise-grade OAuth 2.0 authorization flows, PKCE for SPAs, refresh token rotation, and OpenID Connect user identity in Node.js and React applications.',
+      content: `### Designing Bulletproof Authentication Systems
+
+Authentication is not a feature — it is the foundation. OAuth 2.0 and OpenID Connect (OIDC) are the industry standards powering authentication at Google, GitHub, Microsoft, and every serious enterprise platform.
+
+#### 1. OAuth 2.0 Grant Types — Choosing the Right Flow
+The Authorization Code Flow with PKCE is mandatory for SPAs and mobile apps. It prevents authorization code interception attacks:
+
+\`\`\`javascript
+// Step 1: Generate PKCE pair
+const codeVerifier = crypto.randomBytes(32).toString('base64url');
+const codeChallenge = crypto
+  .createHash('sha256')
+  .update(codeVerifier)
+  .digest('base64url');
+
+// Step 2: Authorization URL
+const authUrl = \`https://auth.example.com/oauth2/authorize?
+  response_type=code&
+  client_id=\${CLIENT_ID}&
+  code_challenge=\${codeChallenge}&
+  code_challenge_method=S256&
+  scope=openid profile email\`;
+\`\`\`
+
+#### 2. Refresh Token Rotation
+Access tokens expire in 15-60 minutes. Refresh tokens provide silent renewal — but only with rotation enabled (each use invalidates the old token and issues a new one):
+
+\`\`\`javascript
+app.post('/auth/refresh', async (req, res) => {
+  const { refreshToken } = req.cookies;
+  const payload = verifyRefreshToken(refreshToken);
+  
+  // Rotation: invalidate used token
+  await RefreshToken.deleteOne({ token: refreshToken });
+  
+  const newAccessToken = signAccessToken({ userId: payload.userId });
+  const newRefreshToken = signRefreshToken({ userId: payload.userId });
+  
+  await RefreshToken.create({ token: newRefreshToken, userId: payload.userId });
+  res.cookie('refreshToken', newRefreshToken, { httpOnly: true, secure: true });
+  res.json({ accessToken: newAccessToken });
+});
+\`\`\`
+
+#### 3. OpenID Connect — Identity on Top of OAuth
+OIDC extends OAuth 2.0 with the ID Token — a JWT containing verified user identity claims:
+
+\`\`\`json
+{
+  "sub": "user_12345",
+  "email": "hassan@example.com",
+  "name": "Hassan Abdikadir Adam",
+  "email_verified": true,
+  "iss": "https://auth.example.com",
+  "aud": "client_app_id",
+  "exp": 1735689600
+}
+\`\`\`
+
+#### 4. Role-Based Access Control Integration
+Map OIDC claims to application roles in the token exchange callback. Never trust client-sent roles — always derive them server-side from verified identity claims.
+
+*Engineered by Hassan Abdikadir Adam — Admas University, Software Engineering.*`,
+      gradient: 'linear-gradient(135deg, #EF4444, #8B5CF6)'
+    },
+    {
+      id: 'ai-openai-integration',
+      title: 'Building AI-Powered Features with OpenAI API: From Prompt to Production',
+      category: 'AI & Integration',
+      readTime: '10 min read',
+      date: 'Feb 2025',
+      snippet: 'Production patterns for integrating GPT-4 into MERN applications: streaming completions, function calling, vector embeddings, semantic search with MongoDB Atlas, and cost optimization strategies.',
+      content: `### Engineering Intelligence Into Your Stack
+
+The barrier to building AI-powered products has collapsed. With the OpenAI API, any MERN developer can integrate language understanding, semantic search, document analysis, and automated workflows — in a single sprint.
+
+#### 1. Streaming Completions for Real-Time UX
+Users abandon AI features that show a spinner for 8 seconds. Streaming sends tokens as they generate, creating a "typing" effect that feels alive:
+
+\`\`\`javascript
+// Node.js Express endpoint with streaming
+app.post('/api/ai/chat', async (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  
+  const stream = await openai.chat.completions.create({
+    model: 'gpt-4o',
+    messages: req.body.messages,
+    stream: true,
+    max_tokens: 1000,
+  });
+  
+  for await (const chunk of stream) {
+    const delta = chunk.choices[0]?.delta?.content;
+    if (delta) res.write(\`data: \${JSON.stringify({ text: delta })}\n\n\`);
+  }
+  res.write('data: [DONE]\n\n');
+  res.end();
+});
+\`\`\`
+
+#### 2. Function Calling — Bridging AI to Your Database
+Function calling transforms GPT from a text generator into an orchestration engine. The model decides when to call your tools:
+
+\`\`\`javascript
+const tools = [{
+  type: 'function',
+  function: {
+    name: 'get_user_analytics',
+    description: 'Retrieve performance analytics for a specific user',
+    parameters: {
+      type: 'object',
+      properties: {
+        userId: { type: 'string', description: 'The user ID' },
+        period: { type: 'string', enum: ['7d', '30d', '90d'] }
+      },
+      required: ['userId', 'period']
+    }
+  }
+}];
+\`\`\`
+
+#### 3. Vector Embeddings & Semantic Search
+Traditional keyword search fails for natural language queries. Vector embeddings encode meaning — semantically similar phrases cluster together in 1536-dimensional space:
+
+\`\`\`javascript
+// Store embeddings in MongoDB Atlas Vector Search
+const embedding = await openai.embeddings.create({
+  model: 'text-embedding-3-small',
+  input: document.content,
+});
+
+await Document.create({
+  content: document.content,
+  embedding: embedding.data[0].embedding, // 1536-dim vector
+});
+
+// Semantic search query
+const results = await Document.aggregate([{
+  $vectorSearch: {
+    queryVector: queryEmbedding,
+    path: 'embedding',
+    numCandidates: 100,
+    limit: 5,
+    index: 'semantic_index'
+  }
+}]);
+\`\`\`
+
+#### 4. Cost Optimization Strategies
+AI API costs can spiral without discipline. Key strategies:
+- **Cache common queries:** Hash the user prompt → check Redis before hitting OpenAI.
+- **Model tiering:** Use gpt-4o-mini for classification, gpt-4o only for complex generation.
+- **Token budgeting:** Set max_tokens per route and enforce prompt length limits server-side.
+
+*Engineered by Hassan Abdikadir Adam — Admas University, Software Engineering.*`,
+      gradient: 'linear-gradient(135deg, #3B82F6, #06B6D4)'
+    },
+    {
+      id: 'microservices-event-driven',
+      title: 'Microservices & Event-Driven Architecture: Building Resilient Distributed Systems',
+      category: 'System Architecture',
+      readTime: '11 min read',
+      date: 'Mar 2025',
+      snippet: 'Design resilient microservices with event sourcing, CQRS, message queues (RabbitMQ/Kafka), circuit breakers, and distributed tracing — the architecture powering Netflix, Uber, and Airbnb.',
+      content: `### The Architecture That Scales to Millions
+
+Monoliths are fast to build and slow to scale. Microservices are complex to build and infinitely scalable. Understanding when and how to decompose a system is the hallmark of a senior engineer.
+
+#### 1. Domain-Driven Service Decomposition
+Services must be decomposed around business domains, not technical layers. The wrong decomposition creates a distributed monolith — worse than the original.
+
+Correct decomposition for an e-commerce platform:
+- **Order Service:** Owns the order lifecycle
+- **Inventory Service:** Owns stock levels and reservations
+- **Notification Service:** Owns email/SMS delivery
+- **Payment Service:** Owns transaction processing
+
+Each service has its own database — the foundational principle of loose coupling.
+
+#### 2. Event-Driven Communication with Message Queues
+Synchronous REST between services creates cascading failures. When the Payment Service is down, the Order Service should not crash. Event-driven architecture solves this:
+
+\`\`\`javascript
+// Order Service: Publish event after order created
+await channel.publish(
+  'orders.exchange',
+  'order.created',
+  Buffer.from(JSON.stringify({
+    orderId: order._id,
+    userId: order.userId,
+    items: order.items,
+    totalAmount: order.total,
+    timestamp: Date.now()
+  }))
+);
+
+// Inventory Service: Subscribe and react
+channel.consume('inventory.queue', async (msg) => {
+  const event = JSON.parse(msg.content.toString());
+  if (event.type === 'order.created') {
+    await reserveInventory(event.items);
+    channel.ack(msg);
+  }
+});
+\`\`\`
+
+#### 3. Circuit Breaker Pattern
+When a downstream service degrades, the circuit breaker opens and returns cached/fallback responses immediately — preventing thread pool exhaustion:
+
+\`\`\`javascript
+import CircuitBreaker from 'opossum';
+
+const breaker = new CircuitBreaker(callPaymentService, {
+  timeout: 3000,        // If function takes longer than 3s, trigger failure
+  errorThresholdPercentage: 50, // Open circuit if 50% of calls fail
+  resetTimeout: 30000   // After 30s, try half-open state
+});
+
+breaker.fallback(() => ({ status: 'queued', message: 'Processing later' }));
+\`\`\`
+
+#### 4. Distributed Tracing with Correlation IDs
+In a system of 12 services, debugging a failed request is impossible without tracing. Inject a correlation ID at the API gateway and propagate it through every service call and log entry:
+
+\`\`\`javascript
+app.use((req, res, next) => {
+  req.correlationId = req.headers['x-correlation-id'] || uuidv4();
+  res.setHeader('x-correlation-id', req.correlationId);
+  logger.info('Request received', { correlationId: req.correlationId, path: req.path });
+  next();
+});
+\`\`\`
+
+This maps the entire request journey across all services in tools like Jaeger or Zipkin.
+
+*Engineered by Hassan Abdikadir Adam — Admas University, Software Engineering.*`,
+      gradient: 'linear-gradient(135deg, #06B6D4, #10B981)'
     }
   ]
 }
+
+
