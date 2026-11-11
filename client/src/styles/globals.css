@@ -213,33 +213,50 @@ body {
    UTILITY CLASSES
 ================================================================ */
 .gradient-text {
-  background: var(--grad-hero);
+  background: linear-gradient(135deg, #06B6D4 0%, #3B82F6 25%, #8B5CF6 50%, #EC4899 75%, #06B6D4 100%);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: cyberGradientFlow 6s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes cyberGradientFlow {
+  0%   { background-position: 0% 50%; filter: drop-shadow(0 0 16px rgba(6, 182, 212, 0.4)); }
+  50%  { background-position: 100% 50%; filter: drop-shadow(0 0 22px rgba(139, 92, 246, 0.5)); }
+  100% { background-position: 0% 50%; filter: drop-shadow(0 0 16px rgba(6, 182, 212, 0.4)); }
 }
 
 .gradient-text-flagship {
-  background: var(--grad-flagship);
+  background: linear-gradient(135deg, #F59E0B 0%, #EF4444 30%, #EC4899 65%, #8B5CF6 100%);
+  background-size: 250% 250%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: cyberGradientFlow 6s ease-in-out infinite;
+  display: inline-block;
 }
 
 .gradient-text-data {
-  background: var(--grad-data);
+  background: linear-gradient(135deg, #10B981 0%, #06B6D4 50%, #3B82F6 100%);
+  background-size: 250% 250%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: cyberGradientFlow 6s ease-in-out infinite;
+  display: inline-block;
 }
 
 .ocean-gradient-text {
-  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 40%, #00C6FF 70%, #3B82F6 100%);
+  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 35%, #00C6FF 70%, #3B82F6 100%);
+  background-size: 250% 250%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   white-space: nowrap;
   display: inline-block;
+  animation: cyberGradientFlow 7s ease-in-out infinite;
 }
 
 .glass-card {
@@ -311,26 +328,85 @@ body {
   transform: translateY(-2px);
 }
 
-.section-label {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-code);
-  font-size: 0.8rem; color: var(--cyan);
-  letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 16px;
+/* ── Unified Ultra-Premium Section Headers ────────────────────── */
+.section-header,
+.skills-header,
+.about-header,
+.exp-header,
+.t-header,
+.blog-header,
+.certs-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 42px;
+  position: relative;
+  z-index: 1;
 }
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-code, monospace);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding: 6px 18px;
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.28);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), inset 0 0 12px rgba(6, 182, 212, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-label:hover {
+  border-color: rgba(6, 182, 212, 0.6);
+  box-shadow: 0 0 28px rgba(6, 182, 212, 0.3), inset 0 0 16px rgba(6, 182, 212, 0.1);
+  transform: translateY(-2px);
+}
+
 .section-label::before {
-  content: '//'; color: var(--violet);
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #06b6d4;
+  box-shadow: 0 0 10px #06b6d4, 0 0 20px #06b6d4;
+  animation: unifiedPulseDot 1.8s ease-in-out infinite;
+}
+
+@keyframes unifiedPulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 8px #06b6d4, 0 0 16px #06b6d4; }
+  50%      { transform: scale(1.4); opacity: 0.4; box-shadow: 0 0 2px #06b6d4; }
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800; line-height: 1.2;
-  margin-bottom: 12px;
+  font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  color: #FFFFFF;
+  text-align: center;
+  max-width: 900px;
 }
 
 .section-subtitle {
-  color: var(--text-secondary);
-  font-size: 1.05rem; max-width: 600px;
+  color: #94a3b8;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 680px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .container {

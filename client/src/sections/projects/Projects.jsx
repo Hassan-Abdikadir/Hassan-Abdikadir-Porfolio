@@ -39,9 +39,9 @@ export default function Projects({ projects = [], t, lang }) {
       <div className="grid-bg" />
       <div className="container" ref={ref}>
         <div className={`section-header ${inView ? 'visible' : ''}`}>
-          <div className="section-label">{t?.projects?.label || 'my.projects'}</div>
+          <div className="section-label">featured.work</div>
           <h2 className="section-title">
-            {t?.projects?.title || 'Projects That Define Me'}
+            Flagship Systems &amp; <span className="gradient-text">Projects</span>
           </h2>
           <p className="section-subtitle">
             {t?.projects?.subtitle || 'Real-world production systems built with precision — from flagship education platforms to intelligent data engines.'}

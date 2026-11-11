@@ -30,17 +30,17 @@ export default function NexusArcadeSection() {
       <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
         
         {/* Section Header */}
-        <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
-          <div className="cyber-badge cyber-badge-cyan" style={{ padding: '0.45rem 1.25rem', fontSize: '0.85rem' }}>
-            <Sparkles size={16} /> 2026 UNPRECEDENTED CYBER SUITE
+        <div className="section-header">
+          <div className="section-label">
+            <Sparkles size={14} style={{ marginRight: '4px' }} /> 2026 UNPRECEDENTED CYBER SUITE
           </div>
 
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: '900', letterSpacing: '-1px', lineHeight: '1.1' }}>
-            NEXUS<span className="gradient-text">//</span>AI & DIGITAL TWIN LAB
+          <h2 className="section-title">
+            NEXUS // <span className="gradient-text">AI &amp; DIGITAL TWIN LAB</span>
           </h2>
 
-          <p style={{ color: '#94a3b8', maxWidth: '720px', fontSize: '1.05rem', lineHeight: '1.6' }}>
-            Experience an engineered digital twin trained on Hassan's experience, real-time satellite radar telemetry from Hargeisa, Somaliland, interactive CLI command sandboxes, RPG skill trees, and generative Web Audio synthesizers.
+          <p className="section-subtitle">
+            Experience an engineered digital twin trained on Hassan&apos;s experience, real-time satellite radar telemetry from Hargeisa, Somaliland, interactive CLI command sandboxes, RPG skill trees, and generative Web Audio synthesizers.
           </p>
 
           {/* Sub Navigation Switcher Pills */}

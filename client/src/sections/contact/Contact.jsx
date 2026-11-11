@@ -104,7 +104,7 @@ export default function Contact({ developer, t, lang }) {
         <div className={`section-header ${inView ? 'visible' : ''}`}>
           <div className="section-label">{t?.contact?.label || 'get.in.touch'}</div>
           <h2 className="section-title">
-            {t?.contact?.title || "Let's Build Something Great"}
+            Let&apos;s Build Something <span className="gradient-text">Great</span>
           </h2>
           <p className="section-subtitle">
             {t?.contact?.subtitle || 'Have a project in mind or want to discuss engineering opportunities? Hassan responds within 24 hours.'}

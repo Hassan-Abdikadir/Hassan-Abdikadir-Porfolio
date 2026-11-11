@@ -34,7 +34,7 @@ export default function About({ developer, t, lang }) {
         <div className={`about-header ${inView ? 'visible' : ''}`}>
           <div className="section-label">{t?.about?.label || 'about.me'}</div>
           <h2 className="section-title">
-            {t?.about?.title || 'The Tech Visionary Behind the Code'}
+            The Tech Visionary <span className="gradient-text">Behind the Code</span>
           </h2>
           <p className="section-subtitle">
             {t?.about?.subtitle || 'A multi-disciplinary technologist pushing boundaries across Software Engineering, FullStack MERN Systems, and Data Analytics.'}

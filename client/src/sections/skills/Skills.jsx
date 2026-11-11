@@ -62,7 +62,7 @@ export default function Skills({ skills = [], t, lang }) {
         <div className={`skills-header ${inView ? 'visible' : ''}`}>
           <div className="section-label">{t?.skills?.label || 'technical.matrix'}</div>
           <h2 className="section-title">
-            {t?.skills?.title || 'Skills & Tech Arsenal'}
+            Technical Mastery &amp; <span className="gradient-text">Capabilities</span>
           </h2>
           <p className="section-subtitle">
             {t?.skills?.subtitle || 'A living system of mastered technologies — from pixel-perfect frontends to distributed backends and data intelligence pipelines.'}
