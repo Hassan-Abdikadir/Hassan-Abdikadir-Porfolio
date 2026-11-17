@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { TypeAnimation } from 'react-type-animation'
-import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiExternalLink, FiFileText, FiPlay, FiAward, FiMapPin, FiPlus, FiMinus } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiExternalLink, FiFileText, FiPlay, FiAward, FiPlus, FiMinus, FiClock, FiLayers, FiZap } from 'react-icons/fi'
 import { SiMongodb, SiReact, SiNodedotjs, SiPython, SiJavascript, SiDocker, SiPostgresql, SiSocketdotio, SiKaggle, SiDevdotto, SiLeetcode, SiStackoverflow, SiMedium, SiDiscord, SiFacebook, SiWhatsapp, SiInstagram, SiTiktok, SiTelegram, SiX, SiYoutube, SiReddit } from 'react-icons/si'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
@@ -407,18 +407,6 @@ export default function Hero({ developer, metrics = [], onOpenResume, onStartTou
                   </div>
                 </div>
               </div>
-
-              <div className="flagship-tag glass-card chip-node">
-                <FiMapPin style={{ color: 'var(--cyan, #06B6D4)', fontSize: '1rem', flexShrink: 0 }} />
-                <div>
-                  <div style={{ fontWeight: 700, fontSize: '0.78rem', color: 'var(--text-primary)' }}>
-                    Hargeisa • GMT+3
-                  </div>
-                  <div style={{ color: 'var(--text-muted)', fontSize: '0.66rem', fontFamily: 'var(--font-code)' }}>
-                    Remote Ready Worldwide
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -428,15 +416,41 @@ export default function Hero({ developer, metrics = [], onOpenResume, onStartTou
       <div className="hero-stats">
         <div className="container">
           <div className="stats-grid">
-            {metrics.map((stat, i) => (
-              <div key={i} className="stat-item glass-card">
-                <div className="stat-value gradient-text">
-                  {inView && <CountUp end={stat.value} duration={2} delay={i * 0.2} />}
-                  <span>{stat.suffix}</span>
+            {metrics.map((stat, i) => {
+              const metaList = [
+                { icon: <FiClock />, tag: 'EXPERIENCE', sub: 'Production & Consulting', accent: '#06B6D4' },
+                { icon: <FiLayers />, tag: 'DELIVERED', sub: 'Full-Stack & Data Apps', accent: '#3B82F6' },
+                { icon: <FiAward />, tag: 'ENTERPRISE', sub: 'High-Scale Architectures', accent: '#F59E0B' },
+                { icon: <FiZap />, tag: 'COMMITMENT', sub: 'Clean Code & 3.96 GPA', accent: '#10B981' },
+              ]
+              const metaByKey = {
+                years_tech: metaList[0],
+                projects_built: metaList[1],
+                flagships: metaList[2],
+                passion: metaList[3],
+              }
+              const meta = metaByKey[stat.key] || metaList[i % metaList.length]
+              return (
+                <div key={i} className="stat-item glass-card" style={{ '--stat-accent': meta.accent }}>
+                  <div className="stat-top">
+                    <span className="stat-icon-box" style={{ color: meta.accent, borderColor: `${meta.accent}44`, background: `${meta.accent}14` }}>
+                      {meta.icon}
+                    </span>
+                    <span className="stat-tag font-code">
+                      <span className="stat-tag-dot" style={{ background: meta.accent }} />
+                      {meta.tag}
+                    </span>
+                  </div>
+                  <div className="stat-value gradient-text">
+                    {inView && <CountUp end={stat.value} duration={2} delay={i * 0.2} />}
+                    <span>{stat.suffix}</span>
+                  </div>
+                  <div className="stat-label">{stat.label}</div>
+                  <div className="stat-sub">{meta.sub}</div>
+                  <div className="stat-accent-bar" style={{ background: `linear-gradient(90deg, ${meta.accent}, transparent)` }} />
                 </div>
-                <div className="stat-label">{stat.label}</div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>

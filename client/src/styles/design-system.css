@@ -130,7 +130,7 @@ section + section {
 .hero {
   min-height: 100vh;
   padding-top: 140px;
-  padding-bottom: 80px;
+  padding-bottom: 105px !important;
   background:
     radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
     radial-gradient(ellipse 60% 50% at 80% 70%, rgba(112, 0, 255, 0.1) 0%, transparent 60%),
