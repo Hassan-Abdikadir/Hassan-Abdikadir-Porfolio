@@ -344,12 +344,28 @@ h1, h2, h3, h4, p {
     font-size: clamp(1.4rem, 7vw, 2rem) !important;
   }
   .orbit-container {
-    width: 210px !important;
-    height: 210px !important;
+    width: 240px !important;
+    height: 240px !important;
   }
+  .ring-1 {
+    width: 176px !important;
+    height: 176px !important;
+  }
+  .ring-2 {
+    width: 232px !important;
+    height: 232px !important;
+  }
+  .ring-1 .orbit-item:nth-child(1) { transform: rotate(0deg) translate(88px) rotate(0deg) !important; }
+  .ring-1 .orbit-item:nth-child(2) { transform: rotate(90deg) translate(88px) rotate(-90deg) !important; }
+  .ring-1 .orbit-item:nth-child(3) { transform: rotate(180deg) translate(88px) rotate(-180deg) !important; }
+  .ring-1 .orbit-item:nth-child(4) { transform: rotate(270deg) translate(88px) rotate(-270deg) !important; }
+  .ring-2 .orbit-item-outer:nth-child(1) { transform: rotate(45deg) translate(116px) rotate(-45deg) !important; }
+  .ring-2 .orbit-item-outer:nth-child(2) { transform: rotate(135deg) translate(116px) rotate(-135deg) !important; }
+  .ring-2 .orbit-item-outer:nth-child(3) { transform: rotate(225deg) translate(116px) rotate(-225deg) !important; }
+  .ring-2 .orbit-item-outer:nth-child(4) { transform: rotate(315deg) translate(116px) rotate(-315deg) !important; }
   .orbit-center {
-    width: 130px !important;
-    height: 130px !important;
+    width: 124px !important;
+    height: 124px !important;
   }
   .footer-socials {
     flex-wrap: wrap;

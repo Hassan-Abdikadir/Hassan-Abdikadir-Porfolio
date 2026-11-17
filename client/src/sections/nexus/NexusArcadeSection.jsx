@@ -26,8 +26,9 @@ export default function NexusArcadeSection() {
   };
 
   return (
-    <section id="nexus-arcade" className="section-container" style={{ padding: '5rem 1.5rem', background: 'radial-gradient(circle at 50% 10%, rgba(0, 240, 255, 0.08), rgba(112, 0, 255, 0.04) 40%, transparent 80%)' }}>
-      <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+    <section id="nexus-arcade" className="section nexus-arcade-section">
+      <div className="grid-bg" />
+      <div className="container" style={{ maxWidth: '1240px', display: 'flex', flexDirection: 'column', gap: '2.25rem', position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
         <div className="section-header">
@@ -44,18 +45,7 @@ export default function NexusArcadeSection() {
           </p>
 
           {/* Sub Navigation Switcher Pills */}
-          <div style={{
-            display: 'flex',
-            gap: '0.5rem',
-            marginTop: '1rem',
-            background: 'rgba(5, 10, 20, 0.8)',
-            padding: '0.45rem',
-            borderRadius: '16px',
-            border: '1px solid rgba(0, 240, 255, 0.25)',
-            boxShadow: '0 0 25px rgba(0, 240, 255, 0.1)',
-            flexWrap: 'wrap',
-            justifyContent: 'center'
-          }}>
+          <div className="nexus-sub-nav glass-card">
             {navs.map((n) => {
               const Icon = n.icon;
               const isActive = activeSub === n.id;
@@ -63,15 +53,11 @@ export default function NexusArcadeSection() {
                 <button
                   key={n.id}
                   onClick={() => handleSubSwitch(n.id)}
-                  className={`btn-cyber ${isActive ? '' : 'btn-cyber-pink'}`}
-                  style={{
-                    padding: '0.55rem 1.1rem',
-                    fontSize: '0.85rem',
-                    opacity: isActive ? 1 : 0.65,
-                    border: isActive ? '1px solid #00f0ff' : '1px solid transparent'
-                  }}
+                  className={`nexus-tab-btn ${isActive ? 'active' : ''}`}
+                  data-hover
                 >
-                  <Icon size={16} /> {n.label}
+                  <Icon size={16} />
+                  <span>{n.label}</span>
                 </button>
               );
             })}

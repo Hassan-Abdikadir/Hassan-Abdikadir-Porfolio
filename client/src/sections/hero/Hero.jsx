@@ -1,40 +1,69 @@
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { TypeAnimation } from 'react-type-animation'
-import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiExternalLink, FiFileText, FiPlay } from 'react-icons/fi'
-import { SiMongodb, SiReact, SiNodedotjs, SiPython, SiKaggle, SiDevdotto, SiLeetcode, SiStackoverflow, SiMedium, SiDiscord, SiFacebook, SiWhatsapp, SiInstagram, SiTiktok, SiTelegram, SiX, SiYoutube, SiReddit } from 'react-icons/si'
+import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiExternalLink, FiFileText, FiPlay, FiAward, FiMapPin, FiPlus, FiMinus } from 'react-icons/fi'
+import { SiMongodb, SiReact, SiNodedotjs, SiPython, SiJavascript, SiDocker, SiPostgresql, SiSocketdotio, SiKaggle, SiDevdotto, SiLeetcode, SiStackoverflow, SiMedium, SiDiscord, SiFacebook, SiWhatsapp, SiInstagram, SiTiktok, SiTelegram, SiX, SiYoutube, SiReddit } from 'react-icons/si'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
 import VoicePitchWidget from '../../components/ui/VoicePitchWidget'
 import './Hero.css'
 
-const techOrbitItems = [
-  { icon: <SiReact />, color: '#61DAFB', label: 'React' },
+const techOrbitInner = [
+  { icon: <SiReact />, color: '#61DAFB', label: 'React.js' },
   { icon: <SiNodedotjs />, color: '#339933', label: 'Node.js' },
   { icon: <SiMongodb />, color: '#47A248', label: 'MongoDB' },
   { icon: <SiPython />, color: '#3776AB', label: 'Python' },
 ]
 
+const techOrbitOuter = [
+  { icon: <SiJavascript />, color: '#F7DF1E', label: 'JavaScript ES6+' },
+  { icon: <SiDocker />, color: '#2496ED', label: 'Docker' },
+  { icon: <SiPostgresql />, color: '#38BDF8', label: 'PostgreSQL' },
+  { icon: <SiSocketdotio />, color: '#FFFFFF', label: 'Socket.io' },
+]
+
 export default function Hero({ developer, metrics = [], onOpenResume, onStartTour, t, lang }) {
   const { ref, inView } = useInView({ threshold: 0.01, triggerOnce: true })
   const canvasRef = useRef(null)
+  const heroSectionRef = useRef(null)
+  const [showAllSocials, setShowAllSocials] = useState(false)
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const canvas = canvasRef.current
+    const section = heroSectionRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
+    const mouse = { x: null, y: null }
+
+    const handleMouseMove = (e) => {
+      const rect = canvas.getBoundingClientRect()
+      mouse.x = e.clientX - rect.left
+      mouse.y = e.clientY - rect.top
+    }
+
+    const handleMouseLeave = () => {
+      mouse.x = null
+      mouse.y = null
+    }
+
+    if (section) {
+      section.addEventListener('mousemove', handleMouseMove, { passive: true })
+      section.addEventListener('mouseleave', handleMouseLeave)
+    }
+
     const particles = []
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 85; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        r: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.5 + 0.1,
-        color: Math.random() > 0.5 ? '#3B82F6' : '#8B5CF6'
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.6 + 0.6,
+        opacity: Math.random() * 0.5 + 0.15,
+        color: Math.random() > 0.5 ? '#06B6D4' : '#8B5CF6'
       })
     }
 
@@ -42,11 +71,32 @@ export default function Hero({ developer, metrics = [], onOpenResume, onStartTou
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy
+        // Subtle cursor attraction / repulsion physics
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = mouse.x - p.x
+          const dy = mouse.y - p.y
+          const mDist = Math.hypot(dx, dy)
+          if (mDist < 140 && mDist > 1) {
+            const force = (140 - mDist) / 140
+            if (mDist < 45) {
+              // Gentle repulsion right at cursor core
+              p.x -= (dx / mDist) * force * 0.8
+              p.y -= (dy / mDist) * force * 0.8
+            } else {
+              // Gentle attraction inside outer magnetic radius
+              p.x += (dx / mDist) * force * 0.35
+              p.y += (dy / mDist) * force * 0.35
+            }
+          }
+        }
+
+        p.x += p.vx
+        p.y += p.vy
         if (p.x < 0) p.x = canvas.width
         if (p.x > canvas.width) p.x = 0
         if (p.y < 0) p.y = canvas.height
         if (p.y > canvas.height) p.y = 0
+
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
         ctx.fillStyle = p.color
@@ -56,14 +106,28 @@ export default function Hero({ developer, metrics = [], onOpenResume, onStartTou
 
       ctx.globalAlpha = 1
       particles.forEach((p, i) => {
+        // Connect particle to cursor when within 140px
+        if (mouse.x !== null && mouse.y !== null) {
+          const mDist = Math.hypot(p.x - mouse.x, p.y - mouse.y)
+          if (mDist < 140) {
+            ctx.beginPath()
+            ctx.moveTo(p.x, p.y)
+            ctx.lineTo(mouse.x, mouse.y)
+            ctx.strokeStyle = `rgba(6, 182, 212, ${0.32 * (1 - mDist / 140)})`
+            ctx.lineWidth = 0.85
+            ctx.stroke()
+          }
+        }
+
+        // Connect neighboring particles
         particles.slice(i + 1).forEach(p2 => {
           const dist = Math.hypot(p.x - p2.x, p.y - p2.y)
-          if (dist < 100) {
+          if (dist < 105) {
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(59,130,246,${0.08 * (1 - dist / 100)})`
-            ctx.lineWidth = 0.5
+            ctx.strokeStyle = `rgba(139, 92, 246, ${0.09 * (1 - dist / 105)})`
+            ctx.lineWidth = 0.55
             ctx.stroke()
           }
         })
@@ -80,11 +144,50 @@ export default function Hero({ developer, metrics = [], onOpenResume, onStartTou
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
+      if (section) {
+        section.removeEventListener('mousemove', handleMouseMove)
+        section.removeEventListener('mouseleave', handleMouseLeave)
+      }
     }
   }, [])
 
+  const handleVisualMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const nx = (e.clientX - rect.left) / rect.width - 0.5
+    const ny = (e.clientY - rect.top) / rect.height - 0.5
+    setTilt({ x: +(ny * -14).toFixed(2), y: +(nx * 14).toFixed(2) })
+  }
+
+  const handleVisualMouseLeave = () => {
+    setTilt({ x: 0, y: 0 })
+  }
+
+  const primarySocials = [
+    { href: developer.github || 'https://github.com/HassanAbdikadir', icon: <FiGithub />, title: 'GitHub' },
+    { href: developer.linkedin || 'https://linkedin.com/in/hassanabdikadir', icon: <FiLinkedin />, title: 'LinkedIn' },
+    { href: developer.kaggle || 'https://www.kaggle.com/hassanabdikadir', icon: <SiKaggle />, title: 'Kaggle' },
+    { href: developer.leetcode || 'https://leetcode.com/u/hassan_abdikadir/', icon: <SiLeetcode />, title: 'LeetCode' },
+    { href: developer.whatsapp || 'https://wa.me/252636364115', icon: <SiWhatsapp />, title: 'WhatsApp' },
+    { href: `mailto:${developer.email || 'hasanabdikadir15@gmail.com'}`, icon: <FiMail />, title: 'Email', sameTab: true },
+  ]
+
+  const extraSocials = [
+    { href: developer.devto || 'https://dev.to/hassan-abdikadir', icon: <SiDevdotto />, title: 'Dev.to' },
+    { href: developer.stackoverflow || 'https://stackoverflow.com/users/33181258/hassan-abdikadir', icon: <SiStackoverflow />, title: 'Stack Overflow' },
+    { href: developer.medium || 'https://medium.com/@hassan_abdikadir', icon: <SiMedium />, title: 'Medium' },
+    { href: developer.discord || 'https://discord.com/users/1362003780568354957', icon: <SiDiscord />, title: 'Discord' },
+    { href: developer.telegram || 'https://t.me/HassanAbdikadir', icon: <SiTelegram />, title: 'Telegram' },
+    { href: developer.telegramChannel || 'https://t.me/PostFiles', icon: <SiTelegram />, title: 'Telegram Channel (PostFiles)' },
+    { href: developer.twitter || 'https://x.com/HasanAbdikadir8', icon: <SiX />, title: 'Twitter / X' },
+    { href: developer.youtube || 'https://www.youtube.com/@Hassan-AlBakri', icon: <SiYoutube />, title: 'YouTube' },
+    { href: developer.instagram || 'https://www.instagram.com/the_albakri/', icon: <SiInstagram />, title: 'Instagram' },
+    { href: developer.facebook || 'https://www.facebook.com/hassan.abdikadir.adam', icon: <SiFacebook />, title: 'Facebook' },
+    { href: developer.tiktok || 'https://www.tiktok.com/@hasan_abdikadir', icon: <SiTiktok />, title: 'TikTok' },
+    { href: developer.reddit || 'https://www.reddit.com/user/This_Package5648/', icon: <SiReddit />, title: 'Reddit' },
+  ]
+
   return (
-    <section id="home" className="hero">
+    <section id="home" className="hero" ref={heroSectionRef}>
       <canvas ref={canvasRef} className="hero-canvas" />
       <div className="grid-bg" />
 
@@ -96,18 +199,17 @@ export default function Hero({ developer, metrics = [], onOpenResume, onStartTou
         {/* Left Content */}
         <div className={`hero-content ${inView ? 'visible' : ''}`}>
 
-
           {/* Live Cyber Radar Status Badge */}
-          <div className="hero-status-pill glass-card" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', borderRadius: '30px', border: '1px solid rgba(0,240,255,0.3)', marginBottom: '20px', background: 'rgba(5,10,25,0.7)', backdropFilter: 'blur(12px)' }}>
-            <span className="pulse-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#00ff88', boxShadow: '0 0 10px #00ff88' }} />
-            <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-code)', color: '#00f0ff', fontWeight: 600 }}>
+          <div className="hero-status-pill glass-card">
+            <span className="pulse-dot hero-pulse-dot" />
+            <span className="hero-status-text">
               AVAILABLE FOR HIRE • HARGEISA (GMT+3)
             </span>
           </div>
 
           <h1 className="hero-title">
             <span className="hero-greeting">{lang === 'so' ? 'Kushoodhaw, Waxaan Ahay' : "Hi, I'm"}</span>
-            <span className="hero-name ocean-gradient-text">Hassan-Abdikadir</span>
+            <span className="hero-name ocean-gradient-text">Hassan Abdikadir</span>
           </h1>
 
           <div className="hero-typing">
@@ -151,16 +253,6 @@ export default function Hero({ developer, metrics = [], onOpenResume, onStartTou
 
           <div className="hero-actions">
             <button
-              className="btn-auto-tour"
-              onClick={onStartTour}
-              data-hover
-              title="Take an automated 1-minute guided interactive showcase tour of Hassan's portfolio"
-            >
-              <span className="bat-dot" />
-              <FiPlay className="bat-icon" />
-              <span>{lang === 'so' ? '1-Min Auto Demo' : '1-Min Auto Demo Tour'}</span>
-            </button>
-            <button
               className="btn-primary"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               data-hover
@@ -172,127 +264,163 @@ export default function Hero({ developer, metrics = [], onOpenResume, onStartTou
               onClick={onOpenResume}
               data-hover
             >
-              <FiFileText /> {t?.hero?.viewResume || 'View Interactive CV'}
+              <FiFileText /> {lang === 'so' ? 'CV & Resume-ka' : 'Interactive CV & Resume'}
             </button>
-            <a
-              href="/Hassan_Abdikadir_Resume.pdf"
-              download="Hassan_Abdikadir_Resume.pdf"
-              className="btn-outline"
-              style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+            <button
+              className="btn-auto-tour"
+              onClick={onStartTour}
               data-hover
+              title="Take an automated 1-minute guided interactive showcase tour of Hassan's portfolio"
             >
-              <FiFileText /> {lang === 'so' ? 'Soo Degso PDF CV' : 'Download PDF CV'}
-            </a>
+              <span className="bat-dot" />
+              <FiPlay className="bat-icon" />
+              <span>{lang === 'so' ? '1-Min Auto Demo' : '1-Min Auto Demo Tour'}</span>
+            </button>
           </div>
 
           {/* FEATURE 2: AI Voice Twin Executive Pitch */}
           <VoicePitchWidget />
 
           <div className="hero-socials">
-            <a href={developer.github || "https://github.com/HassanAbdikadir"} target="_blank" rel="noreferrer" className="social-link" data-hover title="GitHub">
-              <FiGithub />
-            </a>
-            <a href={developer.linkedin || "https://linkedin.com/in/hassanabdikadir"} target="_blank" rel="noreferrer" className="social-link" data-hover title="LinkedIn">
-              <FiLinkedin />
-            </a>
-            <a href={developer.kaggle || "https://www.kaggle.com/hassanabdikadir"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Kaggle">
-              <SiKaggle />
-            </a>
-            <a href={developer.devto || "https://dev.to/hassan-abdikadir"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Dev.to">
-              <SiDevdotto />
-            </a>
-            <a href={developer.leetcode || "https://leetcode.com/u/hassan_abdikadir/"} target="_blank" rel="noreferrer" className="social-link" data-hover title="LeetCode">
-              <SiLeetcode />
-            </a>
-            <a href={developer.stackoverflow || "https://stackoverflow.com/users/33181258/hassan-abdikadir"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Stack Overflow">
-              <SiStackoverflow />
-            </a>
-            <a href={developer.medium || "https://medium.com/@hassan_abdikadir"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Medium">
-              <SiMedium />
-            </a>
-            <a href={developer.discord || "https://discord.com/users/1362003780568354957"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Discord">
-              <SiDiscord />
-            </a>
-            <a href={developer.telegram || "https://t.me/HassanAbdikadir"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Telegram">
-              <SiTelegram />
-            </a>
-            <a href={developer.telegramChannel || "https://t.me/PostFiles"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Telegram Channel (PostFiles)">
-              <SiTelegram />
-            </a>
-            <a href={developer.whatsapp || "https://wa.me/252636364115"} target="_blank" rel="noreferrer" className="social-link" data-hover title="WhatsApp">
-              <SiWhatsapp />
-            </a>
-            <a href={developer.twitter || "https://x.com/HasanAbdikadir8"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Twitter / X">
-              <SiX />
-            </a>
-            <a href={developer.youtube || "https://www.youtube.com/@Hassan-AlBakri"} target="_blank" rel="noreferrer" className="social-link" data-hover title="YouTube">
-              <SiYoutube />
-            </a>
-            <a href={developer.instagram || "https://www.instagram.com/the_albakri/"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Instagram">
-              <SiInstagram />
-            </a>
-            <a href={developer.facebook || "https://www.facebook.com/hassan.abdikadir.adam"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Facebook">
-              <SiFacebook />
-            </a>
-            <a href={developer.tiktok || "https://www.tiktok.com/@hasan_abdikadir"} target="_blank" rel="noreferrer" className="social-link" data-hover title="TikTok">
-              <SiTiktok />
-            </a>
-            <a href={developer.reddit || "https://www.reddit.com/user/This_Package5648/"} target="_blank" rel="noreferrer" className="social-link" data-hover title="Reddit">
-              <SiReddit />
-            </a>
-            <a href={`mailto:${developer.email || 'hasanabdikadir15@gmail.com'}`} className="social-link" data-hover title="Email">
-              <FiMail />
-            </a>
+            {primarySocials.map((item, idx) => (
+              <a
+                key={idx}
+                href={item.href}
+                target={item.sameTab ? undefined : '_blank'}
+                rel={item.sameTab ? undefined : 'noreferrer'}
+                className="social-link"
+                data-hover
+                title={item.title}
+              >
+                {item.icon}
+              </a>
+            ))}
+
+            {showAllSocials && extraSocials.map((item, idx) => (
+              <a
+                key={`extra-${idx}`}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                className="social-link social-link-extra"
+                data-hover
+                title={item.title}
+              >
+                {item.icon}
+              </a>
+            ))}
+
+            <button
+              type="button"
+              className="social-expand-pill"
+              onClick={() => setShowAllSocials(prev => !prev)}
+              data-hover
+              title={showAllSocials ? 'Collapse extra profiles' : 'Show all 18+ developer & social profiles'}
+            >
+              {showAllSocials ? <><FiMinus /> Show Less</> : <><FiPlus /> 12 More</>}
+            </button>
+
             <div className="social-divider" />
             <span className="social-label">hassanabdikadir.dev</span>
           </div>
         </div>
 
-        {/* Right Content Visual */}
-        <div className={`hero-visual ${inView ? 'visible' : ''}`}>
-          <div className="orbit-container">
-            <div className="orbit-ring ring-1">
-              {techOrbitItems.map((item, i) => (
-                <div
-                  key={i}
-                  className="orbit-item"
-                  style={{ animationDelay: `${i * -2}s`, color: item.color }}
-                  title={item.label}
-                >
-                  {item.icon}
+        {/* Right Content Visual — 3D Tilt Holographic Core */}
+        <div
+          className={`hero-visual ${inView ? 'visible' : ''}`}
+          onMouseMove={handleVisualMouseMove}
+          onMouseLeave={handleVisualMouseLeave}
+        >
+          <div
+            className="hero-tilt-stage"
+            style={{
+              transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
+            }}
+          >
+            <div className="orbit-container">
+              {/* Outer Counter-Rotating Ring */}
+              <div className="orbit-ring ring-2">
+                {techOrbitOuter.map((item, i) => (
+                  <div
+                    key={i}
+                    className="orbit-item orbit-item-outer"
+                    style={{ color: item.color }}
+                    title={item.label}
+                  >
+                    {item.icon}
+                  </div>
+                ))}
+              </div>
+
+              {/* Inner Rotating Ring */}
+              <div className="orbit-ring ring-1">
+                {techOrbitInner.map((item, i) => (
+                  <div
+                    key={i}
+                    className="orbit-item"
+                    style={{ color: item.color }}
+                    title={item.label}
+                  >
+                    {item.icon}
+                  </div>
+                ))}
+              </div>
+
+              <div className="orbit-center glass-card">
+                <div className="center-logo">
+                  <img src="/LOGO.png" alt="HA Logo" className="hero-center-logo-img" />
                 </div>
-              ))}
+                <div className="center-info">
+                  <div className="center-name">Hassan Abdikadir</div>
+                  <div className="center-role gradient-text-data" style={{ fontSize: '0.7rem', fontFamily: 'var(--font-code)' }}>
+                    FullStack • Data • Systems
+                  </div>
+                </div>
+                <div className="center-badge">
+                  <span className="status-dot" style={{ fontSize: '0.72rem' }}>Active</span>
+                </div>
+              </div>
             </div>
 
-            <div className="orbit-center glass-card">
-              <div className="center-logo">
-                <img src="/LOGO.png" alt="HA Logo" className="hero-center-logo-img" />
-              </div>
-              <div className="center-info">
-                <div className="center-name">Hassan Abdikadir</div>
-                <div className="center-role gradient-text-data" style={{ fontSize: '0.7rem', fontFamily: 'var(--font-code)' }}>
-                  FullStack • Data • Systems
+            {/* Floating Telemetry Chips */}
+            <div className="hero-telemetry-chips">
+              <div className="flagship-tag glass-card chip-flagship">
+                <div className="flagship-dot" />
+                <div>
+                  <div className="flagship-label gradient-text-flagship" style={{ fontWeight: 700, fontSize: '0.82rem' }}>
+                    FullStack Academy
+                  </div>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.68rem', fontFamily: 'var(--font-code)' }}>
+                    Flagship System • Live
+                  </div>
                 </div>
               </div>
-              <div className="center-badge">
-                <span className="status-dot" style={{ fontSize: '0.72rem' }}>Active</span>
+
+              <div className="flagship-tag glass-card chip-gpa">
+                <FiAward style={{ color: '#10B981', fontSize: '1.1rem', flexShrink: 0 }} />
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '0.8rem', color: '#10B981' }}>
+                    Major GPA 3.96 / 4.0
+                  </div>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.68rem', fontFamily: 'var(--font-code)' }}>
+                    Very Great Distinction
+                  </div>
+                </div>
+              </div>
+
+              <div className="flagship-tag glass-card chip-node">
+                <FiMapPin style={{ color: 'var(--cyan, #06B6D4)', fontSize: '1rem', flexShrink: 0 }} />
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '0.78rem', color: 'var(--text-primary)' }}>
+                    Hargeisa • GMT+3
+                  </div>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.66rem', fontFamily: 'var(--font-code)' }}>
+                    Remote Ready Worldwide
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-          <div className="flagship-tag glass-card">
-            <div className="flagship-dot" />
-            <div>
-              <div className="flagship-label gradient-text-flagship" style={{ fontWeight: 700, fontSize: '0.85rem' }}>
-                FullStack Academy
-              </div>
-              <div style={{ color: 'var(--text-muted)', fontSize: '0.72rem', fontFamily: 'var(--font-code)' }}>
-                Flagship System • Live
-              </div>
-            </div>
-          </div>
-
-
         </div>
       </div>
 

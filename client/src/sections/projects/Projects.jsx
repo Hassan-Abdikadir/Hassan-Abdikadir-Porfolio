@@ -141,12 +141,27 @@ export default function Projects({ projects = [], t, lang }) {
                 </div>
 
                 <div className="project-links">
-                  <a href={project.github} target="_blank" rel="noreferrer" className="proj-link" onClick={e => e.stopPropagation()} data-hover>
-                    <FiGithub /> GitHub
-                  </a>
-                  <a href={project.live} target="_blank" rel="noreferrer" className="proj-link primary" onClick={e => e.stopPropagation()} data-hover>
-                    <FiExternalLink /> Case Study
-                  </a>
+                  <div className="project-links-left">
+                    <a href={project.github} target="_blank" rel="noreferrer" className="proj-link" onClick={e => e.stopPropagation()} data-hover>
+                      <FiGithub /> GitHub
+                    </a>
+                    <a href={project.live} target="_blank" rel="noreferrer" className="proj-link primary" onClick={e => e.stopPropagation()} data-hover>
+                      <FiExternalLink /> Live Preview
+                    </a>
+                  </div>
+                  <button
+                    type="button"
+                    className="proj-sandbox-badge"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setSelectedProject(project)
+                      setModalTab('architecture')
+                      setSandboxResult(null)
+                    }}
+                    data-hover
+                  >
+                    🔍 Architecture &amp; API Sandbox
+                  </button>
                 </div>
               </div>
             </div>

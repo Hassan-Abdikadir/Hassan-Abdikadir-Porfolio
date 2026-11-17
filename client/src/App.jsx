@@ -36,7 +36,6 @@ import { useLanguage } from './hooks/useLanguage'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import './styles/globals.css'
 import './styles/app.css'
 
 function App() {
@@ -101,6 +100,13 @@ function App() {
       mouseX = e.clientX
       mouseY = e.clientY
       cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`
+
+      const card = e.target.closest?.('.glass-card, .project-card, .skill-card, .cert-card, .pillar-card')
+      if (card) {
+        const rect = card.getBoundingClientRect()
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
+      }
     }
 
     const animateFollower = () => {
@@ -197,9 +203,9 @@ function App() {
           lang={lang}
         />
         <About developer={developer} t={t} lang={lang} />
-        <NexusArcadeSection />
-        <Skills skills={filteredSkills} t={t} lang={lang} />
         <Projects projects={filteredProjects} t={t} lang={lang} />
+        <Skills skills={filteredSkills} t={t} lang={lang} />
+        <NexusArcadeSection />
         <RecruiterMatch t={t} lang={lang} />
         <BenchmarkMatrix />
         <GitHubActivityWidget />

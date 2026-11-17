@@ -1,55 +1,79 @@
 import { useState, useEffect, useRef } from 'react'
-import { FiVolume2, FiVolumeX, FiUser, FiLogOut, FiMenu, FiX, FiArrowRight, FiChevronDown, FiZap, FiPlay } from 'react-icons/fi'
+import { FiVolume2, FiVolumeX, FiUser, FiLogOut, FiMenu, FiX, FiArrowRight, FiChevronDown, FiZap, FiPlay, FiTerminal, FiTarget } from 'react-icons/fi'
 import ThemeToggle from '../common/ThemeToggle'
 import RoleSwitcher from '../common/RoleSwitcher'
 import LanguageSwitcher from '../common/LanguageSwitcher'
 import ThemePaletteSwitcher from '../common/ThemePaletteSwitcher'
 import './Navbar.css'
 
-export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume, soundEnabled, toggleSound, activeRole, setRole, lang, switchLang, t, onOpenAuth, onStartTour, user, isLoggedIn, logout }) {
+export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume, soundEnabled, toggleSound, activeRole, setRole, lang, switchLang, t, onOpenAuth, onOpenTerminal, onStartTour, user, isLoggedIn, logout }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false)
-  const toolsHoverTimer = useRef(null)
+  const [openDropdown, setOpenDropdown] = useState(null) // 'lab' | 'suite' | null
+  const hoverTimer = useRef(null)
+  const navRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40)
     }
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setOpenDropdown(null)
+      }
+    }
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
   }, [])
 
   const navLinks = [
     { href: '#home', label: t?.nav?.home || 'Home' },
     { href: '#about', label: t?.nav?.about || 'About' },
-    { href: '#nexus-arcade', label: 'AI & Twin' },
-    { href: '#skills', label: t?.nav?.skills || 'Skills' },
     { href: '#projects', label: t?.nav?.projects || 'Projects' },
-    { href: '#recruiter-match', label: 'Recruiter AI' },
-    { href: '#benchmark-matrix', label: 'ROI Matrix' },
-    { href: '#github-activity', label: 'GitHub Activity' },
+    { href: '#skills', label: t?.nav?.skills || 'Skills' },
     { href: '#experience', label: t?.nav?.experience || 'Experience' },
-    { href: '#certifications', label: t?.nav?.certifications || 'Certificates' },
-    { href: '#telemetry', label: t?.nav?.telemetry || 'Telemetry' },
-    { href: '#blog', label: t?.nav?.insights || 'Insights' },
+    { href: '#certifications', label: t?.nav?.certifications || 'Credentials' },
     { href: '#contact', label: t?.nav?.contact || 'Contact' },
   ]
 
-  const dropdownTools = [
-    { href: '#project-estimator', label: '💰 Scope Estimator' },
-    { href: '#api-sandbox', label: '⚡ API Sandbox' },
+  const labDropdown = [
+    { href: '#nexus-arcade', title: '🤖 AI Digital Twin & Arcade', desc: 'Digital twin chat, RPG skills & Web Audio lab' },
+    { href: '#code-runner', title: '💻 Live Algorithmic Code Runner', desc: 'Execute Node.js & Python pipelines live' },
+    { href: '#api-sandbox', title: '⚡ Interactive API Sandbox', desc: 'Test REST controllers & live payloads' },
+    { href: '#terminal', title: '⌨️ Developer CLI Terminal', desc: 'Interactive command-line portfolio shell' },
+  ]
+
+  const suiteDropdown = [
+    { href: '#recruiter-match', title: '🎯 AI Job-Match Calculator', desc: 'Paste job requirements for instant fit score' },
+    { href: '#benchmark-matrix', title: '📊 Candidate ROI Matrix', desc: 'Compare latency, speed & security ROI' },
+    { href: '#project-estimator', title: '💰 Project Scope Estimator', desc: 'Instant engineering timeline & quote' },
+    { href: '#github-activity', title: '🐙 Live GitHub Telemetry', desc: 'Commit streak & production audit log' },
+    { href: '#telemetry', title: '🛰️ Global System HUD', desc: 'Edge node latencies & Web Vitals monitor' },
+    { href: '#blog', title: '📝 Engineering Insights', desc: 'Architecture deep-dives & tech papers' },
   ]
 
   const scrollTo = (href) => {
     setMobileOpen(false)
-    setToolsDropdownOpen(false)
+    setOpenDropdown(null)
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const openMenu = (menuKey) => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current)
+    setOpenDropdown(menuKey)
+  }
+
+  const closeMenuDelayed = () => {
+    hoverTimer.current = setTimeout(() => setOpenDropdown(null), 140)
+  }
+
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} ref={navRef}>
       {/* Tier 1: Top Utility Bar */}
       <div className="nav-utility-bar">
         <div className="container utility-container">
@@ -75,6 +99,16 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
               data-hover
             >
               {soundEnabled ? <FiVolume2 style={{ color: '#10B981' }} /> : <FiVolumeX style={{ color: '#9CA3AF' }} />}
+            </button>
+
+            <button
+              className="nav-cmd-btn"
+              onClick={onOpenTerminal}
+              title="Launch Interactive Command Palette (Ctrl+K)"
+              data-hover
+            >
+              <FiTerminal className="ncb-icon" />
+              <span>⌘K</span>
             </button>
 
             <button
@@ -119,6 +153,18 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
       {/* Tier 2: Main Navigation Bar */}
       <div className="nav-main-bar">
         <div className="container nav-container">
+          {/* Brand Logo */}
+          <div className="nav-logo" onClick={() => scrollTo('#home')} data-hover>
+            <div className="logo-icon">
+              <div className="logo-ring" />
+              <img src="/LOGO.png" alt="Hassan Abdikadir" className="nav-logo-img" />
+            </div>
+            <div className="logo-text">
+              <span className="logo-name ocean-gradient-text">Hassan</span>
+              <span className="logo-dot">.dev</span>
+            </div>
+          </div>
+
           {/* Center Nav Links */}
           <div className="nav-links">
             {navLinks.map((link) => (
@@ -135,37 +181,72 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
               </button>
             ))}
 
-            {/* Tools Dropdown for Estimator & API Sandbox */}
+            {/* Mega-Dropdown 1: AI & Code Lab */}
             <div
               className="tools-dropdown-wrapper"
-              onMouseEnter={() => {
-                if (toolsHoverTimer.current) clearTimeout(toolsHoverTimer.current)
-                setToolsDropdownOpen(true)
-              }}
-              onMouseLeave={() => {
-                toolsHoverTimer.current = setTimeout(() => setToolsDropdownOpen(false), 120)
-              }}
+              onMouseEnter={() => openMenu('lab')}
+              onMouseLeave={closeMenuDelayed}
             >
               <button
-                className={`nav-link tools-dropdown-btn ${dropdownTools.some(t => activeSection === t.href.substring(1)) ? 'active' : ''}`}
-                onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
+                className={`nav-link tools-dropdown-btn ${labDropdown.some(item => activeSection === item.href.substring(1)) ? 'active' : ''}`}
+                onClick={() => setOpenDropdown(prev => prev === 'lab' ? null : 'lab')}
                 data-hover
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', color: '#60A5FA' }}
               >
-                <FiZap style={{ color: '#F59E0B' }} /> Tools <FiChevronDown style={{ transition: 'transform 0.2s ease', transform: toolsDropdownOpen ? 'rotate(180deg)' : 'rotate(0)' }} />
+                <FiZap style={{ color: '#F59E0B' }} />
+                <span>AI &amp; Code Lab</span>
+                <FiChevronDown className={`chevron-rot ${openDropdown === 'lab' ? 'open' : ''}`} />
               </button>
 
-              {toolsDropdownOpen && (
-                <div className="nav-tools-menu glass-card">
-                  {dropdownTools.map((tool) => (
-                    <button
-                      key={tool.href}
-                      onClick={() => scrollTo(tool.href)}
-                      className={`tool-dropdown-item ${activeSection === tool.href.substring(1) ? 'active' : ''}`}
-                    >
-                      {tool.label}
-                    </button>
-                  ))}
+              {openDropdown === 'lab' && (
+                <div className="nav-tools-menu nav-mega-menu glass-card">
+                  <div className="mega-menu-hdr font-code">// INTERACTIVE LAB &amp; SANDBOXES</div>
+                  <div className="mega-menu-grid single-col">
+                    {labDropdown.map((tool) => (
+                      <button
+                        key={tool.href}
+                        onClick={() => scrollTo(tool.href)}
+                        className={`tool-dropdown-item mega-item ${activeSection === tool.href.substring(1) ? 'active' : ''}`}
+                      >
+                        <span className="mega-item-title">{tool.title}</span>
+                        <span className="mega-item-desc">{tool.desc}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Mega-Dropdown 2: Recruiter Suite */}
+            <div
+              className="tools-dropdown-wrapper"
+              onMouseEnter={() => openMenu('suite')}
+              onMouseLeave={closeMenuDelayed}
+            >
+              <button
+                className={`nav-link tools-dropdown-btn ${suiteDropdown.some(item => activeSection === item.href.substring(1)) ? 'active' : ''}`}
+                onClick={() => setOpenDropdown(prev => prev === 'suite' ? null : 'suite')}
+                data-hover
+              >
+                <FiTarget style={{ color: 'var(--cyan, #06B6D4)' }} />
+                <span>Recruiter Suite</span>
+                <FiChevronDown className={`chevron-rot ${openDropdown === 'suite' ? 'open' : ''}`} />
+              </button>
+
+              {openDropdown === 'suite' && (
+                <div className="nav-tools-menu nav-mega-menu nav-mega-wide glass-card">
+                  <div className="mega-menu-hdr font-code">// HIRING EVALUATION &amp; TELEMETRY SUITE</div>
+                  <div className="mega-menu-grid two-col">
+                    {suiteDropdown.map((tool) => (
+                      <button
+                        key={tool.href}
+                        onClick={() => scrollTo(tool.href)}
+                        className={`tool-dropdown-item mega-item ${activeSection === tool.href.substring(1) ? 'active' : ''}`}
+                      >
+                        <span className="mega-item-title">{tool.title}</span>
+                        <span className="mega-item-desc">{tool.desc}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -187,7 +268,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
       {mobileOpen && (
         <div className="mobile-drawer glass-card">
           <div className="mobile-drawer-section">
-            <span className="drawer-label">Navigation</span>
+            <span className="drawer-label">Core Portfolio</span>
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -197,19 +278,36 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenResume
                 {link.label}
               </button>
             ))}
-            {dropdownTools.map((tool) => (
+          </div>
+
+          <div className="mobile-drawer-section">
+            <span className="drawer-label">AI &amp; Code Lab</span>
+            {labDropdown.map((tool) => (
               <button
                 key={tool.href}
                 className={`mobile-link ${activeSection === tool.href.substring(1) ? 'active' : ''}`}
                 onClick={() => scrollTo(tool.href)}
               >
-                {tool.label}
+                {tool.title}
               </button>
             ))}
           </div>
 
           <div className="mobile-drawer-section">
-            <span className="drawer-label">Preferences & Lens</span>
+            <span className="drawer-label">Recruiter Suite</span>
+            {suiteDropdown.map((tool) => (
+              <button
+                key={tool.href}
+                className={`mobile-link ${activeSection === tool.href.substring(1) ? 'active' : ''}`}
+                onClick={() => scrollTo(tool.href)}
+              >
+                {tool.title}
+              </button>
+            ))}
+          </div>
+
+          <div className="mobile-drawer-section">
+            <span className="drawer-label">Preferences &amp; Lens</span>
             <RoleSwitcher activeRole={activeRole} setRole={setRole} lang={lang} />
             <div className="mobile-controls-row">
               <ThemePaletteSwitcher />

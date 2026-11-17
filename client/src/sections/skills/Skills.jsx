@@ -48,6 +48,11 @@ export default function Skills({ skills = [], t, lang }) {
     ? Math.round(filteredSkills.reduce((a, s) => a + s.level, 0) / filteredSkills.length)
     : 0
 
+  const getCategoryCount = (catLabel) => {
+    if (catLabel === 'All') return skills.length
+    return skills.filter(s => s.category === catLabel).length
+  }
+
   return (
     <section id="skills" className="section skills-section">
       <div className="grid-bg" />
@@ -103,7 +108,8 @@ export default function Skills({ skills = [], t, lang }) {
                 data-hover
               >
                 <span className="filter-icon">{cat.icon}</span>
-                {cat.label}
+                <span>{cat.label}</span>
+                <span className="filter-count">{getCategoryCount(cat.label)}</span>
               </button>
             ))}
           </div>
@@ -131,7 +137,10 @@ export default function Skills({ skills = [], t, lang }) {
               <div
                 key={skill.name + index}
                 className={`skill-card glass-card ${inView ? 'visible' : ''}`}
-                style={{ transitionDelay: `${(index % 10) * 0.04}s` }}
+                style={{
+                  transitionDelay: `${(index % 10) * 0.04}s`,
+                  '--skill-accent': lvlColor
+                }}
                 onMouseEnter={() => setHoveredSkill(index)}
                 onMouseLeave={() => setHoveredSkill(null)}
               >

@@ -30,13 +30,74 @@
 }
 
 .about-profile {
-  padding: 32px;
+  padding: 28px 28px 24px;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   position: relative;
+}
+
+.profile-verified-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(var(--cyan-rgb, 6, 182, 212), 0.1);
+  border: 1px solid var(--border-glow, rgba(6, 182, 212, 0.3));
+  color: var(--cyan, #06B6D4);
+  font-family: var(--font-code, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+
+.honors-callout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  margin-bottom: 18px;
+  text-align: left;
+  width: 100%;
+}
+
+.honors-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.honors-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.honors-degree {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #F8FAFC;
+}
+
+.honors-gpa {
+  font-family: var(--font-code, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #FBBF24;
 }
 
 .profile-avatar {
@@ -152,10 +213,178 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.about-bento-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .about-pillars {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.pillar-body {
+  flex: 1;
+}
+
+.pillar-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.pillar-metric-badge {
+  font-family: var(--font-code, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.metric-blue {
+  color: #60A5FA;
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.metric-cyan {
+  color: #22D3EE;
+  background: rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.metric-emerald {
+  color: #34D399;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* 4th Bento Card: Global Engineering & Collaboration Hub */
+.bento-collab-hub {
+  padding: 22px 24px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(6, 182, 212, 0.08));
+  border: 1px solid var(--border-glow, rgba(6, 182, 212, 0.25));
+}
+
+.bento-collab-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bento-collab-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bento-collab-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(var(--cyan-rgb, 6, 182, 212), 0.14);
+  color: var(--cyan, #06B6D4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.bento-collab-title {
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--text-primary, #F9FAFB);
+  margin-bottom: 2px;
+}
+
+.bento-collab-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted, #94A3B8);
+  letter-spacing: 0.04em;
+}
+
+.bento-live-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34D399;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.bento-clock-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+}
+
+.bento-philosophy {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary, #CBD5E1);
+  font-style: italic;
+  padding-left: 12px;
+  border-left: 2px solid var(--cyan, #06B6D4);
+}
+
+.bento-collab-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bento-jump-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.bento-jump-btn.primary {
+  background: var(--grad-btn, linear-gradient(135deg, #2563EB, #7C3AED));
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 4px 16px var(--border-glow, rgba(59, 130, 246, 0.35));
+}
+
+.bento-jump-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--border-glow, rgba(59, 130, 246, 0.5));
+}
+
+.bento-jump-btn.secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--cyan, #38BDF8);
+  border: 1px solid var(--border-glow, rgba(6, 182, 212, 0.35));
+}
+
+.bento-jump-btn.secondary:hover {
+  background: rgba(var(--cyan-rgb, 6, 182, 212), 0.14);
+  transform: translateY(-2px);
 }
 
 .pillar-card {

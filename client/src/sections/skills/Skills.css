@@ -159,6 +159,22 @@
   box-shadow: 0 0 12px rgba(59,130,246,0.15);
 }
 
+.filter-count {
+  font-family: var(--font-code, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary, #94A3B8);
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active .filter-count {
+  background: rgba(var(--cyan-rgb, 6, 182, 212), 0.22);
+  color: var(--cyan, #38BDF8);
+}
+
 /* Search */
 .skills-search {
   display: flex;
@@ -217,9 +233,9 @@
 }
 
 .skill-card:hover {
-  border-color: rgba(59,130,246,0.4);
-  transform: translateY(-4px) !important;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-color: var(--skill-accent, rgba(59,130,246,0.4)) !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45), 0 0 26px color-mix(in srgb, var(--skill-accent, #3B82F6) 30%, transparent) !important;
 }
 
 /* subtle glow corner */

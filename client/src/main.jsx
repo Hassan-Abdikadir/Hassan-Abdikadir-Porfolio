@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import ErrorBoundary from './ErrorBoundary.jsx'
 import { AuthProvider } from './features/auth/useAuth.jsx'
 import './styles/globals.css'
+import App from './App.jsx'
 import './styles/design-system.css'
 import './styles/responsive.css'
-import App from './App.jsx'
 
 // Register PWA Service Worker
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
