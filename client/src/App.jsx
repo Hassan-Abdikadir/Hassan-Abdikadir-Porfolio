@@ -221,7 +221,13 @@ function App() {
         <Contact developer={developer} t={t} lang={lang} />
       </main>
 
-      <Footer developer={developer} onOpenAdmin={() => setAdminOpen(true)} />
+      <Footer
+        developer={developer}
+        onOpenAdmin={() => setAdminOpen(true)}
+        onOpenResume={() => setResumeOpen(true)}
+        onOpenTerminal={() => setTerminalOverlayOpen(true)}
+        onStartTour={() => setTourOpen(true)}
+      />
 
       <TerminalOverlay isOpen={terminalOverlayOpen} onClose={() => setTerminalOverlayOpen(false)} />
       <AIChatbot developer={developer} />
